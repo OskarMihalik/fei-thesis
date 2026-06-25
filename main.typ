@@ -1,0 +1,32 @@
+#import "template.typ": *
+
+#show: fei-thesis.with()
+
+#title-page()
+
+#keywordsSK.update(old => "kľúčové slovo, typst")
+#keywordsEN.update(old => "kľúčové slovo, typst")
+
+#abstract(
+  [
+    #include "includes/abstractSK.typ"
+  ],
+  title: [Abstrakt],
+)
+
+#abstract(
+  [
+    #include "includes/abstractEN.typ"
+  ],
+  title: [Abstract],
+)
+
+// #pagebreak()
+
+#counter(page).update(1)
+#set heading(numbering: "1.1")
+
+#include "includes/core.typ"
+
+#pagebreak()
+#bibliography("bibliography.bib", style: "iso-690-numeric")
