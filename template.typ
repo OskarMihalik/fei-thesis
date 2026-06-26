@@ -8,9 +8,11 @@
 #let doc-lang = state("doc-lang", "sk")
 
 #let i18n = (
-  sk: (introduction: "Úvod"),
-  en: (introduction: "Introduction"),
+  sk: (introduction: "Úvod", abstract: "Abstrakt", appendix-suffix: "Dodatok"),
+  en: (introduction: "Introduction", abstract: "Abstract", appendix-suffix: "Appendix"),
 )
+
+#let translate(key, lang: none) = context i18n.at(if lang != none { lang } else { doc-lang.get() }).at(key)
 
 #let fei-thesis(
   title: "",
@@ -86,14 +88,14 @@
   /// -> string
   // font: title-font,
   /// The title which the abstract paragraph should have.
-  /// -> content | string
-  title: [Abstract],
+  /// -> "en" | "sk"
+  lang: "sk",
 ) = {
   // English abstract
   // v(50pt, weak: true)
   set text(heading-1)
   // show: pad.with(x: 1cm)
-  align(left, text(font: font, strong(title)))
+  align(left, text(font: font, strong(translate("abstract", lang: lang))))
   v(20pt, weak: true)
   set text(text-size)
   content
@@ -123,11 +125,32 @@
   pagebreak()
 }
 
-#let translate(key) = context i18n.at(doc-lang.get()).at(key)
-
 #let introduction(content) = {
   heading(numbering: none)[#translate("introduction")]
   content
+  pagebreak()
+}
+
+#let main-matter(content) = {
+  counter(page).update(1)
+  set heading(numbering: "1.1")
+  set page(numbering: "1")
+  content
+  pagebreak()
+}
+
+#let appendix-counter = counter("appendix")
+
+#let appendix(content, title) = {
+  appendix-counter.step()
+  context {
+    let suffix = i18n.at(doc-lang.get()).at("appendix-suffix")
+    let letter = numbering("A", appendix-counter.get().first())
+    heading(numbering: none)[#suffix #letter: #title]
+  }
+
+  content
+
   pagebreak()
 }
 

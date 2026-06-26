@@ -11,24 +11,25 @@
   [
     #include "includes/abstractSK.typ"
   ],
-  title: [Abstrakt],
+  lang: "sk",
 )
 
 #abstract(
   [
     #include "includes/abstractEN.typ"
   ],
-  title: [Abstract],
+  lang: "en",
 )
 
 #fei-outline()
 
 #introduction()[#include "includes/introduction.typ"]
 
-#counter(page).update(1)
-#set heading(numbering: "1.1")
 
-#include "includes/core.typ"
+#main-matter([#include "includes/core.typ"])
 
-#pagebreak()
 #bibliography("bibliography.bib", style: "iso-690-numeric")
+#pagebreak()
+
+#appendix([#include "includes/appendixA.typ"], [Algoritmus])
+#appendix([#include "includes/appendixA.typ"], [Výpis dlhého kódu])
