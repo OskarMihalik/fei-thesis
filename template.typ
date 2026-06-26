@@ -2,15 +2,22 @@
 #let heading-1 = 20pt
 #let heading-2 = 16pt
 #let heading-3 = 14pt
-#let language = "sk"
 #let font = "New Computer Modern"
-#let keywordsSK = state("keyword SK")
-#let keywordsEN = state("keywords EN")
+#let keywordsSK = state("keywords-sk", [keyword 1, keyword 2])
+#let keywordsEN = state("keywords-en", [keyword 1, keyword 2])
+#let doc-lang = state("doc-lang", "sk")
+
+#let i18n = (
+  sk: (introduction: "Úvod"),
+  en: (introduction: "Introduction"),
+)
 
 #let fei-thesis(
   title: "",
+  language: "sk",
   body,
 ) = {
+  doc-lang.update(language)
   // Page setup
   set page(
     paper: "a4",
@@ -36,11 +43,11 @@
   author: "",
   school: "Slovenská technická univerzita v Bratislave",
   faculty: "Fakulta elektrotechniky a informatiky",
-  year: "",
-  reg-nr: "",
-  study-programme: "",
-  study-field: "",
-  supervisor: "",
+  year: "2026",
+  reg-nr: "XXXXX",
+  study-programme: "názov študijného programu",
+  study-field: "študijný odbor",
+  supervisor: "školiteľ",
   consultant: none,
 ) = {
   align(center)[
@@ -63,6 +70,11 @@
   align(bottom + left)[
     #year #h(1fr) #author
   ]
+  pagebreak()
+}
+
+#let fei-outline() = {
+  outline()
   pagebreak()
 }
 
@@ -108,6 +120,14 @@
 
   [#context keywordsEN.get()]
 
+  pagebreak()
+}
+
+#let translate(key) = context i18n.at(doc-lang.get()).at(key)
+
+#let introduction(content) = {
+  heading(numbering: none)[#translate("introduction")]
+  content
   pagebreak()
 }
 

@@ -4,8 +4,8 @@
 
 #title-page()
 
-#keywordsSK.update(old => "kľúčové slovo, typst")
-#keywordsEN.update(old => "kľúčové slovo, typst")
+#keywordsSK.update([kľúčové slovo, typst])
+#keywordsEN.update([kľúčové slovo, typst])
 
 #abstract(
   [
@@ -21,7 +21,9 @@
   title: [Abstract],
 )
 
-// #pagebreak()
+#fei-outline()
+
+#introduction()[#include "includes/introduction.typ"]
 
 #counter(page).update(1)
 #set heading(numbering: "1.1")
