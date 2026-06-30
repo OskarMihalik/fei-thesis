@@ -1,8 +1,6 @@
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/abbr:0.3.1"
 
-#show: abbr.show-rule
-
 #let text-size = 12pt
 #let heading-1 = 20pt
 #let heading-2 = 16pt
@@ -12,8 +10,18 @@
 #let keywordsEN = state("keywords-en", [keyword 1, keyword 2])
 #let doc-lang = state("doc-lang", "sk")
 #let i18n = (
-  sk: (introduction: "Úvod", abstract: "Abstrakt", appendix-suffix: "Dodatok"),
-  en: (introduction: "Introduction", abstract: "Abstract", appendix-suffix: "Appendix"),
+  sk: (
+    introduction: "Úvod",
+    abstract: "Abstrakt",
+    appendix-suffix: "Dodatok",
+    glossary-title: "Zoznam značiek a skratiek",
+  ),
+  en: (
+    introduction: "Introduction",
+    abstract: "Abstract",
+    appendix-suffix: "Appendix",
+    glossary-title: "List of Symbols and Abbreviations",
+  ),
 )
 
 #let translate(key, lang: none) = context i18n.at(if lang != none { lang } else { doc-lang.get() }).at(key)
@@ -51,6 +59,8 @@
     numbering: numbly("{1:1}.", "{2:a)}", "{3:i})", "({4})"),
   )
 
+  show: abbr.show-rule
+
   body
 }
 
@@ -87,6 +97,12 @@
     #year #h(1fr) #author
   ]
   pagebreak()
+}
+
+#let fei-list-of-glossaries() = {
+  set heading(outlined: false, numbering: none)
+  abbr.list(title: [#translate("glossary-title")], columns: 1)
+  abbr.load("includes/glossary.csv")
 }
 
 #let fei-outline() = {
