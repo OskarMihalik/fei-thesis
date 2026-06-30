@@ -2,6 +2,8 @@
 
 #show: fei-thesis.with()
 
+#fei-assignment("includes/assignment.pdf")
+
 #title-page()
 
 #keywordsSK.update([kľúčové slovo, typst])

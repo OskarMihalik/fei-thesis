@@ -19,7 +19,6 @@ Práca napísaná v~slovenskom jazyku má tieto časti @vyhlaska2332011 @usmerne
 + Hlavná textová časť
   + úvod
   + jadro
-    + asdf
     - súčasný stav riešenej problematiky doma a v zahraničí
     - cieľ práce
     - metodika práce a metódy skúmania
