@@ -37,6 +37,8 @@
   show heading.where(level: 3): set text(size: heading-3)
 
   set figure(numbering: "1")
+  set heading(numbering: "1.1")
+
   body
 }
 
@@ -76,7 +78,30 @@
 }
 
 #let fei-outline() = {
+  show outline.entry.where(
+    level: 1,
+  ): it => strong(it)
   outline()
+  pagebreak()
+}
+
+#let print-keywordsSK() = {
+  set text(heading-2)
+  align(left, text(font: font, strong([Kľúčové slová])))
+  set text(text-size)
+
+  [#context keywordsSK.get()]
+
+  pagebreak()
+}
+
+#let print-keywordsEN() = {
+  set text(heading-3)
+  align(left, text(font: font, strong([Keywords])))
+  set text(text-size)
+
+  [#context keywordsEN.get()]
+
   pagebreak()
 }
 
@@ -93,36 +118,21 @@
 ) = {
   // English abstract
   // v(50pt, weak: true)
+  set par(first-line-indent: 0pt)
   set text(heading-1)
   // show: pad.with(x: 1cm)
   align(left, text(font: font, strong(translate("abstract", lang: lang))))
-  v(20pt, weak: true)
+  v(20pt)
   set text(text-size)
+
   content
-}
 
-#let print-keywordsSK() = {
-  set text(heading-2)
-  // show: pad.with(x: 1cm)
-  align(left, text(font: font, strong([Kľúčové slová])))
-  v(20pt, weak: true)
-  set text(text-size)
-
-  [#context keywordsSK.get()]
-
-  pagebreak()
-}
-
-#let print-keywordsEN() = {
-  set text(heading-2)
-  // show: pad.with(x: 1cm)
-  align(left, text(font: font, strong([Keywords])))
-  v(20pt, weak: true)
-  set text(text-size)
-
-  [#context keywordsEN.get()]
-
-  pagebreak()
+  v(20pt)
+  if lang == "sk" [
+    #print-keywordsSK()
+  ] else [
+    #print-keywordsEN()
+  ]
 }
 
 #let introduction(content) = {
@@ -132,11 +142,14 @@
 }
 
 #let main-matter(content) = {
-  counter(page).update(1)
-  set heading(numbering: "1.1")
-  set page(numbering: "1")
   content
   pagebreak()
+}
+
+
+#let start-numbering(body) = {
+  set page(numbering: "1")
+  body
 }
 
 #let appendix-counter = counter("appendix")

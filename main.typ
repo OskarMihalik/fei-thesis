@@ -23,6 +23,8 @@
 
 #fei-outline()
 
+#show: start-numbering.with()
+
 #introduction()[#include "includes/introduction.typ"]
 
 
