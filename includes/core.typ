@@ -1251,3 +1251,84 @@ Na tabuľky sa odvolávame pomocou ich čísla použitím dvojice makier
 `<tab:table>` a~`@tab:template` .
 Spôsob odkazovania je podobný ako v prípade obrázkov,
 o~ktorom sme podrobne hovorili v časti @sec:figPlacement.
+
+==== Vzhľad tabuľky
+
+Jednoduchá tabuľka obsahuje hlavičku a~niekoľko
+údajových riadkov.
+Vzhľad tabuľky je otázka estetických preferencií autora.
+Príliš veľa grafických prvkov znižuje obsahovú hodnotu a čitateľnosť tabuľky.
+Formát, ktorý sme vybrali je inšpirovaný trendmi
+v~knižnej sadzbe.
+Tabuľka je zhora a~zdola ohraničená vodorovnými čiarami
+`toprule` a~`bottomrule` z~knižnice `booktabs`.
+Podobne je čiarou `midrule` oddelená hlavička tabuľky
+a~prípadne aj päta, ak ju použijeme.
+Zvislé čiary sa používajú iba vo výnimočných prípadoch,
+napríklad ak je tabuľka rozdelená na
+dve evidentne oddelené časti.
+Prípadne môžeme čiarou oddeliť prvý stĺpec s~opisom označenia riadka (tabuľka <@tab:LED>).
+Jednotlivé riadky s~údajmi neoddeľujeme.
+Tabuľka pôsobí harmonicky,
+ak je text v~prvom stĺpci zarovnaný doľava
+a~v~poslednom stĺpci doprava.
+
+Prvý riadok môže byť vysádzaný polotučným
+rezom (bold),
+ak obsahuje tzv. hlavičku, teda názvy stĺpcov alebo názvy
+a~jednotky veličín, ktorých hodnoty sú v~konkrétnom stĺpci.
+Označenie veličín symbolom ($U$, $I$, $R$, $P$, a~pod.)
+nepíšeme v~hlavičke tučným písmom,
+aby sme dodržali pravidlo o~tom,
+že veličiny by mali byť v~celom dokumente označené symbolom
+rovnakého tvaru a typu.
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: (left, right, right, right, right),
+    stroke: none,
+    table.hline(),
+    table.vline(x: 1, start: 0),
+    table.header(
+      [*dióda*],
+      [$λ_upright(m)\,(upright("nm"))$],
+      [*FWHM (nm)*],
+      [*žiarivý výkon* $(10^(-5)\,upright("W"))$],
+      [*farba*],
+    ),
+    table.hline(),
+    [LED 1], [$450 plus.minus 5$], [$20 plus.minus 2$], [$3 plus.minus 1$], [modrá],
+    [LED 2], [$525 plus.minus 5$], [$25 plus.minus 3$], [$50 plus.minus 4$], [zelená],
+    [LED 3], [$615 plus.minus 5$], [$15 plus.minus 1$], [$2 plus.minus 1$], [oranžová],
+    [LED 4], [$630 plus.minus 5$], [$20 plus.minus 2$], [$5 plus.minus 1$], [červená],
+    table.hline(),
+  ),
+  caption: [Tabuľka parametrov štyroch diód LED.
+    FWHM predstavuje šírku píku v~polovici intenzity
+    spektrálneho maxima (_Full-Width-Half-Maximum_) pri vlnovej dĺžke~$λ_upright(m)$.],
+) <tab:LED>
+
+==== Obsah tabuľky
+
+Tabuľka s nameranými hodnotami obsahuje v~prvom riadku označenie
+veličín a~to buď slovom alebo symbolom.
+Za veličinou nasleduje jednotka v~okrúhlej zátvorke.
+Hranaté zátvorky na tento účel nepoužívame.
+Bezrozmerné relatívne veličiny uvádzame s~jednotkou `a. u.`.
+Ide o zaužívanú formu v~medzinárodnej vedeckej komunite na pomenovanie tzv. príslušnej jednotky (_arbitrary unit_).
+Takto označujeme aj osi grafov rôznych relatívnych veličín.
+
+Pred jednotkou môže byť označenie násobku
+a~dielu a~to ako v~symbolickej forme (`kA`, `nm`, `MW`),
+tak aj vo forme dekadického exponentu ($10^3$, $10^(-9)$, $10^6$).
+Vyhýbame sa zápisom v~tvare `1E-3` alebo `10-3`,
+pretože sú mätúce.
+Text hlavičky vlnová dĺžka ($10^(-7)$\,m) znamená,
+že hodnoty v~celom stĺpci predstavujú veličinu vlnová dĺžka
+a~sú uvedené v~jednotkách $10^(-7)$ metra.
+
+Neistoty a~odchýlky zapisujeme k~hlavnej hodnote pomocou
+znaku $plus.minus$ alebo do zvláštneho stĺpca,
+ktorý príslušne označíme.
+Ďalšie spôsoby zápisu neistôt uvádza príslušná norma (napr. STN 01 6910: 2022 @stn016910).
