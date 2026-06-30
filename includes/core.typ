@@ -861,3 +861,146 @@ Používanie umelej inteligencie pri písaní záverečných prác
 upravuje opatrenie rektora STU v Bratislave č. 1/2024-O,
 ktoré budeme ďalej v texte uvádzať ako "opatrenie" @opatrenie12024.
 
+==== Povolené činnosti umelej inteligencie bez potreby deklarácie
+
+Podľa čl. V, ods. 2, písm. a) opatrenia môžu študenti používať GAI bez potreby deklarácie na tieto činnosti: kontrola gramatiky, oprava textu, tvorba osnovy, zhromažďovanie informácií a~použitie výpočtových metód a~softvérov, ktoré obsahujú prvky AI.
+
+==== Deklarácia činnosti generatívnej umelej inteligencie
+
+Čl. V, ods. 2, písmeno b) opatrenia obsahuje zoznam možností použitia GAI, ktoré je potrebné v práci deklarovať na konci po zozname literatúry.
+Ide o nasledujúce činnosti: preklady medzi jazykmi, úpravy a reformulácie textu, tvorba zhrnutia a rešerší, citovanie odpovedí GAI, tvorba počítačových programov, tvorba grafického obsahu a obrázkov.
+
+V závere práce, uvedieme za zoznamom literatúry časti textu vytvorené s~pomocou AI, spôsob ich využitia a použitý nástroj AI @opatrenie12024, čl. VI., ods. 2.
+
+V hlavnom súbore záverečnej práce `thesis.typ` je príkaz na načítanie súboru so všetkými záznamami z~priečinka `includes`.
+Každý výskyt použitia nástrojov AI zapíšeme ako položku do pripraveného prostredia.
+Formát a~obsah jednotlivých záznamov je naznačený v prílohe opatrenia číslo 1/2024-O.
+Záznamy obsahujú tieto prvky:
+- Názov spoločnosti (dátum), Názov nástroja, časť práce, účel použitia.
+
+Predchádzajúci vzorec vygeneroval nástroj ChatGPT 4o od firmy
+OpenAI dňa 2. 2. 2025 na základe analýzy spomínaného opatrenia.
+V deklarácii použitia umelej inteligencie sa zapíšeme tento záznam:
+- OpenAI (2025), ChatGPT 4o, časť @sec:utilizingAI, generovanie vzorca záznamu použitia AI.
+
+Súčasná verzia šablóny FEIstyle nedisponuje nástrojmi na automatizáciu záznamov činnosti AI.
+Preto ich treba zapisovať ručne do súboru `includes/ai_declaration.typ`.
+
+== Špeciálne a netextové objekty
+
+=== Matematické rovnice
+
+Systém na sadzbu textu TeX pôvodne vyvinul Donald Knuth.
+Jeho motivácia bola poskytnúť producentom vedeckej tlače počítačový nástroj,
+ktorý bude správne sádzať matematické rovnice.
+Typst ako moderný nástroj má sadzbu rovníc v svojej DNA.
+Autori textov z prírodovedeckej a technickej komunity siahajú po tomto nástroji
+práve z~dôvodu bezkonkurenčnej práce s~rovnicami pri tvorbe vedeckého alebo akademického obsahu.
+
+Matematické rovnice používame v tlačenom texte dvomi spôsobmi:
+1. píšeme ich v~rámci textového odseku;
+2. rovnicu vytlačíme zvlášť medzi dva textové odseky a~vtedy ju spravidla aj číslujeme, aby sme sa na ňu mohli ďalej odvolávať.
+
+==== Rovnica v textovom riadku
+
+Riešenie kvadratickej rovnice s koeficientami $a, b, c$
+a~s~neznámou $x$ vypočítame pomocou známeho vzťahu
+$x = frac(-b plus.minus sqrt(b^2 - 4a c), 2a)$.
+Je to príklad rovnice zapísanej v~rámci textového odseku.
+Ak tú istú rovnicu napíšeme do samostatného odseku, vyzerá trochu inak:
+
+$ x = frac(-b plus.minus sqrt(b^2 - 4a c), 2a) $
+
+Očividný rozdiel je vo veľkosti zlomku a~znaku odmocniny,
+môžeme si všimnúť aj malé rozdiely v~medzerách, vo vertikálnom zarovnávaní, atď.
+
+Vložené rovnice v~rámci textového riadku zapisujeme pomocou znaku dolára.
+Matematický zápis ohraničíme znakmi dolára sprava aj zľava.
+Napríklad zápis `$y = a x^2 + b x + c$` vytvorí rovnicu $y = a x^2 + b x + c$.
+
+Označenia fyzikálnych veličín píšeme tiež ako vloženú rovnicu:
+veľkosť sily $F$, hmotnosť $m$, čas $t$ a~podobne.
+Všetky veličiny sme zapísali takto: `$F$`, `$m$`, `$t$`.
+
+==== Zobrazená rovnica
+
+Matematický text ohraničený dvomi znakmi dolára vytvorí zobrazenú rovnicu, ktorú vysádza do zvláštneho odseku zarovnaného na stred, napríklad:
+
+$ y = a x^2 + b x + c $
+
+Rovnicu s referenčným číslom vytvoríme tak, že zapíšeme rovnicu do bloku:
+
+```
+$ y = a x^2 + b x + c $ <eq:example>
+```
+
+==== Zásady matematickej sadzby
+
+Pravidlá sadzby matematických, fyzikálnych veličín a~ich vzťahov sumarizuje medzinárodná norma u~nás známa pod označením STN ISO 80 000: 2022 Veličiny a~jednotky @iso800001.
+Označenie fyzikálnych a~matematických veličín píšeme vždy šikmým rezom písma.
+Čísla, názvy funkcií a~jednotky fyzikálnych veličín zapisujeme normálnym rezom.
+Správny zápis elektrického napätia s veľkosťou 5,07 voltu vyzerá takto:
+
+$ U = 5,07 upright("V") $ <eq:quantity>
+
+kde $U$ je elektrické napätie.
+Môžeme si všimnúť, že okolo znaku rovnosti sú medzery,
+desatinná čiarka sa píše bez medzier.
+
+TeX v~matematickom móde automaticky sádže veličiny kurzívou.
+Ak chceme, aby bola jednotka V vzpriamená, použijeme v~matematickom móde funkciu `upright()`.
+Medzery okolo znaku rovnosti sú taktiež automatické.
+
+==== Príklad
+
+Z Coulombovho zákona vyplýva, že pre vektor elektrostatickej sily $bold(F)_e$ medzi dvomi bodovými nábojmi platí nasledujúci vzťah:
+
+$ bold(F)_e = frac(1, 4π ε_0) frac(q_1 q_2, r^2) frac(bold(r), r) $ <eq:coulomb>
+
+kde $q_1$, $q_2$ sú veľkosti bodových nábojov,
+$bold(r)$ je polohový vektor náboja $q_2$ vzhľadom na náboj $q_1$
+a~$ε_0$ je elektrická konštanta.
+
+Aby sme zhrnuli predchádzajúce pravidlá, detailnejšie opíšeme spôsob zápisu jednotlivých prvkov
+v~rovnici @eq:coulomb.
+Skalárne veličiny veľkosť náboja a~vzájomná vzdialenosť sú
+napísané kurzívou,
+vektorové veličiny sila a~polohový vektor sú polotučným rezom.
+Všetky čísla (indexy a~násobok 4 v~menovateli)
+píšeme normálnym rezom.
+Konštanty $π$ a $ε_0$ sú podľa zvyklosti vysádzané šikmým rezom.
+
+V~texte, ktorý nasleduje bezprostredne za rovnicou vysvetlíme
+a~stručne opíšeme jednotlivé symboly.
+
+#heading(level: 5)[Dôležité pravidlá písania rovníc]
+
+- Značky veličín píšeme šikmým rezom písma (kurzívou): $x$, $y$, $a$, $F$, $P$, $W$.
+
+- Fyzikálne jednotky píšeme vzpriameným písmom: $a = 10 upright("cm")$.
+
+- Čísla píšeme vzpriameným písmom: $1$; $2$; $3$; $1024$; $3,14$ a podobne.
+
+- Skratky matematických funkcií píšeme vzpriameným písmom: $sin(α + β)$, $cos ω t$, $log_a x = frac(ln x, ln a)$, $e^(i π) = -1$.
+
+- Označenia nemenných konštánt sú tiež vzpriamené písmená: $π$, $i$, $e$ -- tri základné matematické konštanty -- Ludolfovo číslo, komplexná jednotka a~Eulerovo číslo. Niektoré konštanty sa zo zvyku môžu písať kurzívou, napríklad $π$ alebo dielektrická konštanta $ε_0$. Komplexná jednotka je však vždy vzpriamená: $i^2 = -1$.
+
+- Vzpriameným písmom píšeme v matematických vzťahoch aj všetky zátvorky.
+
+- Sumačné indexy píšeme kurzívou: $p_N(x) = sum_(i=1)^N a_i x^i$. Symbol $i$ v tomto príklade predstavuje sumačný index, nie komplexnú jednotku.
+
+- Vektory uvádzame buď polotučným šikmým rezom ($bold(a)$, $bold(b)$, $bold(F)$) alebo šikmým netučným rezom so šípkou nad symbolom: $vec(a)$, $vec(b)$, $vec(F)$. Treba si vybrať jeden spôsob a~ten používať v~celej práci.
+
+- Označenia matíc a tenzorov zapisujeme polotučným šikmým rezom:
+  $ bold(M) = mat(m_{11}, m_{12}; m_{21}, m_{22}) $
+  Prvky matice $m_{i j}$ sú skalárne veličiny, preto sú to netučné šikmé písmená.
+
+- Ak treba z nejakého dôvodu odlíšiť tenzor od bežnej matice, môžeme tenzory označiť dvomi čiarkami: $overline(overline(T))$.
+
+- Značku úplného diferenciálu píšeme vzpriameným rezom: $upright(d) y$ je úplný diferenciál veličiny $y$.
+
+- Derivácia dráhy podľa času: $v = frac(upright(d) s, upright(d) t)$. Veličiny $v$, $s$ a~$t$ sú stále písané kurzívou.
+
+- Určitý integrál vyzerá takto: $ integral_a^b f(x) upright(d) x $. V~integráli spravidla vkladáme pred diferenciál úzku medzeru.
+
+

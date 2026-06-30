@@ -61,6 +61,8 @@
     numbering: numbly("{1:1}.", "{2:a)}", "{3:i})", "({4})"),
   )
 
+  set math.equation(numbering: "(1)")
+
   show: abbr.show-rule
 
   body
