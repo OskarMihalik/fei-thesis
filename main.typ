@@ -2,7 +2,7 @@
 
 #show: fei-thesis.with()
 
-#fei-assignment("includes/assignment.pdf")
+#fei-assignment("includes/assignment.pdf", pages: 2)
 
 #title-page()
 
@@ -29,7 +29,6 @@
 #show: start-numbering.with()
 
 #introduction()[#include "includes/introduction.typ"]
-
 
 #main-matter([#include "includes/core.typ"])
 

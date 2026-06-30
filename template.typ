@@ -106,12 +106,14 @@
 }
 
 
-#let fei-assignment(pdf-path) = {
+#let fei-assignment(pdf-path, pages: 1) = {
   set page(
     margin: (top: 0cm, bottom: 0cm, left: 0cm, right: 0cm),
   )
-  image(pdf-path, width: 100%)
-  pagebreak()
+  for page-num in range(1, pages + 1) {
+    image(pdf-path, width: 100%, page: page-num)
+    pagebreak()
+  }
 }
 
 #let fei-outline() = {
