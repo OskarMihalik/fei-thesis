@@ -63,6 +63,13 @@
 
   set math.equation(numbering: "(1)")
 
+  show figure.where(
+    kind: table,
+  ): set figure.caption(position: top)
+
+  set figure(gap: 15pt)
+  show figure: set block(spacing: 2em)
+
   show: abbr.show-rule
 
   body

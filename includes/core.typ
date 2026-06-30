@@ -1003,4 +1003,251 @@ a~stručne opíšeme jednotlivé symboly.
 
 - Určitý integrál vyzerá takto: $ integral_a^b f(x) upright(d) x $. V~integráli spravidla vkladáme pred diferenciál úzku medzeru.
 
+=== Obrázky
 
+V akademickej oblasti prírodných a~technických vied sa v~záverečných prácach
+objavujú v~pomerne veľkom počte aj netextové grafické objekty. Patria sem grafy, schémy, diagramy, fotografie,
+prípadne iné dvojrozmerné vizualizácie obsahu.
+Nehovoríme o~ozdobných grafických prvkoch,
+tie do práce tohto typu nepatria.
+Obsahové grafické prvky budeme spoločne nazývať slovom obrázok.
+Obrázok môže byť súčasť textového odseku,
+ale tejto možnosti sa vyhýbame,
+ak to nie je úplne nevyhnutné.
+Uprednostňujeme tzv. plávajúcu formu obrázkov,
+teda objektov, ktoré sa nemusia nachádzať bezprostredne
+na mieste v texte, kde sú spomenuté.
+V zdrojovom kóde umiestňujeme príkazy na sadzbu obrázku za odsek,
+v~ktorom sa o~ňom hovorí po prvýkrát.
+Pod každým obrázkom je textové označenie,
+začínajúce skratkou slova obrázok (Obr.) a~nasleduje
+poradové číslo obrázku v práci.
+
+Na obrázku <@fig:measurement> je znázornený proces správneho merania výšky dieťaťa.
+Grafický objekt je súčasťou plávajúceho prostredia `figure`.
+Samotnú grafiku pripravíme v externom editore,
+exportujeme ju do niektorého z bežných formátov (JPG, PNG, PDF)
+a~jej vloženie do finálneho PDF súboru
+záverečnej práce zariadi makro `image()`.
+Automatické číslovanie má na starosti príkaz `<caption>`,
+ktorého argument je text pod obrázkom.
+
+```typst
+#figure(
+  image("/assets/Measurement.png", width: 100%),
+  caption: [Pravidelné meranie výšky dieťaťa],
+) <fig:measurement>
+```
+
+#figure(
+  image("/assets/Measurement.png", width: 100%),
+  caption: [Pravidelné meranie výšky dieťaťa],
+) <fig:measurement>
+
+==== Umiestnenie obrázkov <sec:figPlacement>
+
+Na obrázok sa v~texte odkazujeme prostredníctvom čísla.
+Môžeme písať o~tom, že na obrázku 1 vidíme to a~to
+alebo použijeme skratku -- obr. 1.
+Slovo obrázok aj skratku píšeme v~odkaze v~texte
+malým začiatočným písmenom, ak sa nachádza vo vnútri vety.
+Na každý obrázok v~práci by mal existovať odkaz v~texte.
+
+Umiestnenie obrázku v rámci dokumentu riadi pomerne
+komplikovaný algoritmus, čo nie vždy vedie k uspokojivým výsledkom.
+Polohu plávajúceho objektu môžeme čiastočne ovplyvniť
+pomocou funkcie `figure()` v Typste.
+Typst sa snaží automaticky umiestnať obrázky na rozumné miesto.
+Obrázok sa zvyčajne umiestni na začiatok nasledujúcej strany, prípadne aj inam.
+To nebýva žiaduce a žiaľ, nemáme príliš veľa možností, ako takýto výsledok ovplyvniť.
+Pomôže zmena rozmerov obrázku, prípadne jeho premiestnenie inam v zdrojovom kóde.
+Odporúča sa, aby sa prostredie obrázku nachádzalo mimo textového odseku, t. j. treba ho od okolitého textu oddeliť minimálne jedným prázdnym riadkom zhora aj zdola.
+
+V Typste sa obrázky automaticky spravujú podľa dostupného priestoru
+a možností optimalizácie rozloženia.
+Jednotlivé parametre sa využívajú na kontrolu správania sa obrázka.
+Napríklad nastavením `width: 100%` sa obrázok rozpína na celú šírku,
+ako sa v~takýchto prípadoch zvykne robievať.
+
+==== Označenie obrázku a text pod obrázkom
+
+Text pod obrázkom pozostáva z~označenia obrázku a z~vysvetľujúceho obsahu.
+Mal by sa nachádzať spolu s~obrázkom na tej istej strane.
+
+Text je dostatočne opisný,
+aby bol jasný obsah obrázku aj pri rýchlom prechádzaní
+práce bez nutnosti detailného čítania hlavného textu.
+Ak opis pod obrázkom pozostáva iba z~jednej vety,
+prípadne ide o~heslo bez vetnej štruktúry,
+nepíšeme zaň bodku.
+V~prípade viacerých viet už bodku alebo príslušné interpunkčné
+znamienka použijeme na konci každej vety,
+aj poslednej.
+V príklade na obrázku <@fig:measurement> je text bez bodky
+a~to je správne.
+
+==== Číslovanie a odkazy
+
+Obrázky číslujeme podľa výskytu v práci od čísla 1.
+Používame jednoúrovňové číslovanie,
+teda obrázok 1, obrázok 2, atď.
+V~Typste je automatické číslovanie obrázkov zabezpečené v definícii funkcie `figure()`.
+
+Odvolávanie sa na číslo obrázku rieši identifikátor v ostrých zátvorkách.
+Prvá časť `<fig:measurement>` je menovka obrázku.
+Menovku volí autor textu, môže byť ľubovoľná, musí však začínať písmenom a nesmie obsahovať špeciálne znaky.
+Tiež treba venovať pozornosť tomu, aby sa rovnaká menovka nevyskytla v~texte viackrát, pretože by došlo k jej preťaženiu a znefunkčneniu odkazov.
+
+Z praktických dôvodov sa ustálila prax začínať menovku skratkou typu číslovanej položky: `fig` pre obrázok, `eq` pri rovniciach, `tab` ako menovka tabuľky, `sec` v~prípade nadpisu, atď.
+
+=== Grafy
+
+Grafmi budeme nazývať zobrazenie vedeckých dát
+najčastejšie vo forme dvojrozmerného grafu
+závislosti dvoch alebo viacerých veličín.
+Príklad takéhoto objektu je na obrázku <@fig:Graph1>.
+Grafická reprezentácia vedeckých dát musí byť
+v~prvom rade čitateľná, zreteľná a~jednoznačná.
+Tomu treba prispôsobiť všetky zásady pri tvorbe grafov.
+
+#figure(
+  image("/assets/Graph1.pdf", width: 35.8%),
+  caption: [Ukážka grafu vytvoreného v externom programe a vloženého ako PDF súbor.
+    Použité písmo je Arial s veľkosťou približne 10 pt. Plné krúžky sú body merania a~prerušovaná čiara je kvadratický fit závislosti $s = a t^2 / 2$, pričom $a = (2,00 plus.minus 0,01) upright("m") upright("s")^(-2)$.],
+) <fig:Graph1>
+
+==== Formát súboru
+
+Vektorové formáty SVG alebo PDF sú ideálna voľba pri exporte
+z~grafických programov, napr. z~Excelu alebo Originu.
+Ak takúto možnosť nemáme, treba grafy z externého softvéru
+exportovať do bitmapového formátu, najlepšie PNG.
+Stratový formát JPEG nie je na čiarovú grafiku vhodný.
+Rozlíšenie bitmapového súboru by malo byť minimálne 600 dpi,
+aby boli čiary ostré.
+Znamená to, že ak predpokladáme veľkosť obrázku
+10 cm × 7,5 cm,
+musí mať aspoň 2 363 px × 1 772 px (pixelov).
+
+==== Písmo a hrúbka čiar
+
+Písmo v grafe nemusí byť nevyhnutne Computer Modern.
+V~obrázkoch a~schémach sa často používa
+tzv. bezserifové alebo groteskové písmo ako napr. Arial,
+ktoré je lepšie čitateľné.
+Veľkosť písma v~obrázkoch by nemala byť menšia než
+10 pt,
+čo je o~dva stupne menej ako základná veľkosť písma
+v~dokumente.
+
+Pozornosť treba venovať aj dostatočnej hrúbke čiar osí
+a~grafického znázornenia dát,
+aby boli viditeľné aj po vytlačení na bežnej tlačiarni.
+
+==== Prvky grafu
+
+Formálne prvky grafu sú osi s~dielikmi a~číslami,
+názvy osí s~uvedením veličín, násobkov a~jednotiek,
+mriežka a~legenda.
+Medzi obsahové prvky zaraďujeme znázornené hodnoty vo forme
+bodov alebo čiar.
+Graf môže obsahovať aj názov grafu
+a~doplňujúce texty,
+prípadne ďalšie grafické prvky na zvýraznenie niektorých bodov,
+oblastí a~podobne.
+
+Bežný graf pozostáva zväčša z~dvoch navzájom kolmých číselných
+osí – z~ľavej zvislej a~spodnej vodorovnej,
+ktoré sa pretínajú v~ľavom dolnom rohu.
+Na spodnej osi sa nachádzajú hodnoty nezávislej veličiny,
+ľavá zvislá os obsahuje hodnoty závislej veličiny.
+Rozsahy osí volíme tak,
+aby korešpondovali s~intervalmi zobrazovaných hodnôt,
+prípadne aby znázorňovali javy,
+ktoré majú byť z grafu zrejmé.
+Osi sa môžu pretínať aj v inom než nulovom bode.
+
+==== Označenie osí
+
+Osi musia byť riadne označené názvom alebo značkou veličiny,
+jej jednotkou a~násobkom.
+Nedodržanie tohto pravidla sa považuje za závažný nedostatok
+a~autor musí mať na takýto krok obhájiteľný dôvod.
+Jednotku spolu s~násobkom uzatvárame kvôli jednoznačnosti
+do okrúhlych zátvoriek.
+Hranaté zátvorky sa v knižnej tlači na tento účel nepoužívajú.
+
+Os musí byť jasne rozdelená dielikmi,
+ktoré sú kolmé na os a~predstavujú okrúhle hodnoty
+zobrazovanej veličiny.
+V blízkosti hlavných dielikov sa nachádzajú čísla prislúchajúce
+hodnote dieliku.
+Táto hodnota sa potom násobí s údajom v~zátvorke
+v~opise osi a~spolu tvoria hodnoty zobrazenej fyzikálnej
+veličiny aj s~jednotkou.
+
+==== Viacero grafov v jednom obrázku
+
+Priebehy dvoch a~viac nezávislých veličín môžeme nakresliť
+do spoločných osí alebo použijeme pravú nezávislú zvislú os.
+V~špeciálnych prípadoch môžeme využiť aj hornú vodorovnú os.
+Ak chceme v~jednom obrázku zobraziť viacero grafov,
+musí byť príslušnosť jednotlivých bodov a~čiar k~osiam jasná
+z~legendy.
+Legendu možno zahrnúť aj do textu pod obrázkom.
+
+Graf znázorňujúci experimentálne hodnoty fyzikálnych veličín
+zvykne byť uzavretý zhora aj sprava tak,
+ako na obrázku <@fig:Graph1>.
+Dve prekrížené otvorené osi sa používajú zväčša
+v~prípade teoretického nákresu matematickej funkcie $y = f(x)$.
+
+=== Tabuľky
+
+Sumarizácia dát vo forme tabuliek prispieva
+k~sprehľadneniu obsahu, zjednodušuje text
+a~umožňuje autorovi zamerať sa pri formulácii myšlienok na
+obsahovú stránku práce.
+Tabuľka, podobne ako obrázok, patrí medzi plávajúce objekty
+a preto nemusí byť umiestnená priamo na mieste v dokumente,
+kde sa o nej zmieňuje text.
+Zvyčajne ju umiestňujeme za odsek s~prvou zmienkou,
+ale často býva aj súčasťou prílohy dokumentu,
+najmä ak je rozsiahlejšia.
+
+Zameriame sa teraz iba na tabuľky s~výsledkami meraní,
+ktoré sa v~záverečných prácach vyskytujú najčastejšie.
+
+Tabuľku označujeme slovom Tabuľka,
+za ktorým nasleduje poradové číslo tabuľky podľa výskytu
+v~texte.
+Za číslom môže nasledovať dvojbodka a~text s~opisom obsahu
+tabuľky.
+V~prípade, že označenie neobsahuje opisný text,
+dvojbodku vynecháme.
+Opisný text nekončí bodkou,
+ani iným interpunkčným znamienkom,
+pokiaľ ide iba o názov alebo jednu oznamovaciu vetu.
+Celý odsek s~označením, číslom a~opisom umiestňujeme
+nad tabuľku (pozri napríklad tabuľku~<@tab:template>).
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: (left, right, right, right, right),
+    stroke: none,
+    table.hline(),
+    table.header([*názov riadka*], [*stĺpec 1*], [*stĺpec 2*], [*stĺpec 3*], [*stĺpec 4*]),
+    table.hline(),
+    [prvý riadok], [hodnota 1], [hodnota 2], [hodnota 3], [hodnota 4],
+    [druhý riadok], [hodnota 5], [hodnota 6], [hodnota 7], [hodnota 8],
+    [tretí riadok], [hodnota 9], [hodnota 10], [hodnota 11], [hodnota 12],
+    table.hline(),
+  ),
+  caption: [Vzorová tabuľka],
+) <tab:template>
+
+Na tabuľky sa odvolávame pomocou ich čísla použitím dvojice makier
+`<tab:table>` a~`@tab:template` .
+Spôsob odkazovania je podobný ako v prípade obrázkov,
+o~ktorom sme podrobne hovorili v časti @sec:figPlacement.
