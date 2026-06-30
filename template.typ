@@ -1,3 +1,8 @@
+#import "@preview/numbly:0.1.0": numbly
+#import "@preview/abbr:0.3.1"
+
+#show: abbr.show-rule
+
 #let text-size = 12pt
 #let heading-1 = 20pt
 #let heading-2 = 16pt
@@ -6,7 +11,6 @@
 #let keywordsSK = state("keywords-sk", [keyword 1, keyword 2])
 #let keywordsEN = state("keywords-en", [keyword 1, keyword 2])
 #let doc-lang = state("doc-lang", "sk")
-
 #let i18n = (
   sk: (introduction: "Úvod", abstract: "Abstrakt", appendix-suffix: "Dodatok"),
   en: (introduction: "Introduction", abstract: "Abstract", appendix-suffix: "Appendix"),
@@ -40,6 +44,11 @@
   set heading(numbering: "1.1")
   show heading: it => block(
     if it.numbering != none { counter(heading).display(it.numbering) + h(1em) } + it.body,
+  )
+
+  set enum(
+    full: true,
+    numbering: numbly("{1:1}.", "{2:a)}", "{3:i})", "({4})"),
   )
 
   body
