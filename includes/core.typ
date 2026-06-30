@@ -458,3 +458,406 @@ a~do dokumentu sa dostane prostredníctvom makra
 `\FEIconclusion{includes/conclusion}`
 v~hlavnom súbore projektu `thesis.tex`.
 
+== Zoznam použitej literatúry
+
+==== Zoznam použitej literatúry
+
+Citované zdroje označujeme v texte číslom v hranatých zátvorkách.
+Ide o poradové číslo uvedenia publikácií tak, ako sa postupne s nimi v texte pracuje.
+
+Po kapitole _Záver_ nasleduje ďalšia nečíslovaná kapitola
+s názvom _Literatúra_,
+ktorá obsahuje číslovaný zoznam všetkých
+citovaných literárnych zdrojov v spomínanom poradí.
+Forma tohto zoznamu je pomerne komplikovaná a podrobne
+ju opisuje norma ISO 690: 2023 Dokumentácia -- Bibliografické odkazy -- Obsah, forma a štruktúra @iso690.
+Citovanie je v LaTeX-u vynikajúco vyriešené.
+V tomto dokumente citujeme pomocou nadstavby BibLaTeX.
+// Podrobne sa citáciám budeme venovať v @sec:citation kapitole.
+
+=== Záverečná časť
+
+Na záver práce uvádzame dodatky a prílohy.
+Prílohy práce sú zväčša materiály,
+ktoré majú odlišný formát voči samotnej práci.
+Sú to napríklad pamäťové nosiče,
+dátové súbory, veľkoformátové mapy, výkresy a podobne.
+Každú prílohu treba jasne označiť, očíslovať a nazvať.
+Zoznam príloh potom uvedieme v jednom z dodatkov.
+
+Do tzv. dodatkov umiestňujeme informácie,
+ktoré kvôli rozsahu nemôžu byť v hlavnom texte práce.
+Sú to napríklad údajové listy k použitým prístrojom
+a~zariadeniam, zdĺhavejšie matematické odvodenia,
+rozsiahlejšie kódy programov, dokumentácia
+k vytvoreným programom, definície neštandardných objektov,
+ktoré v práci používame,
+série rozsiahlych výsledkov alebo meraní
+a ich grafy, fotografie a podobne.
+
+Jednotlivé kapitoly v dodatkoch číslujeme veľkými písmenami,
+čísla podkapitol majú formu A.1, B.3.2, atď.
+Na tento účel vytvoríme pre každý dodatok samostatný súbor v priečinku `includes/`,
+odporúčame názov súboru v tvare `attachmentA.tex` alebo podobne.
+Každý dodatok je potom potrebné načítať v hlavnom súbore `thesis.tex` nasledujúcim spôsobom:
+
+```
+#FEIappendix("Názov prílohy" + <att:A>, "includes/attachmentA")
+```
+
+Prvý parameter makra je názov dodatku a ten sa nesmie nachádzať v zdrojovom súbore `attachmentA.tex`.
+
+== Formát a jazyk <sec:formatLanguage>
+
+=== Formát dokumentu
+
+Rozmery stránky, typy písma, veľkosti, riadkovanie,
+medzery medzi odsekmi, formát nadpisov, obrázkov, tabuliek,
+rovníc a ďalšie vizuálne parametre záverečnej práce
+rešpektujú do maximálnej miery normu STN 01 6910: 2023
+Pravidlá písania a úpravy písomností @stn016910.
+
+==== Rozmery strany
+
+Veľkosť bežnej textovej strany záverečnej práce je A4,
+t.~j. 21 cm × 29,7 cm.
+Pravý a ľavý okraj majú šírku 2,75 cm,
+horný a dolný okraj majú výšku 3 cm.
+Päta stránky, v ktorej sa nachádza číslo strany,
+je od spodnej hrany stránky vzdialená o 1,25 cm.
+Šírka textu je 15,5 cm, jeho výška 23,7 cm.
+Horný a dolný okraj obálky sú z estetických
+dôvodov zmenšené na 2 cm.
+
+==== Písmo a riadkovanie
+
+Základný font šablóny je normálny rez tzv. antikvového písma
+s veľkosťou 12 pt.
+V tejto šablóne je to Computer Modern.
+Vhodné sú aj iné fonty s pätkami ako Times, Georgia, Palatino a podobne.
+Na obálke a titulnom liste používame bezpätkový (grotesk) font Latin Modern.
+Jednotlivé typy odsekov (nadpisy, poznámky a pod.)
+majú jednotný typ písma,
+odlišnosti vyjadrujeme rezom (polotučné písmo, kurzíva)
+alebo veľkosťou.
+
+Parameter `linespread` má hodnotu 1,25, t.~j.
+vzdialenosť riadkov textu vo veľkosti 12 pt je 15,6 pt.
+
+==== Nadpisy
+
+Šablóna záverečnej práce FEIstyle je založená na
+štandardnej šablóne LaTeX-u article.
+Nadpis najvyššej úrovne je `section` zodpovedajúci kapitole.
+Podkapitoly sú `subsection` a `subsubsection`.
+Číslovanie kapitol a podkapitol je viacúrovňové typu X.Y.Z,
+kde X je číslo kapitoly, Y je číslo podkapitoly a Z je číslo časti podkapitoly.
+Číslovanie vyšších úrovní nie je definované.
+Tvar a forma nadpisov zodpovedá norme STN ISO 2145: 1978 Dokumentácia.
+Číslovanie oddielov a pododdielov písaných dokumentov @iso2145.
+
+Nová kapitola začína vždy na novej strane.
+Príkaz `section` spôsobí okrem sadzby čísla a názvu kapitoly
+aj ukončenie predošlej kapitoly, vysádzanie všetkých plávajúcich objektov
+(obrázky, tabuľky, výpisy kódu), ktoré sa nepodarilo umiestniť
+na príslušné miesto v texte, a prejde na novú stranu.
+
+=== Jazyk a gramatika
+
+Záverečná práca na FEI STU v Bratislave musí byť napísaná
+buď po slovensky alebo po anglicky.
+Ak je jazyk práce angličtina, musí po závere nasledovať
+rezumé v slovenskom jazyku.
+
+Záverečná práca univerzitného štúdia sa vyznačuje
+vysokou jazykovou úrovňou.
+Gramatické a štylistické chyby sú neprípustné.
+Študent by mal tejto stránke diela venovať patričnú
+pozornosť a podľa možností nechať rukopis prejsť
+kvalifikovanou jazykovou kontrolou.
+Najmä bakalárska práca predstavuje v živote väčšiny študentov
+prvý rozsiahlejší autorský útvar,
+ktorý má významný vplyv na jeho ďalší život a kariéru.
+
+Aj keď väčšina textových editorov dokáže odhaľovať preklepy,
+neporadí si s komplikovanejšou gramatikou a štylistikou.
+Treba sa riadiť najmä pravidlami slovenského pravopisu,
+slovníkmi slovenského jazyka a ďalšími zdrojmi,
+ktoré možno nájsť na webových stránkach
+Jazykovedného ústavu Ľudovíta Štúra SAV.#footnote[#link("https://www.juls.savba.sk/")[www.juls.savba.sk]]
+Využiť môžeme aj jazykovu poradňu,
+ktorú poskytuje ústav bezplatne a to buď telefonicky alebo
+prostredníctvom emailovej komunikácie.
+Cenným zdrojom informácií môže byť aj Jazyková poradňa
+denníka SME v spolupráci
+s Jazykovedným ústavom Ľudovíta Štúra SAV#footnote[#link("https://jazykovaporadna.sme.sk/")[jazykovaporadna.sme.sk]]
+alebo online slovníky slovenského jazyka,#footnote[#link("https://slovnik.juls.savba.sk/")[slovnik.juls.savba.sk]]
+prípadne národný jazykový korpus.#footnote[#link("https://korpus.sk/")[korpus.sk]]
+
+Pri písaní práce dbáme najmä na pravopisné javy ako sú písanie
+tvrdého a mäkkého y/i vo vybraných slovách,
+v príponách a koncovkách pri skloňovaní
+(pekný muž, ale pekní muži),
+v číslovkách (rozprávali sme sa so siedmimi v poradí
+-- skončili siedmi v poradí,
+ale hrali sme sa so siedmymi deťmi -- detí bolo sedem), atď.
+Rovnako dôležité je správne písanie rodov,
+skloňovanie a časovanie.
+
+Veľmi komplexná a dôležitá zložka gramatiky
+je písanie čiarok v súvetiach.
+
+Popri gramatike je podstatná aj štylistická tvorba viet,
+ktorú musí študent univerzity zvládať na vysokej úrovni.
+
+==== Delenie slov
+
+Tzv. _textové procesory_ ako MS Word, LibreOffice a Apache OpenOffice
+ponúkajú automatické delenie slov na konci riadka.
+Systém na sadzbu textu LaTeX má túto funkciu automaticky zapnutú
+a jej slovenská lokalizácia je veľmi kvalitne spracovaná.
+
+Vo veľkej väčšine prípadov je delenie
+v súlade s pravidlami jazyka.
+Môžu sa vyskytnúť sporné okolnosti,
+kedy počítač nerozdelí slovo správne.
+Väčšinou máme možnosť do procesu zasiahnuť
+a ručne kontrolovať delenie slov na miestach,
+s ktorými si softvér nevie poradiť.
+Príkaz na preferované rozdelenie slova je `\-`.
+Napríklad slovo `predstave-nie` LaTeX
+preferovane rozdelí v mieste prípony.
+
+V každom prípade je žiadúce slová na konci riadka deliť
+a túto možnosť nevypínať.
+Prospieva to práci ako po technickej,
+tak aj po estetickej stránke.
+Odseky obsahujú menej dier,
+textová oblasť stránky je vyplnená homogénnejšie,
+čo prispieva k lepšej čitateľnosti.
+V prípade, že používame zarovnávanie do bloku tak,
+ako aj v tomto dokumente,
+je prítomnosť dier v odseku značne rušivá.
+Ak používame zarovnanie textu doľava,
+nepoužívanie delenia slov má vplyv na vznik tzv. riek,
+čo je náhle striedanie dlhých a krátkych riadkov.
+Pravý okraj textu je nepekne zubatý.
+
+Pravidlá rozdeľovania slov na konci riadka sú pomerne zložité.
+Základné pravidlo, ktoré si pamätáme zo základnej školy,
+je, že slová delíme na slabiky pred spoluhláskou alebo medzi
+dvomi spoluhláskami.
+Ak si nie sme istí, uprednostňujeme delenie v mieste,
+kde sa ku koreňu slova pripájajú predpony alebo prípony,
+prípadne v mieste spojenia slov v zloženom slove.
+
+Pri slovách utvorených predponou alebo príponou
+uprednostňujeme morfologické delenie
+pred rozdelením koreňa slova.
+Najskôr sa snažíme deliť slovo za predponou,
+ak to nejde, skúsime to pred príponou.
+Napríklad slovo _predstavenie_
+delíme na slabiky takto: _pred-sta-ve-nie_.
+Pri rozdeľovaní slov uprednostňujeme model
+_pred-stavenie_, výnimočne aj _pred-stave-nie_.
+V slove _výklenok_ sa uplatňuje pravidlo morfologického
+delenia pred delením v mieste zhluku spoluhlások.
+Sylabická stavba tohto slova je _vý-kle-nok_,
+nie _výk-le-nok_,
+pretože slovo pozostáva z troch častí: predpony _vý_,
+koreňa _kle_ a prípony _nok_.
+Mohli by sme namietať, že prípona je _ok_,
+pomocou ktorej bolo vytvorené podstatné meno zo slovesa
+klenúť alebo z prídavného mena klenutý,
+kde identifikujeme koreň _klen_.
+V skutočnosti je však príponou _-nok_.
+Morfológia je pomerne komplexná problematika,
+a nedokážeme tu obsiahnuť všetky jej detaily.
+Väčšinou sa môžeme spoľahnúť na softvér,
+že slová rozdelí správne.
+V prípade pochybností využijeme externé pomôcky spomenuté
+v úvode tejto kapitoly.
+
+Slová spojené spojovníkom rozdeľujeme v mieste spojovníka tak,
+že spojovník napíšeme na konci aj na začiatku riadka.
+Slovo _vedecko-pedagogický_ môžeme rozdeliť takto:
+_ve-dec-ko-pe-da-go-gic-ký_.
+Ak delenie padne na miesto spojenia slov,
+rozdelíme ho nasledujúcim spôsobom:
+
+_vedecko-_
+_-pedagogický_
+
+V šablóne rieši tento problém príkaz
+`languageattribute{slovak}{split}`,
+ktorý je súčasťou jazykového balíka `babel`.
+
+Nesprávne delenie slov sa v práci zvyčajne objaví
+len zriedkavo a nemá vplyv na jej hodnotenie.
+Netreba sa naň príliš sústrediť a robiť si starosti.
+Celkový vzhľad práce viac naruší vypnutie delenia slov,
+než občasná malá chyba.
+
+==== Jednopísmenové predložky a spojky
+
+Hovoríme o predložkách k, o, v, s, z,
+ktoré by nemali ostať osamotené na konci riadka.
+Do tejto kategórie patria aj spojky a, i.
+Jednopísmenové slová pripájame k nasledujúcemu slovu pomocou
+tzv. _nedeliteľnej medzery_,
+čo je špeciálny netlačiteľný znak.
+V kódovaní UTF-8 má číslo 00A0 (ASCII 160)
+a hovorí textovému procesoru,
+že na tomto mieste nesmie byť za žiadnych okolností
+koniec riadka.
+V programe MS Word ho zadáme použitím klávesovej skratky
+Ctrl-Shift-Medzera.
+V LaTeX-u zapíšeme nedeliteľnú medzeru s premenlivou šírkou
+ako symbol vlnovka (`~`)
+Napríklad slovné spojenie _v~priestore_ napíšeme takto:
+`v~priestore`.
+Na rozdiel od Wordu, LaTeX takéto medzery nevkladá automaticky
+a treba to urobiť ručne.
+
+Existuje viacero medzier, ktoré sú tiež nedeliteľné a majú pevnú šírku.
+Najpoužívanejšia tzv. úzka medzera a zapíšeme ju ako `\,`.
+Takýto typ medzery používame pri zápise hodnôt fyzikálnych veličín
+a vkladáme ju medzi číslo a jednotku.
+
+=== Štylistika
+
+Niektorí oponenti vyčítajú študentom príliš dlhé súvetia,
+iní zas príliš krátke.
+Pravda je, že jednoduché vety pôsobia školácky,
+zatiaľ čo dlhé súvetia sú často nezrozumiteľné a únavné.
+
+V prvom rade sa snažíme nevrstviť podraďovacie súvetia.
+Vo vete _Elektrostatické pole je fyzikálne pole,
+ktoré tvoria elektrické náboje, ktoré sú v pokoji_
+je dvakrát použitá spojka ktoré,
+čo je síce prípustné, avšak nie príliš estetické.
+Vetu môžeme opraviť takto:
+_Elektrostatické pole je fyzikálne
+pole tvorené elektrickými nábojmi, ktoré sú v pokoji._
+Ak sa chceme vyhnúť trpnému rodu,
+môžeme vetu preformulovať nasledujúcim spôsobom:
+_Elektrostatické pole tvoria elektrické náboje,
+ktoré sú v pokoji._
+Vypadol síce pojem fyzikálne pole,
+ale zmysel vety zostal nezmenený.
+
+Správne a plynulo bude veta vyzerať aj v tomto tvare:
+_Elektrostatické pole je fyzikálne pole,
+ktoré tvoria elektrické náboje v pokoji._
+V prípade potreby môžeme vetu napísať aj inak:
+_Fyzikálne pole elektrických nábojov,
+ktoré sú v pokoji, nazývame elektrostatické pole._
+
+Obmieňame štruktúru po sebe nasledujúcich viet:
+_Z výsledkov merania je zrejmé,
+že predpoklad o zvyšovaní pohyblivosti nosičov náboja
+s teplotou bol správny.
+Na začiatku práce sme hovorili o tom,
+že toto tvrdenie podporíme hodnovernými experimentálnymi dátami._
+Obe súvetia sú podraďovacie so spojkou že.
+Aby sme sa vyhli opakovaniu rovnakého typu viet,
+môžeme prvú vetu prepísať:
+_Výsledky merania potvrdili predpoklad o zvyšovaní
+pohyblivosti nosičov náboja s rastúcou teplotou._
+Druhú vetu ponecháme bez zmeny.
+
+Veľmi osviežujúco pôsobí, ak medzi dlhé a kvetnaté súvetia
+občas vložíme jednoduchú holú vetu.
+Použijeme predchádzajúci príklad:
+_Na začiatku práce sme hovorili o tom,
+že predpoklad o zvyšovaní pohyblivosti nosičov náboja
+s rastúcou teplotou podporíme hodnovernými
+experimentálnymi dátami.
+Merania ho potvrdili._
+Tento malý trik je nečakane účinný a prispieva k lepšiemu
+toku myšlienok.
+
+Pozor, v texte pozostávajúcom z krátkych jednoduchých viet
+je niekoľkoriadkové súvetie desivé:
+_Pohyblivosť rastie s teplotou.
+Hovorili sme o tom už na začiatku.
+Tvrdenie ešte podporíme experimentom.
+Ukazuje sa, že sme predpoklad o rastúcej pohyblivosti
+nosičov náboja so zvyšujúcou sa teplotou,
+pokiaľ berieme do úvahy výsledky meraní,
+formulovali správne._
+
+Aby bol písaný text zaujímavý a udržal čitateľov záujem,
+používame stredne dlhé súvetia pozostávajúce maximálne
+z dvoch až troch viet.
+Občas text oživíme jednoduchou krátkou vetou.
+Dávame si pri tom pozor,
+aby táto činnosť nebola príliš schematická.
+
+=== Anglický jazyk
+
+Šablóna FEIstyle podporuje slovenský a anglický jazyk.
+Pre prácu v anglickom jazyku je potrebné túto skutočnosť nastaviť v preambule
+hlavného súboru `thesis.tex` ako nepovinný parameter `en` príkazu definície šablóny:
+
+```
+#documentclass[bp,en]{FEIstyle}
+```
+
+Prvý parameter určuje, či ide o bakalársku (`bp`) alebo diplomovú (`dp`) prácu.
+
+Anglická práca musí obsahovať po závere rezumé a na to je potrebné odstrániť
+komentár pred príkazom `\FEIresume{includes/resume}`.
+
+Na jazykovú lokalizáciu používame balík `babel`.
+Ak sa v práci písanej v slovenčine nachádzajú výrazy v angličtine,
+uvedieme takýto text do makra `\foreignlanguage`,
+čím zabezpečíme správne medzery a delenie slov.
+Napríklad pri zavádzaní skratky AI môžeme napísať,
+že ide o anglický výraz pre umelú inteligenciju _Artificial Intelligence_.
+Zapíšeme ho nasledujúcim spôsobom:
+
+```
+\foreignlanguage{english}{Artificial Intelligence}
+```
+
+Ak nastavíme parametrom `en` anglický jazyk ako hlavný,
+stane sa slovenčina cudzím jazykom.
+
+=== Použitie umelej inteligencie <sec:utilizingAI>
+
+Na optimalizáciu formulácie myšlienok môžeme využiť služby
+umelej inteligencie (AI, z ang. _artificial intelligence_)
+a tzv. veľkých jazykových modelov (LLM, z ang. _large language model_).
+Umelá inteligencia dokáže kontrolovať rozsiahlejšie časti prác,
+vyhľadáva chyby a navrhuje vhodnejšie
+formulácie na základe pravidiel,
+ktoré sme aplikovali v predchádzajúcom texte.
+Neosvedčuje sa však pri kompozícii textov.
+Neuspokojivé výsledky dosahujeme aj v prípadoch,
+kedy necháme umelú inteligenciu preformulovať celé odseky.
+Zanáša do nich chyby a nezmysly, ktoré tam pôvodne neboli.
+Ťažko sa potom odhaľujú.
+Tento jav poznáme ako tzv.
+halucinácie a trpia nimi všetky nástroje AI,
+vrátane najznámejšieho ChatGPT.
+
+Napriek tomu predstavujú služby AI silný nástroj pri tvorbe pôvodného obsahu,
+zvlášť užitočné sú tzv. generatívne umelé inteligencie (GAI),
+ktoré dokážu vytvárať výstupy takmer na nerozoznanie od tvorby človeka.
+Ich správna aplikácia nepochybne prispieva k vyššej jazykovej a obsahovej kvalite záverečných prác.
+Treba však mať na pamäti, že záverečná práca má byť
+pôvodné autorské dielo študenta a všetky časti,
+ktoré nepochádzajú od autora musia byť riadne
+zdokumentované a deklarované v zozname použitých zdrojov.
+V žiadnom prípade sa neodporúča, aby
+GAI formulovala pôvodné myšlienky
+alebo súvislé časti práce.
+Takéto konanie považujeme za nečestné podobne,
+ako keby prácu písal niekto iný,
+// prípadne by boli celé odseky prebrané z iného zdroja bez korektného citovania (pozri kapitolu @sec:citation).
+
+Používanie umelej inteligencie pri písaní záverečných prác
+upravuje opatrenie rektora STU v Bratislave č. 1/2024-O,
+ktoré budeme ďalej v texte uvádzať ako "opatrenie" @opatrenie12024.
+

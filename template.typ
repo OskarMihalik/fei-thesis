@@ -15,12 +15,14 @@
     abstract: "Abstrakt",
     appendix-suffix: "Dodatok",
     glossary-title: "Zoznam značiek a skratiek",
+    bibliography: "Literatúra",
   ),
   en: (
     introduction: "Introduction",
     abstract: "Abstract",
     appendix-suffix: "Appendix",
     glossary-title: "List of Symbols and Abbreviations",
+    bibliography: "Bibliography",
   ),
 )
 
@@ -97,6 +99,13 @@
     #year #h(1fr) #author
   ]
   pagebreak()
+}
+
+#let fei-bibliography() = {
+  [
+    #bibliography("bibliography.bib", style: "iso-690-numeric", title: [#translate("bibliography")]))
+    #pagebreak()
+  ]
 }
 
 #let fei-list-of-glossaries() = {

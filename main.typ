@@ -31,9 +31,7 @@
 #introduction()[#include "includes/introduction.typ"]
 
 #main-matter([#include "includes/core.typ"])
-
-#bibliography("bibliography.bib", style: "iso-690-numeric")
-#pagebreak()
+#fei-bibliography()
 
 #appendix([#include "includes/appendixA.typ"], [Algoritmus])
 #appendix([#include "includes/appendixA.typ"], [Výpis dlhého kódu])
