@@ -38,6 +38,9 @@
 
   set figure(numbering: "1")
   set heading(numbering: "1.1")
+  show heading: it => block(
+    if it.numbering != none { counter(heading).display(it.numbering) + h(1em) } + it.body,
+  )
 
   body
 }
