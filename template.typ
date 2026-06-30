@@ -112,7 +112,7 @@
 
 #let fei-bibliography() = {
   [
-    #bibliography("bibliography.bib", style: "iso-690-numeric", title: [#translate("bibliography")]))
+    #bibliography("bibliography.bib", style: "iso-690-numeric", title: [#translate("bibliography")])
     #pagebreak()
   ]
 }

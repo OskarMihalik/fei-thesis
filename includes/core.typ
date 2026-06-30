@@ -507,9 +507,9 @@ Každý dodatok je potom potrebné načítať v hlavnom súbore `thesis.tex` nas
 
 Prvý parameter makra je názov dodatku a ten sa nesmie nachádzať v zdrojovom súbore `attachmentA.tex`.
 
-== Formát a jazyk <sec:formatLanguage>
+= Formát a jazyk <sec:formatLanguage>
 
-=== Formát dokumentu
+== Formát dokumentu
 
 Rozmery stránky, typy písma, veľkosti, riadkovanie,
 medzery medzi odsekmi, formát nadpisov, obrázkov, tabuliek,
@@ -517,7 +517,7 @@ rovníc a ďalšie vizuálne parametre záverečnej práce
 rešpektujú do maximálnej miery normu STN 01 6910: 2023
 Pravidlá písania a úpravy písomností @stn016910.
 
-==== Rozmery strany
+=== Rozmery strany
 
 Veľkosť bežnej textovej strany záverečnej práce je A4,
 t.~j. 21 cm × 29,7 cm.
@@ -529,7 +529,7 @@ je od spodnej hrany stránky vzdialená o 1,25 cm.
 Horný a dolný okraj obálky sú z estetických
 dôvodov zmenšené na 2 cm.
 
-==== Písmo a riadkovanie
+=== Písmo a riadkovanie
 
 Základný font šablóny je normálny rez tzv. antikvového písma
 s veľkosťou 12 pt.
@@ -544,7 +544,7 @@ alebo veľkosťou.
 Parameter `linespread` má hodnotu 1,25, t.~j.
 vzdialenosť riadkov textu vo veľkosti 12 pt je 15,6 pt.
 
-==== Nadpisy
+=== Nadpisy
 
 Šablóna záverečnej práce FEIstyle je založená na
 štandardnej šablóne LaTeX-u article.
@@ -562,7 +562,7 @@ aj ukončenie predošlej kapitoly, vysádzanie všetkých plávajúcich objektov
 (obrázky, tabuľky, výpisy kódu), ktoré sa nepodarilo umiestniť
 na príslušné miesto v texte, a prejde na novú stranu.
 
-=== Jazyk a gramatika
+== Jazyk a gramatika
 
 Záverečná práca na FEI STU v Bratislave musí byť napísaná
 buď po slovensky alebo po anglicky.
@@ -610,7 +610,7 @@ je písanie čiarok v súvetiach.
 Popri gramatike je podstatná aj štylistická tvorba viet,
 ktorú musí študent univerzity zvládať na vysokej úrovni.
 
-==== Delenie slov
+=== Delenie slov
 
 Tzv. _textové procesory_ ako MS Word, LibreOffice a Apache OpenOffice
 ponúkajú automatické delenie slov na konci riadka.
@@ -698,7 +698,7 @@ Netreba sa naň príliš sústrediť a robiť si starosti.
 Celkový vzhľad práce viac naruší vypnutie delenia slov,
 než občasná malá chyba.
 
-==== Jednopísmenové predložky a spojky
+=== Jednopísmenové predložky a spojky
 
 Hovoríme o predložkách k, o, v, s, z,
 ktoré by nemali ostať osamotené na konci riadka.
@@ -724,7 +724,7 @@ Najpoužívanejšia tzv. úzka medzera a zapíšeme ju ako `\,`.
 Takýto typ medzery používame pri zápise hodnôt fyzikálnych veličín
 a vkladáme ju medzi číslo a jednotku.
 
-=== Štylistika
+== Štylistika
 
 Niektorí oponenti vyčítajú študentom príliš dlhé súvetia,
 iní zas príliš krátke.
@@ -794,7 +794,7 @@ Občas text oživíme jednoduchou krátkou vetou.
 Dávame si pri tom pozor,
 aby táto činnosť nebola príliš schematická.
 
-=== Anglický jazyk
+== Anglický jazyk
 
 Šablóna FEIstyle podporuje slovenský a anglický jazyk.
 Pre prácu v anglickom jazyku je potrebné túto skutočnosť nastaviť v preambule
@@ -824,7 +824,7 @@ Zapíšeme ho nasledujúcim spôsobom:
 Ak nastavíme parametrom `en` anglický jazyk ako hlavný,
 stane sa slovenčina cudzím jazykom.
 
-=== Použitie umelej inteligencie <sec:utilizingAI>
+== Použitie umelej inteligencie <sec:utilizingAI>
 
 Na optimalizáciu formulácie myšlienok môžeme využiť služby
 umelej inteligencie (AI, z ang. _artificial intelligence_)
@@ -861,11 +861,11 @@ Používanie umelej inteligencie pri písaní záverečných prác
 upravuje opatrenie rektora STU v Bratislave č. 1/2024-O,
 ktoré budeme ďalej v texte uvádzať ako "opatrenie" @opatrenie12024.
 
-==== Povolené činnosti umelej inteligencie bez potreby deklarácie
+=== Povolené činnosti umelej inteligencie bez potreby deklarácie
 
 Podľa čl. V, ods. 2, písm. a) opatrenia môžu študenti používať GAI bez potreby deklarácie na tieto činnosti: kontrola gramatiky, oprava textu, tvorba osnovy, zhromažďovanie informácií a~použitie výpočtových metód a~softvérov, ktoré obsahujú prvky AI.
 
-==== Deklarácia činnosti generatívnej umelej inteligencie
+=== Deklarácia činnosti generatívnej umelej inteligencie
 
 Čl. V, ods. 2, písmeno b) opatrenia obsahuje zoznam možností použitia GAI, ktoré je potrebné v práci deklarovať na konci po zozname literatúry.
 Ide o nasledujúce činnosti: preklady medzi jazykmi, úpravy a reformulácie textu, tvorba zhrnutia a rešerší, citovanie odpovedí GAI, tvorba počítačových programov, tvorba grafického obsahu a obrázkov.
@@ -886,9 +886,9 @@ V deklarácii použitia umelej inteligencie sa zapíšeme tento záznam:
 Súčasná verzia šablóny FEIstyle nedisponuje nástrojmi na automatizáciu záznamov činnosti AI.
 Preto ich treba zapisovať ručne do súboru `includes/ai_declaration.typ`.
 
-== Špeciálne a netextové objekty
+= Špeciálne a netextové objekty
 
-=== Matematické rovnice
+== Matematické rovnice
 
 Systém na sadzbu textu TeX pôvodne vyvinul Donald Knuth.
 Jeho motivácia bola poskytnúť producentom vedeckej tlače počítačový nástroj,
@@ -901,7 +901,7 @@ Matematické rovnice používame v tlačenom texte dvomi spôsobmi:
 1. píšeme ich v~rámci textového odseku;
 2. rovnicu vytlačíme zvlášť medzi dva textové odseky a~vtedy ju spravidla aj číslujeme, aby sme sa na ňu mohli ďalej odvolávať.
 
-==== Rovnica v textovom riadku
+=== Rovnica v textovom riadku
 
 Riešenie kvadratickej rovnice s koeficientami $a, b, c$
 a~s~neznámou $x$ vypočítame pomocou známeho vzťahu
@@ -922,7 +922,7 @@ Označenia fyzikálnych veličín píšeme tiež ako vloženú rovnicu:
 veľkosť sily $F$, hmotnosť $m$, čas $t$ a~podobne.
 Všetky veličiny sme zapísali takto: `$F$`, `$m$`, `$t$`.
 
-==== Zobrazená rovnica
+=== Zobrazená rovnica
 
 Matematický text ohraničený dvomi znakmi dolára vytvorí zobrazenú rovnicu, ktorú vysádza do zvláštneho odseku zarovnaného na stred, napríklad:
 
@@ -934,7 +934,7 @@ Rovnicu s referenčným číslom vytvoríme tak, že zapíšeme rovnicu do bloku
 $ y = a x^2 + b x + c $ <eq:example>
 ```
 
-==== Zásady matematickej sadzby
+=== Zásady matematickej sadzby
 
 Pravidlá sadzby matematických, fyzikálnych veličín a~ich vzťahov sumarizuje medzinárodná norma u~nás známa pod označením STN ISO 80 000: 2022 Veličiny a~jednotky @iso800001.
 Označenie fyzikálnych a~matematických veličín píšeme vždy šikmým rezom písma.
@@ -951,7 +951,7 @@ TeX v~matematickom móde automaticky sádže veličiny kurzívou.
 Ak chceme, aby bola jednotka V vzpriamená, použijeme v~matematickom móde funkciu `upright()`.
 Medzery okolo znaku rovnosti sú taktiež automatické.
 
-==== Príklad
+=== Príklad
 
 Z Coulombovho zákona vyplýva, že pre vektor elektrostatickej sily $bold(F)_e$ medzi dvomi bodovými nábojmi platí nasledujúci vzťah:
 
@@ -1003,7 +1003,7 @@ a~stručne opíšeme jednotlivé symboly.
 
 - Určitý integrál vyzerá takto: $ integral_a^b f(x) upright(d) x $. V~integráli spravidla vkladáme pred diferenciál úzku medzeru.
 
-=== Obrázky
+== Obrázky
 
 V akademickej oblasti prírodných a~technických vied sa v~záverečných prácach
 objavujú v~pomerne veľkom počte aj netextové grafické objekty. Patria sem grafy, schémy, diagramy, fotografie,
@@ -1044,7 +1044,7 @@ ktorého argument je text pod obrázkom.
   caption: [Pravidelné meranie výšky dieťaťa],
 ) <fig:measurement>
 
-==== Umiestnenie obrázkov <sec:figPlacement>
+=== Umiestnenie obrázkov <sec:figPlacement>
 
 Na obrázok sa v~texte odkazujeme prostredníctvom čísla.
 Môžeme písať o~tom, že na obrázku 1 vidíme to a~to
@@ -1069,7 +1069,7 @@ Jednotlivé parametre sa využívajú na kontrolu správania sa obrázka.
 Napríklad nastavením `width: 100%` sa obrázok rozpína na celú šírku,
 ako sa v~takýchto prípadoch zvykne robievať.
 
-==== Označenie obrázku a text pod obrázkom
+=== Označenie obrázku a text pod obrázkom
 
 Text pod obrázkom pozostáva z~označenia obrázku a z~vysvetľujúceho obsahu.
 Mal by sa nachádzať spolu s~obrázkom na tej istej strane.
@@ -1086,7 +1086,7 @@ aj poslednej.
 V príklade na obrázku <@fig:measurement> je text bez bodky
 a~to je správne.
 
-==== Číslovanie a odkazy
+=== Číslovanie a odkazy
 
 Obrázky číslujeme podľa výskytu v práci od čísla 1.
 Používame jednoúrovňové číslovanie,
@@ -1100,7 +1100,7 @@ Tiež treba venovať pozornosť tomu, aby sa rovnaká menovka nevyskytla v~texte
 
 Z praktických dôvodov sa ustálila prax začínať menovku skratkou typu číslovanej položky: `fig` pre obrázok, `eq` pri rovniciach, `tab` ako menovka tabuľky, `sec` v~prípade nadpisu, atď.
 
-=== Grafy
+== Grafy
 
 Grafmi budeme nazývať zobrazenie vedeckých dát
 najčastejšie vo forme dvojrozmerného grafu
@@ -1116,7 +1116,7 @@ Tomu treba prispôsobiť všetky zásady pri tvorbe grafov.
     Použité písmo je Arial s veľkosťou približne 10 pt. Plné krúžky sú body merania a~prerušovaná čiara je kvadratický fit závislosti $s = a t^2 / 2$, pričom $a = (2,00 plus.minus 0,01) upright("m") upright("s")^(-2)$.],
 ) <fig:Graph1>
 
-==== Formát súboru
+=== Formát súboru
 
 Vektorové formáty SVG alebo PDF sú ideálna voľba pri exporte
 z~grafických programov, napr. z~Excelu alebo Originu.
@@ -1129,7 +1129,7 @@ Znamená to, že ak predpokladáme veľkosť obrázku
 10 cm × 7,5 cm,
 musí mať aspoň 2 363 px × 1 772 px (pixelov).
 
-==== Písmo a hrúbka čiar
+=== Písmo a hrúbka čiar
 
 Písmo v grafe nemusí byť nevyhnutne Computer Modern.
 V~obrázkoch a~schémach sa často používa
@@ -1144,7 +1144,7 @@ Pozornosť treba venovať aj dostatočnej hrúbke čiar osí
 a~grafického znázornenia dát,
 aby boli viditeľné aj po vytlačení na bežnej tlačiarni.
 
-==== Prvky grafu
+=== Prvky grafu
 
 Formálne prvky grafu sú osi s~dielikmi a~číslami,
 názvy osí s~uvedením veličín, násobkov a~jednotiek,
@@ -1167,7 +1167,7 @@ prípadne aby znázorňovali javy,
 ktoré majú byť z grafu zrejmé.
 Osi sa môžu pretínať aj v inom než nulovom bode.
 
-==== Označenie osí
+=== Označenie osí
 
 Osi musia byť riadne označené názvom alebo značkou veličiny,
 jej jednotkou a~násobkom.
@@ -1186,7 +1186,7 @@ Táto hodnota sa potom násobí s údajom v~zátvorke
 v~opise osi a~spolu tvoria hodnoty zobrazenej fyzikálnej
 veličiny aj s~jednotkou.
 
-==== Viacero grafov v jednom obrázku
+=== Viacero grafov v jednom obrázku
 
 Priebehy dvoch a~viac nezávislých veličín môžeme nakresliť
 do spoločných osí alebo použijeme pravú nezávislú zvislú os.
@@ -1202,7 +1202,7 @@ ako na obrázku <@fig:Graph1>.
 Dve prekrížené otvorené osi sa používajú zväčša
 v~prípade teoretického nákresu matematickej funkcie $y = f(x)$.
 
-=== Tabuľky
+== Tabuľky
 
 Sumarizácia dát vo forme tabuliek prispieva
 k~sprehľadneniu obsahu, zjednodušuje text
@@ -1252,7 +1252,7 @@ Na tabuľky sa odvolávame pomocou ich čísla použitím dvojice makier
 Spôsob odkazovania je podobný ako v prípade obrázkov,
 o~ktorom sme podrobne hovorili v časti @sec:figPlacement.
 
-==== Vzhľad tabuľky
+=== Vzhľad tabuľky
 
 Jednoduchá tabuľka obsahuje hlavičku a~niekoľko
 údajových riadkov.
@@ -1309,7 +1309,7 @@ rovnakého tvaru a typu.
     spektrálneho maxima (_Full-Width-Half-Maximum_) pri vlnovej dĺžke~$λ_upright(m)$.],
 ) <tab:LED>
 
-==== Obsah tabuľky
+=== Obsah tabuľky
 
 Tabuľka s nameranými hodnotami obsahuje v~prvom riadku označenie
 veličín a~to buď slovom alebo symbolom.
@@ -1332,3 +1332,363 @@ Neistoty a~odchýlky zapisujeme k~hlavnej hodnote pomocou
 znaku $plus.minus$ alebo do zvláštneho stĺpca,
 ktorý príslušne označíme.
 Ďalšie spôsoby zápisu neistôt uvádza príslušná norma (napr. STN 01 6910: 2022 @stn016910).
+
+== Výpisy kódov programu a algoritmy <sec:listings>
+
+Ak je súčasť cieľov práce tvorba softvéru, prípadne analýza programátorských riešení,
+je žiaduce uvádzať časti kódov vo forme krátkych výpisov (angl. _listing_).
+Existuje niekoľko balíčkov, ktoré umožňujú zahrnúť časti kódov do textu práce.
+Šablóna FEIstyle používa balík na zobrazovanie kódu.
+Prostredie na vloženie kódu vytvorí blok kódu s~menovkou a~číslom výpisu.
+Makro na vytvorenie zoznamu všetkých výpisov na začiatku dokumentu,
+ktorý nie je povinnou súčasťou práce,
+býva však dobrým zvykom uvádzať ho najmä v~informatických študijných programoch.
+
+Ukážka kódu je vo výpise~@lst:main-c.
+// V dodatku @att:listings nájdeme príklad výpisu obsahu externého textového súboru.
+Ďalšie podrobnosti možno nájsť v~dokumentácii k~balíčkom#footnote[#link("https://ctan.org/pkg/listings")[ctan.org/pkg/listings]]
+alebo v~tutoriáli služby Overleaf#footnote[#link("https://www.overleaf.com/learn/latex/Code_listing")[www.overleaf.com/learn/latex/Code_listing]].
+#figure(
+  ```c
+  /* Hello World program */
+
+  #include<stdio.h>
+
+  struct cpu_info {
+      long unsigned utime, ntime, stime, itime;
+      long unsigned iowtime, irqtime, sirqtime;
+  };
+
+  main()
+  {
+      printf("Hello World");
+  }
+  ```,
+  caption: [Ukážka výpisu kódu programu],
+)<lst:main-c>
+
+=== Algoritmy
+
+Dvojica balíkov#footnote[#link("https://ctan.org/pkg/algorithms")[ctan.org/pkg/algorithms]]
+na zápis algoritmizácie pomocou pseudokódov
+uľahčuje formálny opis algoritmov.
+Tieto nástroje sa uplatňujú najmä v prípade teoretických prác v~oblasti informatiky a~softvérového inžinierstva.
+Šablóna FEIstyle načítava balíky automaticky a~tiež umožňuje vytvorenie zoznamu všetkých algoritmov
+na začiatku záverečnej práce.
+Príkaz možno vynechať alebo označiť riadok ako poznámku, zoznam sa tak nevytvorí.
+// Príklad algoritmu je uvedený v dodatku @att:algorithms.
+
+Ďalšie podrobnosti získame z~tutoriálov#footnote[#link("https://www.overleaf.com/learn/latex/Algorithms")[www.overleaf.com/learn/latex/Algorithms]]
+alebo z~dokumentácie k~jednotlivým balíčkom.
+
+= Citovanie externých zdrojov <sec:citation>
+
+V~súvislosti s~preberaním časti obsahu iných diel rozoznávame dva pojmy. Sú to citát a~citácia.
+
+Citát je doslovná reprodukcia prevzatého textu, ktorý môžeme v~práci použiť dvomi spôsobmi.
+Buď ako súčasť odseku textu, alebo celý citovaný text vysádžeme v~samostatnom odseku.
+V oboch prípadoch je zvykom citovaný text uzavrieť do úvodzoviek a~zvýrazniť šikmým rezom písma.
+Za citovaným textom uvedieme meno autora, prípadne názov diela, rok a nasleduje číslo bibliografického
+zdroja v~hranatých zátvorkách uvádzajúce poradie v~zozname použitej literatúry v~závere práce.
+
+Na citovanie v rámci odseku možno využiť správne slovenské úvodzovky a `#emph` pre zvýraznenie textu.
+
+Samostatne vysádzaný citát môžeme umiestniť do samostatného odseku so zvýraznením.
+
+Citácia je nepriamo prebraná a~prerozprávaná časť citovanej práce.
+Môže to byť vedecká myšlienka, odkaz na výsledky výskumu, dôležitý poznatok, matematický vzťah a~podobne.
+Schopnosť študenta pracovať s~literatúrou a~s~externými zdrojmi je dôležitý moment pri hodnotení spôsobilosti uchádzača
+o~vysokoškolský titul.
+Tomuto aspektu práce treba preto venovať patričnú pozornosť.
+
+== Odkazy na citované diela
+
+Vo vedecko-technických oblastiach, do ktorých patria aj študijné programy na našej fakulte, je zvykom používať numerický systém citovania.
+Jednotlivé zdroje sú očíslované podľa poradia výskytu v texte, pričom číslo zdroja uvádzame v hranatých zátvorkách.
+Citovanie sa riadi technickou normou STN ISO 690: 2022 Informácie a~dokumentácia: Návod na tvorbu bibliografických odkazov na informačné pramene a~ich citovanie.
+
+Systém Typst umožňuje pracovať s citáciami prostredníctvom bibliografických databáz. Základom je externý databázový súbor `bibliography.bib`,
+ktorý sa nachádza v hlavnom priečinku projektu záverečnej práce.
+Súbor obsahuje bibliografické záznamy citovaných diel v špecifickom formáte.
+Každý záznam začína jedinečným identifikátorom, ktorý zvyčajne volíme tak, aby sme si ho jednoducho pamätali.
+Ak totiž v texte chceme dielo citovať, napíšeme `@identifikator` a v~práci sa automaticky objaví poradové číslo citovaného diela v hranatej zátvorke.
+
+Pri práci s~bibliografiou odporúčame spustiť externý program na spracovanie bibliografických zdrojov
+po prvej kompilácii a~potom skompilovať dokument ešte dvakrát.
+Posledná kompilácia zabezpečí správne čísla strán v obsahu.
+
+== Bibliografické záznamy
+
+V zozname použitej literatúry v~závere práce sa nachádzajú podrobné záznamy použitých zdrojov.
+Sú to najmä mená autorov, názov článku alebo číslo kapitoly knihy, názov časopisu alebo knihy,
+vydavateľ, rok vydania, strana, na ktorej sa nachádza citovaný článok a podobne.
+V~prípade webových stránok je potrebné uviesť internetovú adresu a~dátum, kedy sme informáciu zo stránky čerpali.
+Dôležité je, aby boli informácie na základe týchto detailov ľahko a jednoznačne dohľadateľné.
+
+Formátujeme použitú literatúru podľa štýlu iso-numeric, ktorý do veľkej miery rešpektuje
+doteraz zaužívané zvyklosti a~je navrhnutý tak, aby spĺňal odporúčania normy aj v~slovenskom jazyku.
+
+=== Príklad záznamu v~databázovom súbore .bib <sec:citExample>
+
+Súbor `bibliography.bib` je textový súbor, ktorý musí mať predpísanú štruktúru.
+Môžeme ho vytvoriť ručne alebo použiť systémy na správu publikácií a~citácií ako sú JabRef, Mendeley, Zotero a~podobne.
+
+Bibliografický záznam pre článok:
+
+```
+@article{Steinerova2000Principy,
+  author  = {J. Steinerová},
+  journal = {Pedagogická revue},
+  title   = {Princípy formovania vzdelania v informačnej vede},
+  year    = {2000},
+  number  = {3},
+  pages   = {8--16},
+  volume  = {2},
+}
+```
+
+Každý záznam začína symbolom `@` a nasleduje typ publikácie.
+Okrem článku (`article`) to môže byť aj kniha (`book`), príspevok v~zborníku konferencie (`inproceedings`),
+webová stránka (`online`), správa (`techreport`), všeobecný záznam (`misc`) a~mnohé iné.
+
+Prvý povinný údaj je jedinečný identifikátor, ktorý je ľubovoľný.
+Odporúča sa však aby obsahoval priezvisko prvého autora, rok vydania a~prvé slovo názvu.
+
+Jednotlivé položky databázového záznamu sú oddelené čiarkou, za posledným poľom už čiarka nie je.
+
+=== Prvky bibliografického záznamu
+
+Zoznam použitej literatúry obsahuje informácie o~jednotlivých zdrojoch.
+Je potrebné mať na pamäti, aby záznamy boli jasné, stručné a~jednoznačne identifikovateľné.
+Bežne zorientovaný čitateľ práce by mal byť schopný identifikovať jednotlivé diela.
+Prípadný záujemca o~detailné štúdium problematiky by si mal vedieť na základe záznamu vyhľadať citovanú publikáciu
+buď na internete alebo v~knižnici.
+
+Uvedieme niekoľko jednoduchých príkladov bežného spôsobu citovania.
+
+==== Mená tvorcov
+
+V zozname literatúry majú formu: PRIEZVISKO, Meno alebo PRIEZVISKO, M. a~navzájom sú oddelené bodkočiarkou.
+Za zoznamom autorov nasleduje bodka.
+
+V `.bib` súbore:
+```
+author = {Meno1 Priezvisko1 and Meno2 Priezvisko2}
+```
+
+Autorov zapisujeme ako `Meno Priezvisko` a~oddeľujeme ich kľúčovým slovom `and`.
+
+==== Názov
+
+Názov článku píšeme normálnym písmom.
+Názov nosného informačného zdroja (kniha, časopis, zborník) píšeme kurzívou.
+
+V `.bib` súbore:
+```
+title = {}
+booktitle = {}
+```
+
+==== Dátum
+
+Pri každej publikácii musí byť uvedený aspoň rok vydania vo formáte YYYY.
+V~prípade online zdrojov treba uvádzať aj presný dátum, kedy sme zdroj použili.
+Formát je odporúčaný ako `[cit. YYYY-MM-DD]`.
+Napríklad `[cit. 2023-05-14]` znamená 14. mája 2023.
+Ide o~medzinárodne akceptovaný a~zrozumiteľný tvar zápisu dátumu.
+
+V `.bib` súbore:
+```
+year = {2024}
+date = {2024-12-31}
+```
+
+==== Dostupnosť
+
+Uvádzame buď úplnú webovú adresu alebo DOI číslo. Nepíšeme oba údaje, preferujeme DOI.
+
+V `.bib` súbore:
+```
+url = {}
+doi = {}
+```
+
+==== Ročník, zväzok a~číslo časopisu
+
+Vedecké periodiká vychádzajú v~zväzkoch (_volume_).
+Zväzok a~číslo zapisujeme buď pomocou skratiek vol. a~iss., alebo preferujeme zaužívanú skrátenú formu *15*(8).
+
+V `.bib` súbore:
+```
+volume = {}
+number = {}
+```
+
+== Článok v~odbornom periodiku
+
+Záznam musí obsahovať mená autorov, názov článku, názov časopisu, dátum alebo iba rok vydania,
+ročník alebo zväzok a~číslo vo zväzku, číslo prvej strany.
+
+==== Príklady
+
+```
+@article{Steinerova2000Principy,
+  author  = {J. Steinerová},
+  journal = {Pedagogická revue},
+  title   = {Princípy formovania vzdelania v informačnej vede},
+  year    = {2000},
+  number  = {3},
+  pages   = {8--16},
+  volume  = {2},
+}
+
+@article{Benacka2009Abetter,
+  author  = {Ján Benačka and others},
+  title   = {A better cosine approximate solution to pendulum equation},
+  journal = {International Journal of Mathematical Education in Science
+             and Technology},
+  volume  = {40},
+  number  = {2},
+  pages   = {307--308},
+  year    = {2009},
+  doi     = {10.1080/00207390802419594},
+}
+```
+
+== Monografia a~kniha
+
+TVORCOVIA. _Názov knihy._ Mesto: Vydavateľ, Rok vydania. ISBN.
+
+==== Príklady
+
+```
+@book{Obert2006Navraty,
+  author    = {Viliam Obert},
+  publisher = {Univerzita Konštantína Filozofa},
+  title     = {Návraty a odkazy},
+  year      = {2006},
+  address   = {Nitra},
+  isbn      = {80-8094-046-0},
+}
+
+@book{Timko2004Geneticky,
+  author    = {Jozef Timko and Peter Siekel and Ján Turňa},
+  publisher = {Veda},
+  title     = {Geneticky modifikované organizmy},
+  year      = {2004},
+  isbn      = {80-224-0834-4},
+}
+```
+
+== Záverečná a~vedecko-kvalifikačná práca
+
+AUTOR. _Názov práce._ Mesto, Rok vypracovania. Typ práce. Inštitúcia.
+
+==== Príklady
+
+```
+@thesis{Mikulasikova1999Didakticke,
+  author  = {M. Mikulášiková},
+  title   = {Didaktické pomôcky pre praktickú výučbu na hodinách
+             výtvarnej výchovy},
+  address = {Nitra},
+  year    = {1999},
+  type    = {Diplomová práca},
+  school  = {Univerzita Konštantína Filozofa},
+}
+
+@report{Baumgarntner1998Ochrana,
+  author      = {J. Baumgartner and others},
+  institution = {VÚŽV},
+  title       = {Ochrana a udržiavanie genofondu zvierat},
+  address     = {Nitra},
+  year        = {1998},
+  type        = {Výskumná správa},
+}
+```
+
+== Príspevok v~zborníku konferencie
+
+Ak citujeme príspevok z~neperiodického zborníka, uvedieme za názvom príspevku kľúčové slovo In:,
+po ktorom nasleduje zoznam editorov zborníka a~názov zborníka:
+
+TVORCOVIA. Názov príspevku. In: EDITORI (ed.). _Názov zborníka._ Mesto: Vydavateľ, Rok vydania, zväzok. ISBN. ISSN.
+
+==== Príklady
+
+```
+@InProceedings{Zemanek2001TheMachines,
+  author    = {P. Zemánek},
+  booktitle = {9th International Conference: proceedings.
+               Fruit Growing and viticulture},
+  title     = {The machines for green works in vineyards and their
+               economical evaluation},
+  volume    = {2},
+  year      = {2001},
+  pages     = {262--268},
+  publisher = {Mendel University of Agriculture and Forestry},
+  address   = {Lednice},
+  isbn      = {80-7157-524-0},
+}
+
+@InProceedings{ChlpikSpectroscopic2024,
+  author    = {Chlpík, Juraj and Kurtulík, Matej and Kotorová, Soňa},
+  date      = {2024-01},
+  title     = {Spectroscopic ellipsometry of Au nanoparticles layers},
+  editor    = {Jozef Sitek and Ján Vajda},
+  doi       = {10.1063/5.0187526},
+  booktitle = {AIP Conference Proceedings},
+  volume    = {3054},
+}
+```
+
+== Webová stránka, sociálna sieť, video
+
+Pri multimediálnom online obsahu často nepoznáme autora, prípadne je komplikované zistiť názov webovej stránky.
+Snažíme sa zahrnúť čo najviac jednoznačných informácií, najmä webovú adresu, dátum publikovania a~dátum citovania.
+
+TVORCOVIA. _Názov obsahu_ [online]. Platforma, dátum publikovania [cit. dátum citovania]. Dostupnosť.
+
+==== Príklady
+
+```
+@online{Valko2024M31,
+  author       = {Pavol Valko},
+  title        = {M31, M32 a jeden Starlink k tomu},
+  howpublished = {online},
+  date         = {2024-08-30},
+  url          = {https://www.facebook.com/share/p/S93xZoz9RbnhdQ7M},
+  urldate      = {2024-09-06},
+  publisher    = {Facebook},
+}
+
+@online{WhyLenses2017,
+  title        = {Why lenses can't make perfect images},
+  howpublished = {online},
+  date         = {2017-10-18},
+  url          = {https://youtu.be/DDoryfCXxPI?si=hC5Kuuf4p3OxOOsm},
+  urldate      = {2024-08-25},
+  publisher    = {Youtube},
+}
+```
+
+== Ako citovať technické normy
+
+K~normám nemusíme uvádzať autorov, ak ide o~slovenskú normu STN.
+Dôležité je číslo normy a~rok vydania.
+
+_Číslo normy. Názov: Podnázov._ Mesto: Vydavateľ. Rok vydania.
+
+==== Príklad
+
+```
+@report{iso690,
+  title     = {STN ISO 690: 2022. Informácie a dokumentácia},
+  subtitle  = {Návod na tvorbu bibliografických odkazov},
+  address   = {Bratislava},
+  publisher = {Slovenský ústav technickej normalizácie},
+  year      = {2022},
+}
+```
+
+
