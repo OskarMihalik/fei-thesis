@@ -63,6 +63,11 @@
     indent: 1em,
   )
 
+  set list(
+    spacing: 1.1em,
+    indent: 1em,
+  )
+
   // show list.item: it => block(spacing: 1em, it)
   // show enum.item: it => block(spacing: 1.1em, it)
 
@@ -229,6 +234,9 @@
   pagebreak()
 }
 
-// cislovanie a nadpis medzera vatsia
-// pozriet ostatne skolske sablony, best practises.... najlepšia: https://github.com/npikall/vienna-tech
-// postupne prepisovat sablonu
+//[x] cislovanie a nadpis medzera vatsia ok
+//[x]pozriet ostatne skolske sablony, best practises.... najlepšia: https://github.com/npikall/vienna-tech
+//[x] postupne prepisovat sablonu
+//[ ] Zoznam algoritmov
+//[ ] Zoznam výpisov kódov
+//

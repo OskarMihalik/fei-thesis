@@ -81,7 +81,7 @@ Ak je práca napísaná v~anglickom jazyku,
 musí obsahovať rezumé v~slovenčine.
 V~slovenskej práci nemusí byť rezumé.
 
-==== Účel a použitie abstraktov
+#heading(level: 4, outlined: false, numbering: none)[Účel a použitie abstraktov]
 
 - _„Dobre vypracovaný abstrakt umožní čitateľom identifikovať
   základný obsah dokumentu, rýchlo a presne stanoviť jeho
