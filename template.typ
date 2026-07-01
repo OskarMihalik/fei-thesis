@@ -43,7 +43,8 @@
   )
 
   //  set heading( block: block(below: 2em))
-  set par(leading: 11.25pt, first-line-indent: 1.5em, justify: true, spacing: 1em)
+  set par(leading: 11.25pt, first-line-indent: (amount: 1.5em, all: true), justify: true, spacing: 1em)
+  // show par: it => it.
   // show par: set block(spacing: 1pt) // parskip 1pt
   set text(size: text-size, font: font, lang: language)
   show heading: set block(below: 1.2em)
@@ -51,6 +52,7 @@
   show heading.where(level: 1): set text(size: heading-1)
   show heading.where(level: 2): set text(size: heading-2)
   show heading.where(level: 3): set text(size: heading-3)
+  show heading.where(level: 4): set heading(outlined: false, numbering: none)
 
   set figure(numbering: "1")
   set heading(numbering: "1.1")
@@ -250,4 +252,22 @@
 //[x] postupne prepisovat sablonu
 //[ ] Zoznam algoritmov
 //[x] Zoznam výpisov kódov
+//[ ] conclusion
+//[ ] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
+//[ ]   show heading.where(level: 4): set heading(outlined: false, numbering: none) spravit tak aby 4 a vatsie
+//[ ] po nadpisoch vypnut first line indent a math , po ostatnych ako figure treba mat first line indent
+// ale niekedy uzivatel aby vedel sam vypnut first line indent
+// po nadpisoch neodsadzovat inak odsadzovat, ale mat moznost vypnut
+// #[
+// #set par(first-line-indent: 0pt)
+// asdfasfd
 //
+// ]
+//
+// dalksdfi
+//[ ] https://github.com/typst/typst/issues/1093 ciarka v math
+//[ ] upravit codeblock podla latex
+//[ ] vyhodit prefix na odkazy ako Tabuľka 2., Výpis 1.
+// [ ] caption kodu zmenit Výpis kódu
+// low prio:
+//[ ]

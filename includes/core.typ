@@ -460,8 +460,6 @@ v~hlavnom súbore projektu `thesis.tex`.
 
 == Zoznam použitej literatúry
 
-==== Zoznam použitej literatúry
-
 Citované zdroje označujeme v texte číslom v hranatých zátvorkách.
 Ide o poradové číslo uvedenia publikácií tak, ako sa postupne s nimi v texte pracuje.
 
@@ -940,8 +938,7 @@ Pravidlá sadzby matematických, fyzikálnych veličín a~ich vzťahov sumarizuj
 Označenie fyzikálnych a~matematických veličín píšeme vždy šikmým rezom písma.
 Čísla, názvy funkcií a~jednotky fyzikálnych veličín zapisujeme normálnym rezom.
 Správny zápis elektrického napätia s veľkosťou 5,07 voltu vyzerá takto:
-
-$ U = 5,07 upright("V") $ <eq:quantity>
+$ U = 5","07 thin upright("V") $ <eq:quantity>
 
 kde $U$ je elektrické napätie.
 Môžeme si všimnúť, že okolo znaku rovnosti sú medzery,
@@ -973,7 +970,7 @@ Konštanty $π$ a $ε_0$ sú podľa zvyklosti vysádzané šikmým rezom.
 V~texte, ktorý nasleduje bezprostredne za rovnicou vysvetlíme
 a~stručne opíšeme jednotlivé symboly.
 
-#heading(level: 5)[Dôležité pravidlá písania rovníc]
+#heading(level: 4, outlined: false, numbering: none)[Dôležité pravidlá písania rovníc]
 
 - Značky veličín píšeme šikmým rezom písma (kurzívou): $x$, $y$, $a$, $F$, $P$, $W$.
 
@@ -1001,7 +998,17 @@ a~stručne opíšeme jednotlivé symboly.
 
 - Derivácia dráhy podľa času: $v = frac(upright(d) s, upright(d) t)$. Veličiny $v$, $s$ a~$t$ sú stále písané kurzívou.
 
-- Určitý integrál vyzerá takto: $ integral_a^b f(x) upright(d) x $. V~integráli spravidla vkladáme pred diferenciál úzku medzeru.
+- Určitý integrál vyzerá takto: $ integral_a^b f(x) upright(d) x $
+
+  V~integráli spravidla vkladáme pred diferenciál úzku medzeru.
+
+// #[
+//   #set par(first-line-indent: 0pt)
+//   asdfasfd
+
+// ]
+
+// dalksdfi
 
 == Obrázky
 
@@ -1043,7 +1050,7 @@ ktorého argument je text pod obrázkom.
   image("/assets/Measurement.png", width: 100%),
   caption: [Pravidelné meranie výšky dieťaťa],
 ) <fig:measurement>
-
+#lorem(100)
 === Umiestnenie obrázkov <sec:figPlacement>
 
 Na obrázok sa v~texte odkazujeme prostredníctvom čísla.
@@ -1267,7 +1274,7 @@ a~prípadne aj päta, ak ju použijeme.
 Zvislé čiary sa používajú iba vo výnimočných prípadoch,
 napríklad ak je tabuľka rozdelená na
 dve evidentne oddelené časti.
-Prípadne môžeme čiarou oddeliť prvý stĺpec s~opisom označenia riadka (tabuľka <@tab:LED>).
+Prípadne môžeme čiarou oddeliť prvý stĺpec s~opisom označenia riadka (tabuľka @tab:LED).
 Jednotlivé riadky s~údajmi neoddeľujeme.
 Tabuľka pôsobí harmonicky,
 ak je text v~prvom stĺpci zarovnaný doľava
