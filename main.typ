@@ -25,6 +25,7 @@
 
 #fei-outline()
 #fei-list-of-glossaries()
+#fei-outline-code()
 
 #show: start-numbering.with()
 

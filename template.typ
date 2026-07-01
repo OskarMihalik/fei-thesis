@@ -16,6 +16,7 @@
     appendix-suffix: "Dodatok",
     glossary-title: "Zoznam značiek a skratiek",
     bibliography: "Literatúra",
+    outline-code: "Zoznam výpisov kódov",
   ),
   en: (
     introduction: "Introduction",
@@ -23,6 +24,7 @@
     appendix-suffix: "Appendix",
     glossary-title: "List of Symbols and Abbreviations",
     bibliography: "Bibliography",
+    outline-code: "List of listings",
   ),
 )
 
@@ -131,6 +133,7 @@
   set heading(outlined: false, numbering: none)
   abbr.list(title: [#translate("glossary-title")], columns: 1)
   abbr.load("includes/glossary.csv")
+  pagebreak()
 }
 
 
@@ -149,6 +152,14 @@
     level: 1,
   ): it => strong([#it.prefix()   #it.body() #box(width: 1fr, repeat(gap: 0.15em)[ ]) #it.page() \ ])
   outline()
+  pagebreak()
+}
+
+#let fei-outline-code() = {
+  outline(
+    title: [#translate("outline-code")],
+    target: figure.where(kind: raw),
+  )
   pagebreak()
 }
 
@@ -238,5 +249,5 @@
 //[x]pozriet ostatne skolske sablony, best practises.... najlepšia: https://github.com/npikall/vienna-tech
 //[x] postupne prepisovat sablonu
 //[ ] Zoznam algoritmov
-//[ ] Zoznam výpisov kódov
+//[x] Zoznam výpisov kódov
 //
