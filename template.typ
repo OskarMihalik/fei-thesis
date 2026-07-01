@@ -41,10 +41,10 @@
   )
 
   //  set heading( block: block(below: 2em))
-  set par(leading: 12.25pt, first-line-indent: 0.63cm, justify: true)
+  set par(leading: 11.25pt, first-line-indent: 1.5em, justify: true, spacing: 1em)
   // show par: set block(spacing: 1pt) // parskip 1pt
   set text(size: text-size, font: font, lang: language)
-  show heading: set block(below: 1em)
+  show heading: set block(below: 1.2em)
 
   show heading.where(level: 1): set text(size: heading-1)
   show heading.where(level: 2): set text(size: heading-2)
@@ -53,13 +53,18 @@
   set figure(numbering: "1")
   set heading(numbering: "1.1")
   show heading: it => block(
-    if it.numbering != none { counter(heading).display(it.numbering) + h(1em) } + it.body,
+    if it.numbering != none { counter(heading).display(it.numbering) + h(1.2em) } + it.body,
   )
 
   set enum(
     full: true,
     numbering: numbly("{1:1}.", "{2:a)}", "{3:i})", "({4})"),
+    spacing: 1.1em,
+    indent: 1em,
   )
+
+  // show list.item: it => block(spacing: 1em, it)
+  // show enum.item: it => block(spacing: 1.1em, it)
 
   set math.equation(numbering: "(1)")
 
@@ -137,7 +142,7 @@
 #let fei-outline() = {
   show outline.entry.where(
     level: 1,
-  ): it => strong(it)
+  ): it => strong([#it.prefix()   #it.body() #box(width: 1fr, repeat(gap: 0.15em)[ ]) #it.page() \ ])
   outline()
   pagebreak()
 }

@@ -2,9 +2,9 @@
 
 #show: fei-thesis.with()
 
-#fei-assignment("includes/assignment.pdf", pages: 2)
 
 #title-page()
+#fei-assignment("includes/assignment.pdf", pages: 2)
 
 #keywordsSK.update([kľúčové slovo, typst])
 #keywordsEN.update([kľúčové slovo, typst])
