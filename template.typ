@@ -17,6 +17,8 @@
     glossary-title: "Zoznam značiek a skratiek",
     bibliography: "Literatúra",
     outline-code: "Zoznam výpisov kódov",
+    conclusion: "Záver",
+    ai-declaration: "Použitie nástrojov umelej inteligencie",
   ),
   en: (
     introduction: "Introduction",
@@ -25,6 +27,8 @@
     glossary-title: "List of Symbols and Abbreviations",
     bibliography: "Bibliography",
     outline-code: "List of listings",
+    conclusion: "Conclusion",
+    ai-declaration: "Usage of artificial intelligence tools",
   ),
 )
 
@@ -127,7 +131,6 @@
 #let fei-bibliography() = {
   [
     #bibliography("bibliography.bib", style: "iso-690-numeric", title: [#translate("bibliography")])
-    #pagebreak()
   ]
 }
 
@@ -152,7 +155,10 @@
 #let fei-outline() = {
   show outline.entry.where(
     level: 1,
-  ): it => strong([#it.prefix()   #it.body() #box(width: 1fr, repeat(gap: 0.15em)[ ]) #it.page() \ ])
+  ): it => link(
+    it.element.location(),
+    [#strong([#it.prefix()   #it.body() #box(width: 1fr, repeat(gap: 0.15em)[ ]) #it.page() \ ])],
+  )
   outline()
   pagebreak()
 }
@@ -226,6 +232,17 @@
   pagebreak()
 }
 
+#let fei-conclusion(content) = {
+  heading([#translate("conclusion")], numbering: none)
+  content
+  pagebreak()
+}
+
+#let fei-ai-declaration(content) = {
+  heading([#translate("ai-declaration")], numbering: none, outlined: false)
+  content
+  pagebreak()
+}
 
 #let start-numbering(body) = {
   set page(numbering: "1")
@@ -237,7 +254,7 @@
 #let appendix(content, title) = {
   appendix-counter.step()
   context {
-    let suffix = i18n.at(doc-lang.get()).at("appendix-suffix")
+    let suffix = translate("appendix-suffix")
     let letter = numbering("A", appendix-counter.get().first())
     heading(numbering: none)[#suffix #letter: #title]
   }
@@ -252,7 +269,7 @@
 //[x] postupne prepisovat sablonu
 //[ ] Zoznam algoritmov
 //[x] Zoznam výpisov kódov
-//[ ] conclusion
+//[x] conclusion
 //[ ] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
 //[ ]   show heading.where(level: 4): set heading(outlined: false, numbering: none) spravit tak aby 4 a vatsie
 //[ ] po nadpisoch vypnut first line indent a math , po ostatnych ako figure treba mat first line indent

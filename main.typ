@@ -32,7 +32,11 @@
 #introduction()[#include "includes/introduction.typ"]
 
 #main-matter([#include "includes/core.typ"])
+#fei-conclusion[#include "includes/conclusion.typ"]
+
 #fei-bibliography()
+#fei-ai-declaration()[#include "includes/ai_declaration.typ"]
 
 #appendix([#include "includes/appendixA.typ"], [Algoritmus])
-#appendix([#include "includes/appendixA.typ"], [Výpis dlhého kódu])
+
+// #appendix([#include "includes/appendix.typ"], [Výpis dlhého kódu])
