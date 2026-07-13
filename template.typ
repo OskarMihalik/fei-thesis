@@ -17,6 +17,7 @@
     glossary-title: "Zoznam značiek a skratiek",
     bibliography: "Literatúra",
     outline-code: "Zoznam výpisov kódov",
+    code-caption: "Výpis kódu",
     conclusion: "Záver",
     ai-declaration: "Použitie nástrojov umelej inteligencie",
   ),
@@ -27,6 +28,7 @@
     glossary-title: "List of Symbols and Abbreviations",
     bibliography: "Bibliography",
     outline-code: "List of listings",
+    code-caption: "Listing",
     conclusion: "Conclusion",
     ai-declaration: "Usage of artificial intelligence tools",
   ),
@@ -87,6 +89,8 @@
 
   set figure(gap: 15pt)
   show figure: set block(spacing: 2em)
+
+  show figure.where(kind: raw): set figure(supplement: [#translate("code-caption")])
 
   show: abbr.show-rule
 
@@ -284,7 +288,7 @@
 // dalksdfi
 //[ ] https://github.com/typst/typst/issues/1093 ciarka v math
 //[ ] upravit codeblock podla latex
-//[ ] vyhodit prefix na odkazy ako Tabuľka 2., Výpis 1.
-// [ ] caption kodu zmenit Výpis kódu
+//[ ] vyhodit prefix na odkazy ako Tabuľka 2., Výpis 1., nechat iba 2., 1.
+// [x] caption kodu Výpis 1 zmenit na Výpis kódu 1.
 // low prio:
 //[ ]
