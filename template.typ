@@ -59,6 +59,8 @@
   show heading.where(level: 2): set text(size: heading-2)
   show heading.where(level: 3): set text(size: heading-3)
   show heading.where(level: 4): set heading(outlined: false, numbering: none)
+  show heading.where(level: 5): set heading(outlined: false, numbering: none)
+  show heading.where(level: 6): set heading(outlined: false, numbering: none)
 
   set figure(numbering: "1")
   set heading(numbering: "1.1")
@@ -275,7 +277,7 @@
 //[x] Zoznam výpisov kódov
 //[x] conclusion
 //[ ] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
-//[ ]   show heading.where(level: 4): set heading(outlined: false, numbering: none) spravit tak aby 4 a vatsie
+//[x]   show heading.where(level: 4): set heading(outlined: false, numbering: none) spravit tak aby 4 a vatsie
 //[ ] po nadpisoch vypnut first line indent a math , po ostatnych ako figure treba mat first line indent
 // ale niekedy uzivatel aby vedel sam vypnut first line indent
 // po nadpisoch neodsadzovat inak odsadzovat, ale mat moznost vypnut
