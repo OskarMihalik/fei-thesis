@@ -80,8 +80,17 @@
     indent: 1em,
   )
 
-  // show list.item: it => block(spacing: 1em, it)
-  // show enum.item: it => block(spacing: 1.1em, it)
+  set math.equation(supplement: none, numbering: "1")
+  set ref(supplement: none)
+  show ref: it => {
+    if it.element != none and it.element.func() == math.equation {
+      [(#it)]
+    } else {
+      it
+    }
+  }
+
+  set cite(style: "springer-lecture-notes-in-computer-science")
 
   set math.equation(numbering: "(1)")
 
@@ -276,7 +285,8 @@
 //[ ] Zoznam algoritmov
 //[x] Zoznam výpisov kódov
 //[x] conclusion
-//[ ] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
+//[x] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
+//    heading level 4 a viac nie je v outline
 //[x]   show heading.where(level: 4): set heading(outlined: false, numbering: none) spravit tak aby 4 a vatsie
 //[ ] po nadpisoch vypnut first line indent a math , po ostatnych ako figure treba mat first line indent
 // ale niekedy uzivatel aby vedel sam vypnut first line indent
@@ -290,7 +300,7 @@
 // dalksdfi
 //[ ] https://github.com/typst/typst/issues/1093 ciarka v math
 //[ ] upravit codeblock podla latex
-//[ ] vyhodit prefix na odkazy ako Tabuľka 2., Výpis 1., nechat iba 2., 1.
+//[x] vyhodit prefix na odkazy ako Tabuľka 2., Výpis 1., nechat iba 2., 1.
 // [x] caption kodu Výpis 1 zmenit na Výpis kódu 1.
 // low prio:
 //[ ]

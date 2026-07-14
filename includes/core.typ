@@ -279,7 +279,7 @@ môžeme jednotlivé kapitoly uložiť do samostatných
 súborov a tie načítať do `core.tex`
 pomocou TeXového príkazu `\input`.
 
-#heading(level: 3, outlined: false, numbering: none)[Súčasný stav riešenej problematiky doma a~v~zahraničí]
+==== Súčasný stav riešenej problematiky doma a~v~zahraničí
 
 Podľa zvyklostí by malo približne 30% práce obsahovať prehľad
 súčasného stavu a~poznatkov v~oblasti,
@@ -299,15 +299,15 @@ správne s~nimi pracovať a~citovať ich.
 Dôležitý prínos študenta spočíva v~spájaní viacerých poznatkov
 z~rôznych zdrojov do nového celku.
 
-#heading(level: 3, outlined: false, numbering: none)[Cieľ práce]
+==== Cieľ práce
 
 Bakalárska a diplomová práca má jasne uvedené ciele v zadaní práce. Nie je preto nutné uvádzať samostatnú kapitolu, kde budú ciele ešte raz vymenované. Je však žiadúce, ak sa zmienka o jednotlivých cieľoch v texte vyskytuje a poukazuje sa na ich splnenie, nesplnenie, prípadne ak hlavné ciele pozostávajú z čiastkových cieľov, treba ich jasne špecifikovať.
 
-#heading(level: 3, outlined: false, numbering: none)[Metodika práce a metódy skúmania]
+==== Metodika práce a metódy skúmania
 
 V experimentálnych prácach býva v tejto časti podrobne zdokumentované prístrojové vybavenie, riadiaci a simulačný softvér, laboratórne podmienky a podobne. Metodické usmernenie @GSM odporúča nasledujúci obsah tejto časti práce: a) charakteristika objektu skúmania, b) pracovné postupy, c) spôsob získavania údajov a ich zdroje, d) použité metódy vyhodnotenia a interpretácie výsledkov, e) štatistické metódy.
 
-#heading(level: 3, outlined: false, numbering: none)[Výsledky práce a diskusia]
+==== Výsledky práce a diskusia
 
 Študent zaujme k získaným výsledkom jasné postoje,
 porovnáva ich s inými autormi, prípadne navrhuje ich ďalšie aplikácie.
@@ -1030,7 +1030,7 @@ Pod každým obrázkom je textové označenie,
 začínajúce skratkou slova obrázok (Obr.) a~nasleduje
 poradové číslo obrázku v práci.
 
-Na obrázku <@fig:measurement> je znázornený proces správneho merania výšky dieťaťa.
+Na obrázku @fig:measurement je znázornený proces správneho merania výšky dieťaťa.
 Grafický objekt je súčasťou plávajúceho prostredia `figure`.
 Samotnú grafiku pripravíme v externom editore,
 exportujeme ju do niektorého z bežných formátov (JPG, PNG, PDF)
