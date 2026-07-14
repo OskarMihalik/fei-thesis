@@ -43,7 +43,7 @@ alebo využijeme makrá `FEIcover` a~`FEItitle` na vytvorenie obálky a prvej
 stránky práce.
 Aby boli všetky informácie aktuálne,
 treba venovať pozornosť vyplneniu údajových
-premenných v~úvode hlavného súboru `thesis.tex`. @GSM
+premenných v~úvode hlavného súboru `main.typ`. @GSM
 
 Zadanie odporúčame vložiť pomocou spomínaného makra
 `\includepdf` tak, že najprv uložíme PDF súbor
@@ -137,7 +137,7 @@ spustiť minimálne dvakrát za sebou.
 
 V tejto šablóne má na starosti vytvorenie obsahu makro `\FEIcontent`.
 
-#heading(level: 3, outlined: false, numbering: none)[Zoznam ilustrácií, obrázkov a tabuliek]
+==== Zoznam ilustrácií, obrázkov a tabuliek
 
 Sú to nepovinné prehľady tzv. plávajúcich objektov.
 LaTeX pozná na tento účel dva príkazy: `\listoffigures` a~`\listoftables`.
@@ -150,7 +150,7 @@ Vytvorí totiž spojený zoznam obrázkov a tabuliek s jedným nadpisom.
 Ak zoznamy v práci nechceme, môžeme príslušné príkazy z~hlavného súboru
 `thesis.tex` vymazať alebo ich označiť ako komentár.
 
-#heading(level: 3, outlined: false, numbering: none)[Zoznam skratiek a značiek]
+==== Zoznam skratiek a značiek
 
 V textových výstupoch vedecko-technických odborov sa používa
 množstvo značiek a~skratiek najmä na označenie fyzikálnych
@@ -205,7 +205,7 @@ značky uvádzame v~abecednom poradí.
   `\FEImanualListOfGlossaries`, ktorého parameter je cesta a názov spomínaného súboru, zariadi samotnú sadzbu.
   Zoznam si môžeme postupne vytvárať pri písaní a~udržiavať ho v abecednom poradí.
 
-#heading(level: 3, outlined: false, numbering: none)[Zoznamy algoritmov a výpisov kódov programov]
+==== Zoznamy algoritmov a výpisov kódov programov
 
 Tieto typy zoznamov vytvoria makrá `\FEIlistOfAlgorithms`, `\FEIlistOfListings` a~sú špecifické pre informatické odbory.
 

@@ -5,6 +5,7 @@
 #let heading-1 = 20pt
 #let heading-2 = 16pt
 #let heading-3 = 14pt
+#let first-line-indent = 1.5em
 #let font = "New Computer Modern"
 #let keywordsSK = state("keywords-sk", [keyword 1, keyword 2])
 #let keywordsEN = state("keywords-en", [keyword 1, keyword 2])
@@ -20,6 +21,7 @@
     code-caption: "Výpis kódu",
     conclusion: "Záver",
     ai-declaration: "Použitie nástrojov umelej inteligencie",
+    thanks: "Poďakovanie",
   ),
   en: (
     introduction: "Introduction",
@@ -31,6 +33,7 @@
     code-caption: "Listing",
     conclusion: "Conclusion",
     ai-declaration: "Usage of artificial intelligence tools",
+    thanks: "Thanks",
   ),
 )
 
@@ -48,12 +51,10 @@
     margin: (top: 3cm, bottom: 3cm, left: 2.75cm, right: 2.75cm),
   )
 
-  //  set heading( block: block(below: 2em))
-  set par(leading: 11.25pt, first-line-indent: (amount: 1.5em, all: true), justify: true, spacing: 1em)
-  // show par: it => it.
-  // show par: set block(spacing: 1pt) // parskip 1pt
+  set par(leading: 10.5pt, first-line-indent: (amount: first-line-indent, all: false), justify: true, spacing: 1em)
+
   set text(size: text-size, font: font, lang: language)
-  show heading: set block(below: 1.2em)
+  show heading: set block(below: 1em)
 
   show heading.where(level: 1): set text(size: heading-1)
   show heading.where(level: 2): set text(size: heading-2)
@@ -99,7 +100,10 @@
   ): set figure.caption(position: top)
 
   set figure(gap: 15pt)
-  show figure: set block(spacing: 2em)
+  show figure: it => {
+    set par(first-line-indent: (amount: 1.5em, all: true))
+    block(it, spacing: 2em)
+  }
 
   show figure.where(kind: raw): set figure(supplement: [#translate("code-caption")])
 
@@ -259,12 +263,32 @@
   pagebreak()
 }
 
+#let fei-thanks(body) = {
+  [
+    #v(1fr)
+    #heading(level: 2, outlined: false, numbering: none)[#translate("thanks")]
+    #body
+    #pagebreak()
+
+  ]
+}
+
 #let start-numbering(body) = {
   set page(numbering: "1")
   body
 }
 
 #let appendix-counter = counter("appendix")
+
+#let noindent(body) = {
+  set par(first-line-indent: 0pt)
+  body
+}
+
+#let indent(body) = {
+  set par(first-line-indent: first-line-indent)
+  body
+}
 
 #let appendix(content, title) = {
   appendix-counter.step()

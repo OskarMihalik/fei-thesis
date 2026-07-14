@@ -9,6 +9,9 @@
 #keywordsSK.update([kľúčové slovo, typst])
 #keywordsEN.update([kľúčové slovo, typst])
 
+
+#fei-thanks[#include "includes/thanks.typ"]
+
 #abstract(
   [
     #include "includes/abstractSK.typ"
@@ -29,13 +32,13 @@
 
 #show: start-numbering.with()
 
-#introduction()[#include "includes/introduction.typ"]
+#introduction[#include "includes/introduction.typ"]
 
-#main-matter([#include "includes/core.typ"])
+#main-matter[#include "includes/core.typ"]
 #fei-conclusion[#include "includes/conclusion.typ"]
 
 #fei-bibliography()
-#fei-ai-declaration()[#include "includes/ai_declaration.typ"]
+#fei-ai-declaration[#include "includes/ai_declaration.typ"]
 
 #appendix([#include "includes/appendixA.typ"], [Algoritmus])
 
