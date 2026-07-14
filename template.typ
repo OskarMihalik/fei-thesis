@@ -312,7 +312,7 @@
 //[x] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
 //    heading level 4 a viac nie je v outline
 //[x]   show heading.where(level: 4): set heading(outlined: false, numbering: none) spravit tak aby 4 a vatsie
-//[ ] po nadpisoch vypnut first line indent a math , po ostatnych ako figure treba mat first line indent
+//[x] po nadpisoch vypnut first line indent a math , po ostatnych ako figure treba mat first line indent
 // ale niekedy uzivatel aby vedel sam vypnut first line indent
 // po nadpisoch neodsadzovat inak odsadzovat, ale mat moznost vypnut
 // #[
