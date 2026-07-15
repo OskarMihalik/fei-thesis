@@ -18,6 +18,8 @@
     glossary-title: "Zoznam značiek a skratiek",
     bibliography: "Literatúra",
     outline-code: "Zoznam výpisov kódov",
+    outline-table: "Zoznam výpisov tabuliek",
+    outline-image: "Zoznam výpisov obrázkov",
     code-caption: "Výpis kódu",
     conclusion: "Záver",
     ai-declaration: "Použitie nástrojov umelej inteligencie",
@@ -30,6 +32,8 @@
     glossary-title: "List of Symbols and Abbreviations",
     bibliography: "Bibliography",
     outline-code: "List of listings",
+    outline-table: "List of tables",
+    outline-image: "List of images",
     code-caption: "Listing",
     conclusion: "Conclusion",
     ai-declaration: "Usage of artificial intelligence tools",
@@ -160,6 +164,12 @@
   pagebreak()
 }
 
+#let fei-list-of-manual-glossaries() = {
+  heading(outlined: false, numbering: none)[#translate("glossary-title")]
+  include "includes/manual_glossary.typ"
+  pagebreak()
+}
+
 
 #let fei-assignment(pdf-path, pages: 1) = {
   set page(
@@ -186,6 +196,22 @@
   outline(
     title: [#translate("outline-code")],
     target: figure.where(kind: raw),
+  )
+  pagebreak()
+}
+
+#let fei-outline-tables() = {
+  outline(
+    title: [#translate("outline-table")],
+    target: figure.where(kind: table),
+  )
+  pagebreak()
+}
+
+#let fei-outline-image() = {
+  outline(
+    title: [#translate("outline-image")],
+    target: figure.where(kind: image),
   )
   pagebreak()
 }

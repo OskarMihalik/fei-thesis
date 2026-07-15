@@ -210,9 +210,21 @@ STU, Slovenská technická univerzita
 
 Zoznam skratiek a značiek sa automaticky vygeneruje v~hlavnom súbore `main.typ`
 pomocou funkcie `fei-list-of-glossaries()`:
-```typst
-#fei-list-of-glossaries()
-```
+
+==== Manuálny zoznam fyzikálnych veličín a~matematických symbolov
+
+Automatické riešenie pomocou CSV súboru úplne zlyháva pri práci s~veličinami,
+ktorých zoznam predstavuje praktickú pomôcku najmä vo fyzikálnych a~matematických oblastiach.
+Na označovanie veličín používame rôzne symboly a~ich modifikácie,
+napríklad písmená gréckej abecedy ($alpha, omega, xi$),
+symboly so šípkami v~prípade vektorov ($arrow(r), arrow(phi), arrow(i)$),
+preškrtnuté h ($hbar$), zdvojené symboly ako $ZZ$,
+prípadne aj niečo takéto: $aleph_0$, čo je hebrejské písmeno alef.
+
+Pre takéto prípady je najlepšie použiť _ručný zoznam_ v~samostatnom súbore.
+Vytvoríme súbor `includes/manual_glossaries.typ`
+
+Zoznam si môžeme postupne vytvárať pri písaní a~udržiavať ho v~abecednom poradí.
 
 Pri práci s~fyzikálnymi veličinami a~matematickými symbolmi sa odporúča
 poznamenať ich definíciu pri prvom výskyte v~texte.

@@ -27,7 +27,10 @@
 )
 
 #fei-outline()
+#fei-outline-tables()
+#fei-outline-image()
 #fei-list-of-glossaries()
+// #fei-list-of-manual-glossaries()
 #fei-outline-code()
 
 #show: start-numbering.with()
