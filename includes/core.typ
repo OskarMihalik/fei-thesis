@@ -38,25 +38,28 @@ Hlavným obsahom úvodnej časti sú formálne náležitosti práce a musia byť
 === Obálka, titulný list, zadanie
 Začiatočné stránky práce automaticky generuje univerzitný
 informačný systém AIS vo formáte PDF.
-Môžeme ich do záverečnej práce vložiť pomocou príkazu `\includepdf` z~balíčka `pdfpages`
-alebo využijeme makrá `FEIcover` a~`FEItitle` na vytvorenie obálky a prvej
-stránky práce.
+Môžeme ich do záverečnej práce vložiť pomocou funkcie `fei-assignment()`,
+ktorá vloží PDF súbor so zadaním na samostatné stránky.
 Aby boli všetky informácie aktuálne,
 treba venovať pozornosť vyplneniu údajových
 premenných v~úvode hlavného súboru `main.typ`. @GSM
 
-Zadanie odporúčame vložiť pomocou spomínaného makra
-`\includepdf` tak, že najprv uložíme PDF súbor
-so zadaním do priečinka `includes` a prepíšeme
-názov súboru v argumente makra.
+Zadanie vložíme v~hlavnom súbore `main.typ` nasledovne:
+```typst
+#fei-assignment("includes/assignment.pdf", pages: 2)
+```
+kde prvý parameter je cesta k PDF súboru so zadaním a~parameter `pages`
+špecifikuje počet strán, ktoré chceme vložiť.
 
 === Poďakovanie
 Nepovinná, ale veľmi obľúbená časť práce.
 Je umiestnené na samostatnej strane zväčša v~dolnej časti.
 Jej obsah je ponechaný na autora.
 Obsah poďakovania sa nachádza v~súbore
-`includes/thanks.tex` a~sadzbu má na starosti
-príkaz `\FEIthanks`.
+`includes/thanks.typ` a~do hlavného dokumentu sa vloží pomocou funkcie `fei-thanks`:
+```typst
+#fei-thanks[#include "includes/thanks.typ"]
+```
 
 === Slovenský a anglický abstrakt
 
@@ -81,7 +84,7 @@ Ak je práca napísaná v~anglickom jazyku,
 musí obsahovať rezumé v~slovenčine.
 V~slovenskej práci nemusí byť rezumé.
 
-#heading(level: 4, outlined: false, numbering: none)[Účel a použitie abstraktov]
+==== Účel a použitie abstraktov
 
 - _„Dobre vypracovaný abstrakt umožní čitateľom identifikovať
   základný obsah dokumentu, rýchlo a presne stanoviť jeho
@@ -108,15 +111,26 @@ Abstrakt sa píše súvisle ako jeden odsek a jeho rozsah je
 spravidla 100 až 500 slov"_ @usmernenie562011.
 
 Text slovenského a~anglického abstraktu sa nachádzajú
-v~súboroch `attachment.tex` a~`attachmentEN.tex` v~priečinku `includes`.
+v~súboroch `abstractSK.typ` a~`abstractEN.typ` v~priečinku `includes`.
 
-Do dokumentu ich vložia makrá šablóny
-`\FEIabstract` a~`\FEIabstractEN`
-v~hlavnom súbore `thesis.tex`.
-Každé makro má jeden povinný parameter --
-cesta a~názov súboru s~textom abstraktu.
-Makrá zároveň vytlačia pod abstrakty
-v každom jazyku zoznam kľúčových slov.
+Do dokumentu sa vložia pomocou funkcie `abstract()` v~hlavnom súbore `main.typ`:
+```typst
+#abstract(
+  [
+    #include "includes/abstractSK.typ"
+  ],
+  lang: "sk",
+)
+
+#abstract(
+  [
+    #include "includes/abstractEN.typ"
+  ],
+  lang: "en",
+)
+```
+Funkcia automaticky vypíše abstrakt s~príslušným jazykom
+a~pod abstraktom zobrazí zoznam kľúčových slov podľa nastaveného jazyka.
 
 === Obsah a zoznamy
 
@@ -126,29 +140,40 @@ Začína na samostatnej stránke ako nová kapitola
 s~nadpisom Obsah bez číslovania,
 ktorý sa ale v~samotnom prehľade kapitol nezobrazí.
 
-V~LaTeX-u zabezpečuje generovanie obsahu príkaz `\tableofcontents`,
-ktorý v~mieste použitia vloží automatický zoznam kapitol s~číslami strán.
-Obsah vytvára na základe použitia nadpisov `\section`,
-`\subsection` a `\subsubsection`.
-Toto makro vytvorí v~pracovnom adresári pomocný textový súbor
-s~príponou .toc a~na základe neho generuje finálnu podobu obsahu.
-Z~toho dôvodu je potrebné kompilátor LaTeX-u
-spustiť minimálne dvakrát za sebou.
+V~Typste zabezpečuje generovanie obsahu funkcia `fei-outline()`,
+ktorá v~mieste použitia vloží automatický zoznam kapitol s~číslami strán.
+Obsah sa vytvára automaticky na základe použitých nadpisov.
+Na rozdiel od LaTeX-u nie je potrebné spúšťať kompiláciu viackrát.
 
-V tejto šablóne má na starosti vytvorenie obsahu makro `\FEIcontent`.
+V tejto šablóne sa v~hlavnom súbore `main.typ` používa:
+```typst
+#fei-outline()
+```
 
 ==== Zoznam ilustrácií, obrázkov a tabuliek
 
 Sú to nepovinné prehľady tzv. plávajúcich objektov.
-LaTeX pozná na tento účel dva príkazy: `\listoffigures` a~`\listoftables`.
-Šablóna FEIstyle ponúka alternatívne makrá `\FEIlistOfFigures` a~`\FEIlistOfTables`,
-ktoré okrem toho nastavia požadovaný typ stránky bez číslovania.
+V~Typste sa dajú vytvoriť pomocou funkcie `outline()` s~parameterom `target`,
+ktorý špecifikuje typ objektu (obrázky alebo tabuľky).
 
-Zvlášť užitočný je príkaz `\FEIlistOfFiguresAndTables`.
-Vytvorí totiž spojený zoznam obrázkov a tabuliek s jedným nadpisom.
+Príklad pre zoznam obrázkov:
+```typst
+#outline(
+  title: [Zoznam obrázkov],
+  target: figure.where(kind: image),
+)
+```
 
-Ak zoznamy v práci nechceme, môžeme príslušné príkazy z~hlavného súboru
-`thesis.tex` vymazať alebo ich označiť ako komentár.
+Príklad pre zoznam tabuliek:
+```typst
+#outline(
+  title: [Zoznam tabuliek],
+  target: figure.where(kind: table),
+)
+```
+
+Ak zoznamy v~práci nechceme, môžeme príslušné príkazy z~hlavného súboru
+`main.typ` vymazať alebo ich označiť ako komentár.
 
 ==== Zoznam skratiek a značiek
 
@@ -172,46 +197,40 @@ odporúčame ho zaradiť kvôli lepšej orientácii čitateľa.
 Zoznam má podobu slovníka,
 značky uvádzame v~abecednom poradí.
 
-Šablóna ponúka dva spôsoby vytvorenia zoznamu a~práce so skratkami a~značkami v~texte.
+Šablóna používa balík `abbr` na automatizáciu práce so skratkami a~značkami v~texte.
+Skratky sa definujú v~CSV súbore `includes/glossary.csv` a~do textu sa vložia
+pomocou funkcie `abbr.show-rule` v~šablóne.
 
-+ Použitie nástrojov balíka `glossary` umožňuje plne automatickú kontrolu nad veľkým množstvom skratiek. Skratky treba najprv definovať v externom súbore `glossary.tex` a~potom ich môžeme v práci používať dvomi spôsobmi. Pri prvom výskyte použijeme skratku aj s~jej opisom, čo zariadi príkaz `acrfull`.
-  Pri ďalších výskytoch v texte už stačí používať iba skrátený tvar pomocou príkazu `acrshort`.
+Skratky definujeme v~súbore `includes/glossary.csv` v~nasledujúcom formáte:
+```
+skratka, plný text
+AI, Artificial Intelligence
+STU, Slovenská technická univerzita
+```
 
-  Po prvom skompilovaní je potrebné spustiť externý program `makeglossaries` a~text skompilovať znova, prípadne kvôli správnemu radeniu strán v~obsahu, treba kompiláciu spustiť aj tretíkrát.
-  Podobná procedúra sa vyžaduje aj pri práci s~citáciami v systéme BibLaTeX.
-  Makro `\FEIlistOfGlossaries` vytvorí abecedne zoradený zoznam.
+Zoznam skratiek a značiek sa automaticky vygeneruje v~hlavnom súbore `main.typ`
+pomocou funkcie `fei-list-of-glossaries()`:
+```typst
+#fei-list-of-glossaries()
+```
 
-  Ak sa rozhodneme pre túto možnosť,
-  treba v hlavnom súbore `thesis.tex` odstrániť
-  znak komentára pred príkazmi
-  `\FEIglossaries{includes/glossary}`
-  a~`\FEIlistOfGlossaries`. Pozor, tieto dva
-  riadky sa v súbore `thesis.tex`
-  nachádzajú na rôznych miestach.
-  Nepremiestňujeme ich.
-
-  Balík `glossaries` je nesporne praktická pomôcka, plnohodnotne však funguje iba v anglickom jazyku.
-  Pri jeho používaní narazíme na problém so skratkami, ktoré pochádzajú z anglických slov.
-  V slovenskom texte však musíme používať ich terminologické ekvivalenty.
-  Aj keď si nakoniec vytvoríme slovenský zoznam skratiek, ich automatické použitie bude limitované pri skloňovaní alebo časovaní jednotlivých výrazov.
-
-  Viac sa o možnostiach balíka dozvieme z tutoriálu na stránke #link("https://www.ctan.org/pkg/glossaries")[www.ctan.org/pkg/glossaries]
-
-+ Skratky zadáme manuálne.
-  Automatické riešenie v predchádzajúcom bode úplne zlyháva pri práci s veličinami, ktorých zoznam predstavuje praktickú pomôcku najmä vo fyzikálnych a~matematických oblastiach techniky. Na označovanie veličín používame rôzne symboly a ich modifikácie, napríklad písmená gréckej abecedy ($alpha, omega, xi$), symboly so šípkami v prípade vektorov ($vec{r}, vec{phi}, vec{i}$), preškrtnuté h ($hbar$), zdvojené symboly ako $ZZ$, prípadne aj niečo takéto: $aleph_0$, čo je hebrejské písmeno alef.
-
-  Súbor `manual_glossary.tex` obsahuje príklad, ako by mohol takýto ručne vyrobený zoznam vyzerať.
-  Makro
-  `\FEImanualListOfGlossaries`, ktorého parameter je cesta a názov spomínaného súboru, zariadi samotnú sadzbu.
-  Zoznam si môžeme postupne vytvárať pri písaní a~udržiavať ho v abecednom poradí.
+Pri práci s~fyzikálnymi veličinami a~matematickými symbolmi sa odporúča
+poznamenať ich definíciu pri prvom výskyte v~texte.
+Prípadne si vytvoríme dodatočný zoznam veličín, ktorý umiestníme do dodatkov.
 
 ==== Zoznamy algoritmov a výpisov kódov programov
 
-Tieto typy zoznamov vytvoria makrá `\FEIlistOfAlgorithms`, `\FEIlistOfListings` a~sú špecifické pre informatické odbory.
+Zoznam výpisov kódov sa vytvorí pomocou funkcie `fei-outline-code()` v~hlavnom súbore `main.typ`:
+```typst
+#fei-outline-code()
+```
 
-Ak v práci nemáme výpisy kódov alebo algoritmy,
-bude potrebné riadky s týmito príkazmi vymazať alebo označiť ako komentár. O~uvádzaní častí kódov
-a~zápisov algoritmov píšeme v
+Táto funkcia je špecifická pre informatické odbory a~automaticky zbiera všetky kódové výpisy
+(figure s~kind: raw) a~vytvorí ich zoznam.
+
+Ak v~práci nemáme výpisy kódov,
+bude potrebné tento riadok z~hlavného súboru `main.typ` vymazať.
+O~uvádzaní časti kódov a~zápisov algoritmov píšeme v
 // kapitole @sec:listings.
 
 == Hlavná textová časť
@@ -244,8 +263,11 @@ Aby sme sa tomu vyhli,
 necháme si jeho napísanie až na záver,
 keď už bude väčšina hlavného obsahu práce hotová.
 
-Text úvodu sa nachádza v súbore `includes/introduction.tex`
-a~jeho sadzbu zariadi makro `\FEIintroduction{includes/introduction}`.
+Text úvodu sa nachádza v~súbore `includes/introduction.typ`
+a~do hlavného dokumentu sa vloží pomocou funkcie `introduction`:
+```typst
+#introduction[#include "includes/introduction.typ"]
+```
 
 === Jadro
 
@@ -271,13 +293,16 @@ ktoré výsledky sú originálne a~ktoré sú prebrané.
 Odporúčaná štruktúra tejto časti je na
 strane~<@sec:StrukturaPrace>.
 
-Samotný obsah jadra sa nachádza v~súbore `includes/core.tex`.
-Do hlavného dokumentu `thesis.tex` ho načíta makro `\FEIcore{includes/core}`.
-Parameter makra je názov súboru bez prípony.
-Ak je `core.tex` príliš obsiahly,
+Samotný obsah jadra sa nachádza v~súbore `includes/core.typ`.
+Do hlavného dokumentu `main.typ` sa načíta pomocou funkcie `main-matter`:
+```typst
+#main-matter[#include "includes/core.typ"]
+```
+
+Ak je `core.typ` príliš obsiahly,
 môžeme jednotlivé kapitoly uložiť do samostatných
-súborov a tie načítať do `core.tex`
-pomocou TeXového príkazu `\input`.
+súborov a~tie načítať do `core.typ`
+pomocou príkazu `#include "includes/chapter1.typ"`.
 
 ==== Súčasný stav riešenej problematiky doma a~v~zahraničí
 
@@ -453,10 +478,12 @@ _Jednotlivé merania boli úspešné aj
 vďaka kvalitným vzorkám._
 
 Súbor so záverom v~priečinku `includes` má
-názov `conclusion.tex`
-a~do dokumentu sa dostane prostredníctvom makra
-`\FEIconclusion{includes/conclusion}`
-v~hlavnom súbore projektu `thesis.tex`.
+názov `conclusion.typ`
+a~do dokumentu sa dostane prostredníctvom funkcie `fei-conclusion`
+v~hlavnom súbore projektu `main.typ`:
+```typst
+#fei-conclusion[#include "includes/conclusion.typ"]
+```
 
 == Zoznam použitej literatúry
 
@@ -467,10 +494,14 @@ Po kapitole _Záver_ nasleduje ďalšia nečíslovaná kapitola
 s názvom _Literatúra_,
 ktorá obsahuje číslovaný zoznam všetkých
 citovaných literárnych zdrojov v spomínanom poradí.
-Forma tohto zoznamu je pomerne komplikovaná a podrobne
-ju opisuje norma ISO 690: 2023 Dokumentácia -- Bibliografické odkazy -- Obsah, forma a štruktúra @iso690.
-Citovanie je v LaTeX-u vynikajúco vyriešené.
-V tomto dokumente citujeme pomocou nadstavby BibLaTeX.
+Forma tohto zoznamu je pomerne komplikovaná a~podrobne
+ju opisuje norma ISO 690: 2023 Dokumentácia -- Bibliografické odkazy -- Obsah, forma a~štruktúra @iso690.
+V~Typste sa bibliografia vygeneruje automaticky z~BibTeX súboru `bibliography.bib`.
+
+Bibliografiu vložíme v~hlavnom súbore `main.typ` pomocou funkcie `fei-bibliography()`:
+```typst
+#fei-bibliography()
+```
 // Podrobne sa citáciám budeme venovať v @sec:citation kapitole.
 
 === Záverečná časť
@@ -493,17 +524,18 @@ ktoré v práci používame,
 série rozsiahlych výsledkov alebo meraní
 a ich grafy, fotografie a podobne.
 
-Jednotlivé kapitoly v dodatkoch číslujeme veľkými písmenami,
+Jednotlivé kapitoly v~dodatkoch číslujeme veľkými písmenami,
 čísla podkapitol majú formu A.1, B.3.2, atď.
-Na tento účel vytvoríme pre každý dodatok samostatný súbor v priečinku `includes/`,
-odporúčame názov súboru v tvare `attachmentA.tex` alebo podobne.
-Každý dodatok je potom potrebné načítať v hlavnom súbore `thesis.tex` nasledujúcim spôsobom:
+Na tento účel vytvoríme pre každý dodatok samostatný súbor v~priečinku `includes/`,
+odporúčame názov súboru v~tvare `appendixA.typ` alebo podobne.
+Každý dodatok je potom potrebné načítať v~hlavnom súbore `main.typ` nasledujúcim spôsobom:
 
-```
-#FEIappendix("Názov prílohy" + <att:A>, "includes/attachmentA")
+```typst
+#appendix([#include "includes/appendixA.typ"], [Názov dodatku])
 ```
 
-Prvý parameter makra je názov dodatku a ten sa nesmie nachádzať v zdrojovom súbore `attachmentA.tex`.
+Prvý parameter funkcie je obsah dodatku, druhý parameter je názov dodatku,
+ktorý sa automaticky očísluje veľkým písmenom.
 
 = Formát a jazyk <sec:formatLanguage>
 
@@ -530,35 +562,33 @@ dôvodov zmenšené na 2 cm.
 === Písmo a riadkovanie
 
 Základný font šablóny je normálny rez tzv. antikvového písma
-s veľkosťou 12 pt.
-V tejto šablóne je to Computer Modern.
-Vhodné sú aj iné fonty s pätkami ako Times, Georgia, Palatino a podobne.
-Na obálke a titulnom liste používame bezpätkový (grotesk) font Latin Modern.
+s~veľkosťou 12 pt.
+V~tejto šablóne je to New Computer Modern.
+Vhodné sú aj iné fonty s~pätkami ako Times, Georgia, Palatino a~podobne.
+Na obálke a~titulnom liste používame bezpätkový (grotesk) font Latin Modern.
 Jednotlivé typy odsekov (nadpisy, poznámky a pod.)
 majú jednotný typ písma,
 odlišnosti vyjadrujeme rezom (polotučné písmo, kurzíva)
 alebo veľkosťou.
 
-Parameter `linespread` má hodnotu 1,25, t.~j.
-vzdialenosť riadkov textu vo veľkosti 12 pt je 15,6 pt.
+Parameter `leading` v~šablóne má hodnotu 10,5 pt,
+čo zabezpečuje vhodný odstup medzi riadkami textu.
 
 === Nadpisy
 
-Šablóna záverečnej práce FEIstyle je založená na
-štandardnej šablóne LaTeX-u article.
-Nadpis najvyššej úrovne je `section` zodpovedajúci kapitole.
-Podkapitoly sú `subsection` a `subsubsection`.
-Číslovanie kapitol a podkapitol je viacúrovňové typu X.Y.Z,
-kde X je číslo kapitoly, Y je číslo podkapitoly a Z je číslo časti podkapitoly.
+Šablóna záverečnej práce FEIstyle používa v~Typste rôzne úrovne nadpisov.
+Nadpis najvyššej úrovne je `=` zodpovedajúci kapitole.
+Podkapitoly sa definujú pomocou `==` a~`===`.
+Číslovanie kapitol a~podkapitol je viacúrovňové typu X.Y.Z,
+kde X je číslo kapitoly, Y je číslo podkapitoly a~Z je číslo časti podkapitoly.
 Číslovanie vyšších úrovní nie je definované.
-Tvar a forma nadpisov zodpovedá norme STN ISO 2145: 1978 Dokumentácia.
-Číslovanie oddielov a pododdielov písaných dokumentov @iso2145.
+Tvar a~forma nadpisov zodpovedá norme STN ISO 2145: 1978 Dokumentácia.
+Číslovanie oddielov a~pododdielov písaných dokumentov @iso2145.
 
-Nová kapitola začína vždy na novej strane.
-Príkaz `section` spôsobí okrem sadzby čísla a názvu kapitoly
-aj ukončenie predošlej kapitoly, vysádzanie všetkých plávajúcich objektov
-(obrázky, tabuľky, výpisy kódu), ktoré sa nepodarilo umiestniť
-na príslušné miesto v texte, a prejde na novú stranu.
+Nová kapitola sa začína s~nadpisom prvej úrovne (`=`).
+Typst automaticky preskakuje na novú stranu pri kapitole prvej úrovne
+a~vysádza všetky plávajúce objekty (obrázky, tabuľky, výpisy kódu),
+ktoré sa nepodarilo umiestniť na príslušné miesto v~texte.
 
 == Jazyk a gramatika
 
@@ -701,26 +731,24 @@ než občasná malá chyba.
 Hovoríme o predložkách k, o, v, s, z,
 ktoré by nemali ostať osamotené na konci riadka.
 Do tejto kategórie patria aj spojky a, i.
-Jednopísmenové slová pripájame k nasledujúcemu slovu pomocou
+Jednopísmenové slová pripájame k~nasledujúcemu slovu pomocou
 tzv. _nedeliteľnej medzery_,
 čo je špeciálny netlačiteľný znak.
-V kódovaní UTF-8 má číslo 00A0 (ASCII 160)
-a hovorí textovému procesoru,
+V~kódovaní UTF-8 má číslo 00A0 (ASCII 160)
+a~hovorí textovému procesoru,
 že na tomto mieste nesmie byť za žiadnych okolností
 koniec riadka.
-V programe MS Word ho zadáme použitím klávesovej skratky
-Ctrl-Shift-Medzera.
-V LaTeX-u zapíšeme nedeliteľnú medzeru s premenlivou šírkou
-ako symbol vlnovka (`~`)
+V~Typste zapíšeme nedeliteľnú medzeru ako symbol vlnovka (`~`),
+podobne ako v~LaTeX-u.
 Napríklad slovné spojenie _v~priestore_ napíšeme takto:
 `v~priestore`.
-Na rozdiel od Wordu, LaTeX takéto medzery nevkladá automaticky
-a treba to urobiť ručne.
+Typst automaticky počíta s~nedeliteľnými medzerami a~vkladá ich v~príslušných miestach,
+ale pri potrebe ich môžeme aj ručne špecifikovať.
 
-Existuje viacero medzier, ktoré sú tiež nedeliteľné a majú pevnú šírku.
-Najpoužívanejšia tzv. úzka medzera a zapíšeme ju ako `\,`.
+Existuje viacero medzier, ktoré sú tiež nedeliteľné a~majú pevnú šírku.
+Najpoužívanejšia tzv. úzka medzera sa v~Typste vytvára pomocou `thin` alebo `\,` v~matematickom režime.
 Takýto typ medzery používame pri zápise hodnôt fyzikálnych veličín
-a vkladáme ju medzi číslo a jednotku.
+a~vkladáme ju medzi číslo a~jednotku. V~Typste: `5 thin upright("V")`.
 
 == Štylistika
 
@@ -794,33 +822,28 @@ aby táto činnosť nebola príliš schematická.
 
 == Anglický jazyk
 
-Šablóna FEIstyle podporuje slovenský a anglický jazyk.
-Pre prácu v anglickom jazyku je potrebné túto skutočnosť nastaviť v preambule
-hlavného súboru `thesis.tex` ako nepovinný parameter `en` príkazu definície šablóny:
+Šablóna FEIstyle podporuje slovenský a~anglický jazyk.
+Pre prácu v~anglickom jazyku je potrebné túto skutočnosť nastaviť v~hlavnom súbore `main.typ`
+ako parameter `language` funkcie `fei-thesis`:
 
+```typst
+#show: fei-thesis.with(language: "en")
 ```
-#documentclass[bp,en]{FEIstyle}
-```
 
-Prvý parameter určuje, či ide o bakalársku (`bp`) alebo diplomovú (`dp`) prácu.
+Predvolená hodnota je `"sk"` pre slovenčinu.
 
-Anglická práca musí obsahovať po závere rezumé a na to je potrebné odstrániť
-komentár pred príkazom `\FEIresume{includes/resume}`.
+Anglická práca musí obsahovať po závere rezumé v~slovenčine,
+ktoré sa vloží pomocou funkcie `abstract` s~parametrom `lang: "sk"`.
 
-Na jazykovú lokalizáciu používame balík `babel`.
-Ak sa v práci písanej v slovenčine nachádzajú výrazy v angličtine,
-uvedieme takýto text do makra `\foreignlanguage`,
-čím zabezpečíme správne medzery a delenie slov.
+Na jazykovú lokalizáciu sa v~Typste používa automatické nastavenie jazyka v~texte.
+Ak sa v~práci písanej v~slovenčine nachádzajú výrazy v~angličtine,
+môžeme ich jasne označiť pomocou kurzívy alebo ich uviesť v~úvodzovkách.
 Napríklad pri zavádzaní skratky AI môžeme napísať,
-že ide o anglický výraz pre umelú inteligenciju _Artificial Intelligence_.
-Zapíšeme ho nasledujúcim spôsobom:
+že ide o~anglický výraz pre umelú inteligenciu _"Artificial Intelligence"_.
 
-```
-\foreignlanguage{english}{Artificial Intelligence}
-```
-
-Ak nastavíme parametrom `en` anglický jazyk ako hlavný,
-stane sa slovenčina cudzím jazykom.
+Ak nastavíme parameter `language: "en"` v~šablóne,
+šablóna automaticky prepne celý dokument na anglický jazyk,
+vrátane všetkých lokalizovaných textov (nadpisy, referencie atď.).
 
 == Použitie umelej inteligencie <sec:utilizingAI>
 
@@ -870,9 +893,14 @@ Ide o nasledujúce činnosti: preklady medzi jazykmi, úpravy a reformulácie te
 
 V závere práce, uvedieme za zoznamom literatúry časti textu vytvorené s~pomocou AI, spôsob ich využitia a použitý nástroj AI @opatrenie12024, čl. VI., ods. 2.
 
-V hlavnom súbore záverečnej práce `thesis.typ` je príkaz na načítanie súboru so všetkými záznamami z~priečinka `includes`.
-Každý výskyt použitia nástrojov AI zapíšeme ako položku do pripraveného prostredia.
-Formát a~obsah jednotlivých záznamov je naznačený v prílohe opatrenia číslo 1/2024-O.
+V~hlavnom súbore záverečnej práce `main.typ` sa vloží deklarácia používania AI
+pomocou funkcie `fei-ai-declaration`:
+```typst
+#fei-ai-declaration[#include "includes/ai_declaration.typ"]
+```
+Deklarácia sa vloží za zoznam literatúry. Každý výskyt použitia nástrojov AI
+zapíšeme ako položku do súboru `includes/ai_declaration.typ`.
+Formát a~obsah jednotlivých záznamov je naznačený v~prílohe opatrenia číslo 1/2024-O.
 Záznamy obsahujú tieto prvky:
 - Názov spoločnosti (dátum), Názov nástroja, časť práce, účel použitia.
 
@@ -970,7 +998,7 @@ Konštanty $π$ a $ε_0$ sú podľa zvyklosti vysádzané šikmým rezom.
 V~texte, ktorý nasleduje bezprostredne za rovnicou vysvetlíme
 a~stručne opíšeme jednotlivé symboly.
 
-#heading(level: 4, outlined: false, numbering: none)[Dôležité pravidlá písania rovníc]
+==== Dôležité pravidlá písania rovníc
 
 - Značky veličín píšeme šikmým rezom písma (kurzívou): $x$, $y$, $a$, $F$, $P$, $W$.
 
@@ -1112,13 +1140,13 @@ Z praktických dôvodov sa ustálila prax začínať menovku skratkou typu čís
 Grafmi budeme nazývať zobrazenie vedeckých dát
 najčastejšie vo forme dvojrozmerného grafu
 závislosti dvoch alebo viacerých veličín.
-Príklad takéhoto objektu je na obrázku <@fig:Graph1>.
+Príklad takéhoto objektu je na obrázku @fig:Graph1.
 Grafická reprezentácia vedeckých dát musí byť
 v~prvom rade čitateľná, zreteľná a~jednoznačná.
 Tomu treba prispôsobiť všetky zásady pri tvorbe grafov.
 
 #figure(
-  image("/assets/Graph1.pdf", width: 35.8%),
+  image("/assets/Graph1.pdf", width: 80%),
   caption: [Ukážka grafu vytvoreného v externom programe a vloženého ako PDF súbor.
     Použité písmo je Arial s veľkosťou približne 10 pt. Plné krúžky sú body merania a~prerušovaná čiara je kvadratický fit závislosti $s = a t^2 / 2$, pričom $a = (2,00 plus.minus 0,01) upright("m") upright("s")^(-2)$.],
 ) <fig:Graph1>

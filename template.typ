@@ -306,7 +306,7 @@
 //[x] cislovanie a nadpis medzera vatsia ok
 //[x]pozriet ostatne skolske sablony, best practises.... najlepšia: https://github.com/npikall/vienna-tech
 //[x] postupne prepisovat sablonu
-//[ ] Zoznam algoritmov
+//[ ] Zoznam algoritmov, obrazkov a tabuliek
 //[x] Zoznam výpisov kódov
 //[x] conclusion
 //[x] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
