@@ -105,7 +105,7 @@
 
   set figure(gap: 15pt)
   show figure: it => {
-    set par(first-line-indent: (amount: 1.5em, all: true))
+    set par(first-line-indent: (amount: first-line-indent, all: true))
     block(it, spacing: 2em)
   }
 
@@ -312,7 +312,7 @@
 }
 
 #let indent(body) = {
-  set par(first-line-indent: first-line-indent)
+  set par(first-line-indent: (amount: first-line-indent, all: true))
   body
 }
 
@@ -332,7 +332,7 @@
 //[x] cislovanie a nadpis medzera vatsia ok
 //[x]pozriet ostatne skolske sablony, best practises.... najlepšia: https://github.com/npikall/vienna-tech
 //[x] postupne prepisovat sablonu
-//[ ] Zoznam algoritmov, obrazkov a tabuliek
+//[x] Zoznam algoritmov, obrazkov a tabuliek
 //[x] Zoznam výpisov kódov
 //[x] conclusion
 //[x] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
@@ -354,3 +354,11 @@
 // [x] caption kodu Výpis 1 zmenit na Výpis kódu 1.
 // low prio:
 //[ ]
+
+//[] bakalarka, diplomovka
+//[] doupravit titulne stranu podla latex
+//[] appendix podoplnat
+//[] upravit strukturu
+//[] publish to typst universe
+// nice to have:
+// [] dizertacka

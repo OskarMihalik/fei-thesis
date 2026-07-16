@@ -1,6 +1,7 @@
 #import "@preview/mitex:0.2.7": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/chemformula:0.1.3": *
+#import "/template.typ": *
 
 = Štruktúra záverečnej práce <sec:StrukturaPrace>
 Za záverečnú prácu považujeme bakalársku, diplomovú
@@ -949,8 +950,8 @@ Ak tú istú rovnicu napíšeme do samostatného odseku, vyzerá trochu inak:
 
 $ x = frac(-b plus.minus sqrt(b^2 - 4a c), 2a) $
 
-Očividný rozdiel je vo veľkosti zlomku a~znaku odmocniny,
-môžeme si všimnúť aj malé rozdiely v~medzerách, vo vertikálnom zarovnávaní, atď.
+#indent[Očividný rozdiel je vo veľkosti zlomku a~znaku odmocniny,
+  môžeme si všimnúť aj malé rozdiely v~medzerách, vo vertikálnom zarovnávaní, atď.]
 
 Vložené rovnice v~rámci textového riadku zapisujeme pomocou znaku dolára.
 Matematický zápis ohraničíme znakmi dolára sprava aj zľava.
@@ -1090,7 +1091,7 @@ ktorého argument je text pod obrázkom.
   image("/assets/Measurement.png", width: 100%),
   caption: [Pravidelné meranie výšky dieťaťa],
 ) <fig:measurement>
-#lorem(100)
+
 === Umiestnenie obrázkov <sec:figPlacement>
 
 Na obrázok sa v~texte odkazujeme prostredníctvom čísla.
