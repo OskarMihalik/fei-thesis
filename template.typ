@@ -475,8 +475,8 @@
 // low prio:
 //[ ]
 
-//[] bakalarka, diplomovka
-//[] doupravit titulne stranu podla latex
+//[x] bakalarka, diplomovka
+//[x] doupravit titulne stranu podla latex
 //[] appendix podoplnat
 //[] upravit strukturu
 //[] publish to typst universe
