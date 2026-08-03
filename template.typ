@@ -481,7 +481,7 @@
 
 //[x] bakalarka, diplomovka
 //[x] doupravit titulne stranu podla latex
-//[] appendix podoplnat
+//[x] appendix podoplnat
 //[] upravit strukturu
 //[] publish to typst universe
 // nice to have:
