@@ -59,5 +59,6 @@
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]
 
 #appendix([#include "includes/appendixA.typ"], [Algoritmus])
-
+#appendix([#include "includes/appendixB.typ"], [Výpis dlhého kódu])
+#appendix([#include "includes/appendixC.typ"], [Slovníček pojmov])
 // #appendix([#include "includes/appendix.typ"], [Výpis dlhého kódu])

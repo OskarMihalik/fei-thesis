@@ -136,8 +136,9 @@
   }
 
   show figure.where(kind: raw): set figure(supplement: [#translate("code-caption")])
+
   show figure.where(kind: raw): it => {
-    align(left, block(width: 100%, fill: rgb("#F2F2F2"), inset: 8pt, it.body))
+    align(left,  it.body)
     align(center, it.caption)
   }
 
@@ -472,7 +473,7 @@
 //
 // dalksdfi
 //[ ] https://github.com/typst/typst/issues/1093 ciarka v math
-//[ ] upravit codeblock podla latex
+//[x] upravit codeblock podla latex
 //[x] vyhodit prefix na odkazy ako Tabuľka 2., Výpis 1., nechat iba 2., 1.
 // [x] caption kodu Výpis 1 zmenit na Výpis kódu 1.
 // low prio:
