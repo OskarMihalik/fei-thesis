@@ -7,9 +7,24 @@
 #let heading-3 = 14pt
 #let first-line-indent = 1.5em
 #let font = "New Computer Modern"
-#let keywordsSK = state("keywords-sk", [keyword 1, keyword 2])
-#let keywordsEN = state("keywords-en", [keyword 1, keyword 2])
 #let doc-lang = state("doc-lang", "sk")
+#let variables-state = state("variables", (
+  title: "Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst",
+  author: "RNDr. Juraj Chlpík, PhD.",
+  reg-nr: "FEI-xxxx-xxxx",
+  date: "31. decembra 2024",
+  year: "2024",
+  thesis-type: "Bakalárska práca",
+  keywords: "záverečná práca, šablóna, Typst, formátovanie textu, citácie",
+  keywords-en: "Final thesis, template, Typst, text formatting, citations",
+  study-programme: "názov študijného programu",
+  study-field: "názov študijného odboru",
+  school: "Slovenská technická univerzita v Bratislave",
+  faculty: "Fakulta elektrotechniky a informatiky",
+  supervisor: "tituly Meno Priezvisko, tituly",
+  consultant: "tituly Meno Priezvisko, tituly",
+  training-workplace: "Názov školiaceho pracoviska",
+))
 #let i18n = (
   sk: (
     introduction: "Úvod",
@@ -24,6 +39,12 @@
     conclusion: "Záver",
     ai-declaration: "Použitie nástrojov umelej inteligencie",
     thanks: "Poďakovanie",
+    reg-nr-label: "Evidenčné číslo:",
+    study-programme-label: "Študijný program:",
+    study-field-label: "Študijný odbor:",
+    training-workplace-label: "Školiace pracovisko:",
+    supervisor-label: "Školiteľ:",
+    consultant-label: "Konzultant:",
   ),
   en: (
     introduction: "Introduction",
@@ -38,6 +59,12 @@
     conclusion: "Conclusion",
     ai-declaration: "Usage of artificial intelligence tools",
     thanks: "Thanks",
+    reg-nr-label: "Registration number:",
+    study-programme-label: "Study Programme:",
+    study-field-label: "Study Field:",
+    training-workplace-label: "Training Workplace:",
+    supervisor-label: "Supervisor:",
+    consultant-label: "Consultant:",
   ),
 )
 
@@ -116,39 +143,126 @@
   body
 }
 
-#let title-page(
-  title: "Typst tutorial",
-  author: "",
-  school: "Slovenská technická univerzita v Bratislave",
-  faculty: "Fakulta elektrotechniky a informatiky",
-  year: "2026",
-  reg-nr: "XXXXX",
-  study-programme: "názov študijného programu",
-  study-field: "študijný odbor",
-  supervisor: "školiteľ",
-  consultant: none,
-) = {
-  align(center)[
-    #text(size: 14pt, weight: "bold")[#upper(school)] \
-    #text(size: 14pt, weight: "bold")[#faculty]
-    #v(4cm)
-    #text(size: 20pt, weight: "bold")[#title]
-    #v(2cm)
-  ]
-  // Info table
-  grid(
-    columns: (auto, 1fr),
-    gutter: 1cm,
-    [Študijný program:], study-programme,
-    [Študijný odbor:], study-field,
-    [Školiteľ:], supervisor,
-    // if consultant != none { ("Konzultant:", consultant) },
+#let title-page() = {
+  set page(
+    margin: (top: 3.024cm, bottom: 2.775cm, left: 2.75cm, right: 2.75cm),
+    numbering: none,
   )
-  v(1fr)
-  align(bottom + left)[
-    #year #h(1fr) #author
-  ]
-  pagebreak()
+
+  context {
+    let vars = variables-state.get()
+    let t = vars.at("title")
+    let a = vars.at("author")
+    let s = vars.at("school")
+    let f = vars.at("faculty")
+    let y = vars.at("year")
+    let tt = vars.at("thesis-type")
+    let rn = vars.at("reg-nr")
+    let sp = vars.at("study-programme")
+    let sf = vars.at("study-field")
+    let sv = vars.at("supervisor")
+    let c = vars.at("consultant")
+    let tw = vars.at("training-workplace")
+
+    align(center)[
+      #par(leading: 18.2pt)[
+        #text(size: 14pt, weight: "bold")[#upper(s)]
+        #linebreak()
+        #text(size: 14pt, weight: "bold")[#f]
+      ]
+    ]
+
+    v(9mm)
+
+    par(first-line-indent: 0pt)[
+    #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
+    ]
+
+    v(40.9mm)
+
+    align(center)[
+      #par(leading: 18.1pt)[#text(size: 20pt, weight: "bold")[#t]]
+      #v(22pt)
+      #text(size: 14pt, weight: "bold")[#tt]
+    ]
+
+    v(1fr)
+
+    grid(
+      columns: (5cm, 1fr),
+      gutter: 0.5em,
+      row-gutter: 0.8em,
+      [#translate("study-programme-label")], [#sp],
+      [#translate("study-field-label")], [#sf],
+      [#translate("training-workplace-label")], [#tw],
+      [#translate("supervisor-label")], [#sv],
+      if c != none 
+        [#translate("consultant-label")], if c != none [#c],
+      
+    )
+
+    v(3.43cm)
+
+    grid(
+      columns: (1fr, 1fr),
+      align: (left, right),
+      text(size: 12pt, weight: "bold")[#y],
+      text(size: 12pt, weight: "bold")[#a],
+    )
+
+    pagebreak()
+  }
+}
+
+#let cover-page() = {
+  set page(
+    margin: (top: 2cm, bottom: 1.8cm, left: 2.75cm, right: 2.75cm),
+    numbering: none,
+  )
+
+  context {
+    let vars = variables-state.get()
+    let t = vars.at("title")
+    let a = vars.at("author")
+    let s = vars.at("school")
+    let f = vars.at("faculty")
+    let y = vars.at("year")
+    let tt = vars.at("thesis-type")
+    let rn = vars.at("reg-nr")
+
+    align(center)[
+      #text(size: 14.0pt, weight: "black")[#upper(s)] \
+      #v(3.5mm)
+      #text(size: 13.5pt, weight: "black")[#f]
+    ]
+
+    v(11.5mm)
+    par(first-line-indent: 0pt)[
+    #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
+    ]
+
+    v(51.5mm)
+
+    align(center)[
+      #box(width: 100%, text(size: 20.5pt, weight: "black")[#t])
+      #v(29pt)
+      #text(size: 14.5pt, weight: "black")[#tt]
+    ]
+
+    v(1fr)
+
+    grid(
+      columns: (1fr, 1fr),
+      text(size: 14.5pt, weight: "black")[#y],
+      align(right, text(size: 14.5pt, weight: "black")[#a]),
+    )
+
+    pagebreak()
+  }
+}
+
+#let set-variables(vars) = {
+  variables-state.update(vars)
 }
 
 #let fei-bibliography() = {
@@ -221,7 +335,10 @@
   align(left, text(font: font, strong([Kľúčové slová])))
   set text(text-size)
 
-  [#context keywordsSK.get()]
+  [#context {
+    let vars = variables-state.get()
+    vars.at("keywords")
+    }]
 
   pagebreak()
 }
@@ -231,7 +348,10 @@
   align(left, text(font: font, strong([Keywords])))
   set text(text-size)
 
-  [#context keywordsEN.get()]
+    [#context {
+    let vars = variables-state.get()
+    vars.at("keywords")
+    }]
 
   pagebreak()
 }

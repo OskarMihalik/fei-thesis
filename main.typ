@@ -2,12 +2,27 @@
 
 #show: fei-thesis.with()
 
+#set-variables((
+  title: "Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst",
+  author: "RNDr. Juraj Chlpík, PhD.",
+  reg-nr: "FEI-xxxx-xxxx",
+  date: "31. decembra 2024",
+  year: "2024",
+  thesis-type: "Bakalárska práca",
+  keywords: "záverečná práca, šablóna, Typst, formátovanie textu, citácie",
+  keywords-en: "Final thesis, template, Typst, text formatting, citations",
+  study-programme: "názov študijného programu",
+  study-field: "názov študijného odboru",
+  school: "Slovenská technická univerzita v Bratislave",
+  faculty: "Fakulta elektrotechniky a informatiky",
+  supervisor: "tituly Meno Priezvisko, tituly",
+  consultant: "tituly Meno Priezvisko, tituly",
+  training-workplace: "Názov školiaceho pracoviska",
+))
 
+#cover-page()
 #title-page()
 #fei-assignment("includes/assignment.pdf", pages: 2)
-
-#keywordsSK.update([kľúčové slovo, typst])
-#keywordsEN.update([kľúčové slovo, typst])
 
 
 #fei-thanks[#include "includes/thanks.typ"]
