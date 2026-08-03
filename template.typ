@@ -71,7 +71,6 @@
 #let translate(key, lang: none) = context i18n.at(if lang != none { lang } else { doc-lang.get() }).at(key)
 
 #let fei-thesis(
-  title: "",
   language: "sk",
   body,
 ) = {
@@ -137,6 +136,10 @@
   }
 
   show figure.where(kind: raw): set figure(supplement: [#translate("code-caption")])
+  show figure.where(kind: raw): it => {
+    align(left, block(width: 100%, fill: rgb("#F2F2F2"), inset: 8pt, it.body))
+    align(center, it.caption)
+  }
 
   show: abbr.show-rule
 
