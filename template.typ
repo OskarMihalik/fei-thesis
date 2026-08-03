@@ -84,6 +84,7 @@
   set par(leading: 10.5pt, first-line-indent: (amount: first-line-indent, all: false), justify: true, spacing: 1em)
 
   set text(size: text-size, font: font, lang: language)
+  set pagebreak(weak: true)
   show heading: set block(below: 1em)
 
   show heading.where(level: 1): set text(size: heading-1)
