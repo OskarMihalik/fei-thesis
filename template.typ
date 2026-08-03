@@ -166,9 +166,9 @@
 
     align(center)[
       #par(leading: 18.2pt)[
-        #text(size: 14pt, weight: "bold")[#upper(s)]
+        #text(size: 14pt, weight: "black")[#upper(s)]
         #linebreak()
-        #text(size: 14pt, weight: "bold")[#f]
+        #text(size: 13.5pt, weight: "black")[#f]
       ]
     ]
 
@@ -181,9 +181,9 @@
     v(40.9mm)
 
     align(center)[
-      #par(leading: 18.1pt)[#text(size: 20pt, weight: "bold")[#t]]
+      #par(leading: 18.1pt)[#text(size: 20pt, weight: "black")[#t]]
       #v(22pt)
-      #text(size: 14pt, weight: "bold")[#tt]
+      #text(size: 14pt, weight: "black")[#tt]
     ]
 
     v(1fr)
@@ -195,7 +195,7 @@
       [#translate("study-programme-label")], [#sp],
       [#translate("study-field-label")], [#sf],
       [#translate("training-workplace-label")], [#tw],
-      [#translate("supervisor-label")], [#sv],
+      if sv != none [#translate("supervisor-label")], if sv != none [#sv],
       if c != none 
         [#translate("consultant-label")], if c != none [#c],
       
@@ -206,8 +206,8 @@
     grid(
       columns: (1fr, 1fr),
       align: (left, right),
-      text(size: 12pt, weight: "bold")[#y],
-      text(size: 12pt, weight: "bold")[#a],
+      text(size: 12pt, weight: "black")[#y],
+      text(size: 12pt, weight: "black")[#a],
     )
 
     pagebreak()
@@ -236,7 +236,7 @@
       #text(size: 13.5pt, weight: "black")[#f]
     ]
 
-    v(11.5mm)
+    v(9mm)
     par(first-line-indent: 0pt)[
     #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
     ]
