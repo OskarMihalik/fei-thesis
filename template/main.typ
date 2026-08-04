@@ -1,4 +1,4 @@
-#import "template.typ": *
+#import "../lib.typ": *
 
 #show: fei-thesis.with()
 
@@ -22,7 +22,7 @@
 
 #cover-page()
 #title-page()
-#fei-assignment("includes/assignment.pdf", pages: 2)
+#fei-assignment(read("includes/assignment.pdf", encoding: none), pages: 2)
 
 
 #fei-thanks[#include "includes/thanks.typ"]
@@ -44,8 +44,8 @@
 #fei-outline()
 #fei-outline-tables()
 #fei-outline-image()
-#fei-list-of-glossaries()
-// #fei-list-of-manual-glossaries()
+#fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
+// #fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
 #fei-outline-code()
 
 #show: start-numbering.with()
@@ -55,10 +55,9 @@
 #main-matter[#include "includes/core.typ"]
 #fei-conclusion[#include "includes/conclusion.typ"]
 
-#fei-bibliography()
+#bibliography("bibliography.bib")
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]
 
 #appendix([#include "includes/appendixA.typ"], [Algoritmus])
 #appendix([#include "includes/appendixB.typ"], [Výpis dlhého kódu])
 #appendix([#include "includes/appendixC.typ"], [Slovníček pojmov])
-// #appendix([#include "includes/appendix.typ"], [Výpis dlhého kódu])

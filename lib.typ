@@ -72,6 +72,7 @@
 
 #let fei-thesis(
   language: "sk",
+  bibliography-style: "iso-690-numeric",
   body,
 ) = {
   doc-lang.update(language)
@@ -84,6 +85,7 @@
   set par(leading: 10.5pt, first-line-indent: (amount: first-line-indent, all: false), justify: true, spacing: 1em)
 
   set text(size: text-size, font: font, lang: language)
+  set bibliography(style: bibliography-style, title: [#translate("bibliography")])
   set pagebreak(weak: true)
   show heading: set block(below: 1em)
 
@@ -272,20 +274,21 @@
 
 #let fei-bibliography() = {
   [
-    #bibliography("bibliography.bib", style: "iso-690-numeric", title: [#translate("bibliography")])
+    #bibliography("@template/bibliography.bib", style: "iso-690-numeric", title: [#translate("bibliography")])
   ]
 }
 
-#let fei-list-of-glossaries() = {
+#let fei-list-of-glossaries(content) = {
   set heading(outlined: false, numbering: none)
+  content
   abbr.list(title: [#translate("glossary-title")], columns: 1)
-  abbr.load("includes/glossary.csv")
   pagebreak()
 }
 
-#let fei-list-of-manual-glossaries() = {
+#let fei-list-of-manual-glossaries(content) = {
   heading(outlined: false, numbering: none)[#translate("glossary-title")]
-  include "includes/manual_glossary.typ"
+  // include "includes/manual_glossary.typ"
+  content
   pagebreak()
 }
 
@@ -335,7 +338,7 @@
   pagebreak()
 }
 
-#let print-keywordsSK() = {
+#let print-keywords-sk() = {
   set text(heading-2)
   align(left, text(font: font, strong([Kľúčové slová])))
   set text(text-size)
@@ -348,7 +351,7 @@
   pagebreak()
 }
 
-#let print-keywordsEN() = {
+#let print-keywords-en() = {
   set text(heading-3)
   align(left, text(font: font, strong([Keywords])))
   set text(text-size)
@@ -385,9 +388,9 @@
 
   v(20pt)
   if lang == "sk" [
-    #print-keywordsSK()
+    #print-keywords-sk()
   ] else [
-    #print-keywordsEN()
+    #print-keywords-en()
   ]
 }
 
