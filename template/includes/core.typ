@@ -243,8 +243,7 @@ Táto funkcia je špecifická pre informatické odbory a~automaticky zbiera vše
 
 Ak v~práci nemáme výpisy kódov,
 bude potrebné tento riadok z~hlavného súboru `main.typ` vymazať.
-O~uvádzaní časti kódov a~zápisov algoritmov píšeme v
-// kapitole @sec:listings.
+O~uvádzaní časti kódov a~zápisov algoritmov píšeme v kapitole @sec:listings.
 
 == Hlavná textová časť
 
@@ -370,18 +369,18 @@ Jasne deklarujeme splnenia cieľov a naznačíme ďalšie možné smerovanie št
 Ako príklad použijeme nepríjemnú modelovú situáciu,
 ktorá môže počas výskumu nastať.
 Povedzme, že cieľ záverečnej práce bol odmerať
-optické parametre tenkých TiO$\_2$ vrstiev.#footnote[TiO$\_2$ je chemická značka oxidu titaničitého,
+optické parametre tenkých $T i O_2$ vrstiev.#footnote[$T i O_2$ je chemická značka oxidu titaničitého,
   ktorý sa používa napríklad pri solárnych článkoch
   ako priehľadná vrchná elektróda.
   Ide totiž o~typ oxidu s~vlastnosťami polovodičov,
   čiže môže za určitých podmienok viesť elektrický prúd.
   Zároveň je pre viditeľné svetlo priehľadný,
   čo nebýva pri polovodičoch bežné.
-  Optické a~elektrické vlastnosti vrstvy TiO$\_2$
+  Optické a~elektrické vlastnosti vrstvy $T i O_2$
   často závisia od parametrov technologického procesu.]
 Z~dôvodu havárie zariadenia sa nepodarilo takéto vzorky získať
 a~v~skutočnosti sme mohli pracovať iba
-s~tradičnými SiO$\_2$ vrstvami.#footnote[Oxid kremičitý sa v~mikroelektronike používa
+s~tradičnými $S i O_2$ vrstvami.#footnote[Oxid kremičitý sa v~mikroelektronike používa
   ako nevodivá izolačná vrstva.
   Jeho materiálové vlastnosti sú veľmi dobre preskúmané
   a~všeobecne známe.
@@ -396,7 +395,7 @@ Vzniknutú situáciu zhodnotíme v~závere vecne a~pravdivo:
   #emph[Aj napriek poruche technologického zariadenia sme
     dokázali zabezpečiť náhradné vzorky a realizovať merania
     optických vlastností tenkých vrstiev termálneho
-    SiO$\_2$.
+    #ch("SiO2").
     Poznatky, ktoré sme získali pri práci s~pokročilými
     experimentálnymi zariadeniami následne využijeme vo výskume
     materiálových vlastností #ch("TiO2") vrstiev.
@@ -457,14 +456,14 @@ V tomto príklade vidieť prílišnú snahu zahladiť škody
 a~vychvaľovať sa výsledkami,
 ktoré v~skutočnosti nemajú zvláštny význam.
 Je totiž málo pravdepodobné,
-aby s~SiO$\_2$ vznikli unikátne výsledky.
+aby s~#ch("SiO2") vznikli unikátne výsledky.
 Text obsahuje nevhodné absolútne kvantifikátory
 (_nesmierne bohaté skúsenosti, najkvalitnejšie aparatúry,
 najväčší prínos_);
 bagatelizuje nehodu, dokonca jej ďakuje
 (_vďaka drobnej poruche_),
 čím na ňu zbytočne upozorňuje;
-zámerne sa nezmieňuje o~pôvodných TiO$\_2$ vrstvách.
+zámerne sa nezmieňuje o~pôvodných #ch("TiO2") vrstvách.
 Nadužívaním cudzích slov (_kompetencie_)
 autori zväčša maskujú rôzne nedostatky,
 napríklad vlastnú neistotu.
@@ -511,11 +510,12 @@ Forma tohto zoznamu je pomerne komplikovaná a~podrobne
 ju opisuje norma ISO 690: 2023 Dokumentácia -- Bibliografické odkazy -- Obsah, forma a~štruktúra @iso690.
 V~Typste sa bibliografia vygeneruje automaticky z~BibTeX súboru `bibliography.bib`.
 
-Bibliografiu vložíme v~hlavnom súbore `main.typ` pomocou funkcie `fei-bibliography()`:
+Bibliografiu vložíme v~hlavnom súbore `main.typ` nasledovne:
 ```typst
-#fei-bibliography()
+#bibliography("bibliography.bib")
 ```
-// Podrobne sa citáciám budeme venovať v @sec:citation kapitole.
+
+Podrobne sa citáciám budeme venovať v kapitole @sec:citation.
 
 === Záverečná časť
 
@@ -665,9 +665,8 @@ kedy počítač nerozdelí slovo správne.
 Väčšinou máme možnosť do procesu zasiahnuť
 a ručne kontrolovať delenie slov na miestach,
 s ktorými si softvér nevie poradiť.
-Príkaz na preferované rozdelenie slova je `\-`.
-Napríklad slovo `predstave-nie` LaTeX
-preferovane rozdelí v mieste prípony.
+V~Typste sa automatické rozdelenie slov spravuje pomocou jazykových nastavení.
+Napríklad slovo `predstave-nie` sa preferovane rozdelí v mieste prípony.
 
 V každom prípade je žiadúce slová na konci riadka deliť
 a túto možnosť nevypínať.
@@ -889,7 +888,7 @@ GAI formulovala pôvodné myšlienky
 alebo súvislé časti práce.
 Takéto konanie považujeme za nečestné podobne,
 ako keby prácu písal niekto iný,
-// prípadne by boli celé odseky prebrané z iného zdroja bez korektného citovania (pozri kapitolu @sec:citation).
+prípadne by boli celé odseky prebrané z iného zdroja bez korektného citovania (pozri kapitolu @sec:citation).
 
 Používanie umelej inteligencie pri písaní záverečných prác
 upravuje opatrenie rektora STU v Bratislave č. 1/2024-O,
@@ -1296,7 +1295,7 @@ nad tabuľku (pozri napríklad tabuľku~<@tab:template>).
 ) <tab:template>
 
 Na tabuľky sa odvolávame pomocou ich čísla použitím dvojice makier
-`<tab:table>` a~`@tab:template` .
+`<tab:template>` a~`@tab:template` .
 Spôsob odkazovania je podobný ako v prípade obrázkov,
 o~ktorom sme podrobne hovorili v časti @sec:figPlacement.
 
@@ -1309,8 +1308,8 @@ Príliš veľa grafických prvkov znižuje obsahovú hodnotu a čitateľnosť ta
 Formát, ktorý sme vybrali je inšpirovaný trendmi
 v~knižnej sadzbe.
 Tabuľka je zhora a~zdola ohraničená vodorovnými čiarami
-`toprule` a~`bottomrule` z~knižnice `booktabs`.
-Podobne je čiarou `midrule` oddelená hlavička tabuľky
+`table.hline()` v~Typste.
+Podobne je čiarou `table.hline()` oddelená hlavička tabuľky
 a~prípadne aj päta, ak ju použijeme.
 Zvislé čiary sa používajú iba vo výnimočných prípadoch,
 napríklad ak je tabuľka rozdelená na
