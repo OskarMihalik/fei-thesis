@@ -1,0 +1,11 @@
+[package]
+name = "FeiTypst"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Oskar Mihalik"]
+license = "MIT-0"
+description = "Official template for writing thesis on Slovak University of Technology in Bratislava Faculty of Electrical Engineering and Information Technology  (STU FEI)"
+
+[template]
+path = "template"
+entrypoint = "main.typ"
