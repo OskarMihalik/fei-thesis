@@ -1,7 +1,7 @@
 #import "@preview/mitex:0.2.7": *
 #import "@preview/physica:0.9.8": *
 #import "@preview/chemformula:0.1.3": *
-#import "../../lib.typ": *
+#import "@preview/fei-thesis:0.0.2": *
 
 = Štruktúra záverečnej práce <sec:StrukturaPrace>
 Za záverečnú prácu považujeme bakalársku, diplomovú

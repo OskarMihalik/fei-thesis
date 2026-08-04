@@ -1,4 +1,4 @@
-#import "../lib.typ": *
+#import "@preview/fei-thesis:0.0.2": *
 
 #show: fei-thesis.with()
 

@@ -338,7 +338,7 @@
   pagebreak()
 }
 
-#let print-keywordsSK() = {
+#let print-keywords-sk() = {
   set text(heading-2)
   align(left, text(font: font, strong([Kľúčové slová])))
   set text(text-size)
@@ -351,7 +351,7 @@
   pagebreak()
 }
 
-#let print-keywordsEN() = {
+#let print-keywords-en() = {
   set text(heading-3)
   align(left, text(font: font, strong([Keywords])))
   set text(text-size)
@@ -388,9 +388,9 @@
 
   v(20pt)
   if lang == "sk" [
-    #print-keywordsSK()
+    #print-keywords-sk()
   ] else [
-    #print-keywordsEN()
+    #print-keywords-en()
   ]
 }
 
