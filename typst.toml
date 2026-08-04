@@ -1,6 +1,6 @@
 [package]
 name = "fei-thesis"
-version = "0.0.2"
+version = "0.0.3"
 entrypoint = "lib.typ"
 authors = ["Oskar Mihalik"]
 license = "MIT"
@@ -16,4 +16,4 @@ thumbnail = "thumbnail.png"
 [tool.tyler]
 srcdir = "."
 outdir = "dist"
-ignore = ["LICENSE"]
+ignore = [".gitignore"]
