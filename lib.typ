@@ -287,7 +287,6 @@
 
 #let fei-list-of-manual-glossaries(content) = {
   heading(outlined: false, numbering: none)[#translate("glossary-title")]
-  // include "includes/manual_glossary.typ"
   content
   pagebreak()
 }
@@ -365,21 +364,13 @@
 }
 
 /// This function constructs the abstract, which is supposed to come directly after the frontmatter.
-/// -> content
 #let abstract(
   content,
-  /// The font, which is only used for the heading of the abstract paragraph.
-  /// -> string
-  // font: title-font,
-  /// The title which the abstract paragraph should have.
   /// -> "en" | "sk"
   lang: "sk",
 ) = {
-  // English abstract
-  // v(50pt, weak: true)
   set par(first-line-indent: 0pt)
   set text(heading-1)
-  // show: pad.with(x: 1cm)
   align(left, text(font: font, strong(translate("abstract", lang: lang))))
   v(20pt)
   set text(text-size)
@@ -486,7 +477,7 @@
 //[x] bakalarka, diplomovka
 //[x] doupravit titulne stranu podla latex
 //[x] appendix podoplnat
-//[] upravit strukturu
-//[] publish to typst universe
+//[x] upravit strukturu
+//[x] publish to typst universe
 // nice to have:
 // [] dizertacka
