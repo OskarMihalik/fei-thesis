@@ -435,12 +435,21 @@
   body
 }
 
-#let appendix(content, title) = {
+#let appendix(content, title, label-name: none) = {
   appendix-counter.step()
   context {
     let suffix = translate("appendix-suffix")
     let letter = numbering("A", appendix-counter.get().first())
-    heading(numbering: none)[#suffix #letter: #title]
+    [
+      #heading(numbering: none)[#suffix #letter: #title]
+      #if label-name != none [
+        #show heading: none
+        #heading(outlined: false)[#title]
+      
+      #label(label-name)
+
+      ]
+    ]
   }
 
   content

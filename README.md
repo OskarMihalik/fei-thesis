@@ -5,7 +5,7 @@ Official template for writing thesis on Slovak University of Technology in Brati
 ## Usage
 
 ```typst
-#import "@preview/fei-typst:0.1.5": *
+#import "@preview/fei-typst:0.0.1": *
 ```
 
 ## License

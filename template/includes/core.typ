@@ -30,8 +30,8 @@ Práca napísaná v~slovenskom jazyku má tieto časti @vyhlaska2332011 @usmerne
   + záver
   + zoznam použitej literatúry
 + Záverečná časť
-  + dodatky (podľa potreby)
-  + prílohy (podľa potreby)
+  + dodatky (podľa potreby) @alg:1 @code:1 @glossary:1
+  + prílohy (podľa potreby) 
 
 == Úvodná časť práce
 Hlavným obsahom úvodnej časti sú formálne náležitosti práce a musia byť zaradené v~poradí podľa zoznamu v~úvode tejto kapitoly.
