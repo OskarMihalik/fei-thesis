@@ -2,7 +2,7 @@
 
 #show: fei-thesis.with(language: "sk")
 
-#show: set-variables.with((
+#show: fei-setup.with((
   title: "Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst",
   author: "RNDr. Juraj Chlpík, PhD.",
   reg-nr: "FEI-xxxx-xxxx",
@@ -20,21 +20,21 @@
   training-workplace: "Názov školiaceho pracoviska",
 ))
 
-#cover-page()
-#title-page()
+#fei-cover-page()
+#fei-title-page()
 #fei-assignment(read("includes/assignment.pdf", encoding: none), pages: 2)
 
 
 #fei-thanks[#include "includes/thanks.typ"]
 
-#abstract(
+#fei-abstract(
   [
     #include "includes/abstractSK.typ"
   ],
   lang: "sk",
 )
 
-#abstract(
+#fei-abstract(
   [
     #include "includes/abstractEN.typ"
   ],
@@ -42,21 +42,22 @@
 )
 
 #show: start-numbering.with()
+
 #fei-outline()
-#fei-outline-figures-tables()
 #fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
-// #fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
 #fei-outline-code()
+#fei-outline-figures-tables()
+// #fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
 
 
-#introduction[#include "includes/introduction.typ"]
+#fei-introduction[#include "includes/introduction.typ"]
 
-#main-matter[#include "includes/core.typ"]
+#fei-core[#include "includes/core.typ"]
 #fei-conclusion[#include "includes/conclusion.typ"]
 
 #bibliography("bibliography.bib")
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]
 
-#appendix([#include "includes/appendixA.typ"], [Algoritmus], label-name: "alg:1")
-#appendix([#include "includes/appendixB.typ"], [Výpis dlhého kódu], label-name: "code:1")
-#appendix([#include "includes/appendixC.typ"], [Slovníček pojmov], label-name: "glossary:1")
+#fei-appendix([#include "includes/appendixA.typ"], [Algoritmus], label-name: "alg:1")
+#fei-appendix([#include "includes/appendixB.typ"], [Výpis dlhého kódu], label-name: "code:1")
+#fei-appendix([#include "includes/appendixC.typ"], [Slovníček pojmov], label-name: "glossary:1")

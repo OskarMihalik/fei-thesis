@@ -152,7 +152,7 @@
   body
 }
 
-#let title-page() = {
+#let fei-title-page() = {
   set text(font: "Liberation Serif")
   set page(
     margin: (top: 3.024cm, bottom: 2.775cm, left: 2.75cm, right: 2.75cm),
@@ -225,7 +225,7 @@
   }
 }
 
-#let cover-page() = {
+#let fei-cover-page() = {
   set text(font: "Liberation Serif")
   set page(
     margin: (top: 2cm, bottom: 1.8cm, left: 2.75cm, right: 2.75cm),
@@ -277,7 +277,7 @@
 /// document set rule applies to the whole document:
 /// `#show: set-variables.with((title: "...", author: "..."))`
 /// Keys that are left out fall back to `default-variables`.
-#let set-variables(vars, body) = {
+#let fei-setup(vars, body) = {
   let vars = default-variables + vars
   variables-state.update(vars)
 
@@ -384,7 +384,7 @@
 }
 
 /// This function constructs the abstract, which is supposed to come directly after the frontmatter.
-#let abstract(
+#let fei-abstract(
   content,
   /// -> "en" | "sk"
   lang: "sk",
@@ -405,13 +405,13 @@
   ]
 }
 
-#let introduction(content) = {
+#let fei-introduction(content) = {
   heading(numbering: none)[#translate("introduction")]
   content
   pagebreak()
 }
 
-#let main-matter(content) = {
+#let fei-core(content) = {
   content
   pagebreak()
 }
@@ -423,7 +423,7 @@
 }
 
 #let fei-ai-declaration(content) = {
-  heading([#translate("ai-declaration")], numbering: none, outlined: false)
+  heading([#translate("ai-declaration")], numbering: none, level: 2)
   content
   pagebreak()
 }
@@ -445,17 +445,7 @@
 
 #let appendix-counter = counter("appendix")
 
-#let noindent(body) = {
-  set par(first-line-indent: 0pt)
-  body
-}
-
-#let indent(body) = {
-  set par(first-line-indent: (amount: first-line-indent, all: true))
-  body
-}
-
-#let appendix(content, title, label-name: none) = {
+#let fei-appendix(content, title, label-name: none) = {
   appendix-counter.step()
   context {
     let suffix = translate("appendix-suffix")
@@ -477,36 +467,13 @@
   pagebreak()
 }
 
-//[x] cislovanie a nadpis medzera vatsia ok
-//[x]pozriet ostatne skolske sablony, best practises.... najlepšia: https://github.com/npikall/vienna-tech
-//[x] postupne prepisovat sablonu
-//[x] Zoznam algoritmov, obrazkov a tabuliek
-//[x] Zoznam výpisov kódov
-//[x] conclusion
-//[x] ==== Mená tvorcov v latechu je to ako \paragraph -> najst alternativu v typst
-//    heading level 4 a viac nie je v outline
-//[x]   show heading.where(level: 4): set heading(outlined: false, numbering: none) spravit tak aby 4 a vatsie
-//[x] po nadpisoch vypnut first line indent a math , po ostatnych ako figure treba mat first line indent
-// ale niekedy uzivatel aby vedel sam vypnut first line indent
-// po nadpisoch neodsadzovat inak odsadzovat, ale mat moznost vypnut
-// #[
-// #set par(first-line-indent: 0pt)
-// asdfasfd
-//
-// ]
-//
-// dalksdfi
-//[ ] https://github.com/typst/typst/issues/1093 ciarka v math
-//[x] upravit codeblock podla latex
-//[x] vyhodit prefix na odkazy ako Tabuľka 2., Výpis 1., nechat iba 2., 1.
-// [x] caption kodu Výpis 1 zmenit na Výpis kódu 1.
-// low prio:
-//[ ]
 
-//[x] bakalarka, diplomovka
-//[x] doupravit titulne stranu podla latex
-//[x] appendix podoplnat
-//[x] upravit strukturu
-//[x] publish to typst universe
-// nice to have:
-// [] dizertacka
+#let noindent(body) = {
+  set par(first-line-indent: 0pt)
+  body
+}
+
+#let indent(body) = {
+  set par(first-line-indent: (amount: first-line-indent, all: true))
+  body
+}
