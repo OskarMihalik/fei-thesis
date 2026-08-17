@@ -8,7 +8,7 @@
 #let first-line-indent = 1.5em
 #let font = "New Computer Modern"
 #let doc-lang = state("doc-lang", "sk")
-#let variables-state = state("variables", (
+#let default-variables = (
   title: "Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst",
   author: "RNDr. Juraj Chlpík, PhD.",
   reg-nr: "FEI-xxxx-xxxx",
@@ -24,7 +24,8 @@
   supervisor: "tituly Meno Priezvisko, tituly",
   consultant: "tituly Meno Priezvisko, tituly",
   training-workplace: "Názov školiaceho pracoviska",
-))
+)
+#let variables-state = state("variables", default-variables)
 #let i18n = (
   sk: (
     introduction: "Úvod",
@@ -268,8 +269,20 @@
   }
 }
 
-#let set-variables(vars) = {
+/// Sets the thesis variables and the PDF metadata. Use it as a show rule so the
+/// document set rule applies to the whole document:
+/// `#show: set-variables.with((title: "...", author: "..."))`
+/// Keys that are left out fall back to `default-variables`.
+#let set-variables(vars, body) = {
+  let vars = default-variables + vars
   variables-state.update(vars)
+
+  set document(
+    title: vars.at("title"),
+    author: vars.at("author"),
+  )
+
+  body
 }
 
 #let fei-bibliography() = {

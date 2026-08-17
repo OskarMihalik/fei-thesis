@@ -1,8 +1,8 @@
 #import "../lib.typ": *
 
-#show: fei-thesis.with()
+#show: fei-thesis.with(language: "sk")
 
-#set-variables((
+#show: set-variables.with((
   title: "Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst",
   author: "RNDr. Juraj Chlpík, PhD.",
   reg-nr: "FEI-xxxx-xxxx",
