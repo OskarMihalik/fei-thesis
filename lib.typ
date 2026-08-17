@@ -152,6 +152,7 @@
 }
 
 #let title-page() = {
+  set text(font: "Liberation Serif")
   set page(
     margin: (top: 3.024cm, bottom: 2.775cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
@@ -223,9 +224,11 @@
 }
 
 #let cover-page() = {
+  set text(font: "Liberation Serif")
   set page(
     margin: (top: 2cm, bottom: 1.8cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
+
   )
 
   context {
@@ -316,12 +319,18 @@
 }
 
 #let fei-outline() = {
+  set par(first-line-indent: (amount: first-line-indent, all: true))
+
   show outline.entry.where(
     level: 1,
-  ): it => link(
+  ): it => [
+    #v(0.5em)
+     #set par(first-line-indent: (amount: 0em, all: true))
+    #link(
     it.element.location(),
-    [#strong([#it.prefix()   #it.body() #box(width: 1fr, repeat(gap: 0.15em)[ ]) #it.page() \ ])],
-  )
+    [#strong([#it.prefix() #if it.prefix() != none { h(1em) } #it.body() #box(width: 1fr, repeat(gap: 0.15em)[ ]) #it.page() #v(0.1em) ])],
+  )]
+  
   outline()
   pagebreak()
 }
