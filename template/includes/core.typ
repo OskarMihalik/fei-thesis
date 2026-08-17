@@ -157,20 +157,9 @@ Sú to nepovinné prehľady tzv. plávajúcich objektov.
 V~Typste sa dajú vytvoriť pomocou funkcie `outline()` s~parameterom `target`,
 ktorý špecifikuje typ objektu (obrázky alebo tabuľky).
 
-Príklad pre zoznam obrázkov:
+My sme pripravili funkciu `#fei-outline-figures-tables()`, ktorá to za vás spraví:
 ```typst
-#outline(
-  title: [Zoznam obrázkov],
-  target: figure.where(kind: image),
-)
-```
-
-Príklad pre zoznam tabuliek:
-```typst
-#outline(
-  title: [Zoznam tabuliek],
-  target: figure.where(kind: table),
-)
+#fei-outline-figures-tables()
 ```
 
 Ak zoznamy v~práci nechceme, môžeme príslušné príkazy z~hlavného súboru
@@ -1066,13 +1055,13 @@ ktorého argument je text pod obrázkom.
 
 ```typst
 #figure(
-  image("../assets/Measurement.png", width: 100%),
+  image("../assets/Measurement.png", width: 50%),
   caption: [Pravidelné meranie výšky dieťaťa],
 ) <fig:measurement>
 ```
 
 #figure(
-  image("../assets/Measurement.png", width: 100%),
+  image("../assets/Measurement.png", width: 50%),
   caption: [Pravidelné meranie výšky dieťaťa],
 ) <fig:measurement>
 
@@ -1143,7 +1132,7 @@ v~prvom rade čitateľná, zreteľná a~jednoznačná.
 Tomu treba prispôsobiť všetky zásady pri tvorbe grafov.
 
 #figure(
-  image("../assets/Graph1.pdf", width: 80%),
+  image("../assets/Graph1.pdf", width: 70%),
   caption: [Ukážka grafu vytvoreného v externom programe a vloženého ako PDF súbor.
     Použité písmo je Arial s veľkosťou približne 10 pt. Plné krúžky sú body merania a~prerušovaná čiara je kvadratický fit závislosti $s = a t^2 / 2$, pričom $a = (2,00 plus.minus 0,01) upright("m") upright("s")^(-2)$.],
 ) <fig:Graph1>
