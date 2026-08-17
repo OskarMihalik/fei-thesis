@@ -90,8 +90,15 @@
   set bibliography(style: bibliography-style, title: [#translate("bibliography")])
   set pagebreak(weak: true)
   show heading: set block(below: 1em)
+  
+  show heading: it => [
+    #if it.level == 1 {
+      pagebreak(weak: true)
+    }
+    #block(
+    if it.numbering != none { counter(heading).display(it.numbering) + h(1.2em) } + it.body,
+  )]
 
-  show heading.where(level: 1): set text(size: heading-1)
   show heading.where(level: 2): set text(size: heading-2)
   show heading.where(level: 3): set text(size: heading-3)
   show heading.where(level: 4): set heading(outlined: false, numbering: none)
@@ -100,9 +107,8 @@
 
   set figure(numbering: "1")
   set heading(numbering: "1.1")
-  show heading: it => block(
-    if it.numbering != none { counter(heading).display(it.numbering) + h(1.2em) } + it.body,
-  )
+
+  set quote(block: true)
 
   set enum(
     full: true,

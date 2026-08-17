@@ -388,10 +388,7 @@ s~tradičnými $S i O_2$ vrstvami.#footnote[Oxid kremičitý sa v~mikroelektroni
   je to obyčajné sklo.]
 Vzniknutú situáciu zhodnotíme v~závere vecne a~pravdivo:
 
-#block(
-  inset: 1em,
-  fill: rgb("#f5f5f5"),
-)[
+#quote[
   #emph[Aj napriek poruche technologického zariadenia sme
     dokázali zabezpečiť náhradné vzorky a realizovať merania
     optických vlastností tenkých vrstiev termálneho
@@ -408,10 +405,7 @@ a tým pádom sme nesplnili ciele,
 stane sa záverečná práca neobhájiteľnou.
 Nasledujúci príklad je ukážka takejto nevhodnej formulácie:
 
-#block(
-  inset: 1em,
-  fill: rgb("#f5f5f5"),
-)[
+#quote[
   #emph[Počas prípravy tenkých vrstiev došlo k neočakávanej
     poruche technologického zariadenia,
     ktorá znemožnila výrobu plánovaných vzoriek.
@@ -439,17 +433,16 @@ Tá môže, paradoxne, nedostatky ešte viac zvýrazniť.
 Nasledujúca ukážka je síce optimistická,
 avšak do textu práce taktiež nevhodná:
 
-#block(
-  inset: 1em,
-  fill: rgb("#f5f5f5"),
-)[
+
+#quote[
   #emph[Vďaka drobnej poruche technologického zariadenia sme
     mohli realizovať merania optických vlastností tenkých vrstiev
     termálneho #ch("SiO2") a~získať tak unikátne výsledky.
     Nesmierne bohaté skúsenosti s~najkvalitnejšími meracími
     aparatúrami využijeme aj v~nadväzujúcom výskume.
     Rozšírenie nadobudnutých kompetencií na iné materiály
-    považujeme za najväčší prínos predkladanej práce.]
+    považujeme za najväčší prínos predkladanej práce.
+  ]
 ]
 
 V tomto príklade vidieť prílišnú snahu zahladiť škody
@@ -497,7 +490,7 @@ v~hlavnom súbore projektu `main.typ`:
 #fei-conclusion[#include "includes/conclusion.typ"]
 ```
 
-== Zoznam použitej literatúry
+=== Zoznam použitej literatúry
 
 Citované zdroje označujeme v texte číslom v hranatých zátvorkách.
 Ide o poradové číslo uvedenia publikácií tak, ako sa postupne s nimi v texte pracuje.
@@ -517,7 +510,7 @@ Bibliografiu vložíme v~hlavnom súbore `main.typ` nasledovne:
 
 Podrobne sa citáciám budeme venovať v kapitole @sec:citation.
 
-=== Záverečná časť
+== Záverečná časť
 
 Na záver práce uvádzame dodatky a prílohy.
 Prílohy práce sú zväčša materiály,
@@ -560,7 +553,7 @@ rovníc a ďalšie vizuálne parametre záverečnej práce
 rešpektujú do maximálnej miery normu STN 01 6910: 2023
 Pravidlá písania a úpravy písomností @stn016910.
 
-=== Rozmery strany
+==== Rozmery strany
 
 Veľkosť bežnej textovej strany záverečnej práce je A4,
 t.~j. 21 cm × 29,7 cm.
@@ -572,7 +565,7 @@ je od spodnej hrany stránky vzdialená o 1,25 cm.
 Horný a dolný okraj obálky sú z estetických
 dôvodov zmenšené na 2 cm.
 
-=== Písmo a riadkovanie
+==== Písmo a riadkovanie
 
 Základný font šablóny je normálny rez tzv. antikvového písma
 s~veľkosťou 12 pt.
@@ -587,7 +580,7 @@ alebo veľkosťou.
 Parameter `leading` v~šablóne má hodnotu 10,5 pt,
 čo zabezpečuje vhodný odstup medzi riadkami textu.
 
-=== Nadpisy
+==== Nadpisy
 
 Šablóna záverečnej práce FEIstyle používa v~Typste rôzne úrovne nadpisov.
 Nadpis najvyššej úrovne je `=` zodpovedajúci kapitole.
@@ -1026,7 +1019,7 @@ a~stručne opíšeme jednotlivé symboly.
 
 - Sumačné indexy píšeme kurzívou: $p_N(x) = sum_(i=1)^N a_i x^i$. Symbol $i$ v tomto príklade predstavuje sumačný index, nie komplexnú jednotku.
 
-- Vektory uvádzame buď polotučným šikmým rezom ($bold(a)$, $bold(b)$, $bold(F)$) alebo šikmým netučným rezom so šípkou nad symbolom: $vec(a)$, $vec(b)$, $vec(F)$. Treba si vybrať jeden spôsob a~ten používať v~celej práci.
+- Vektory uvádzame buď polotučným šikmým rezom ($bold(a)$, $bold(b)$, $bold(F)$) alebo šikmým netučným rezom so šípkou nad symbolom: $arrow(a)$, $arrow(b)$, $arrow(F)$. Treba si vybrať jeden spôsob a~ten používať v~celej práci.
 
 - Označenia matíc a tenzorov zapisujeme polotučným šikmým rezom:
   $ bold(M) = mat(m_{11}, m_{12}; m_{21}, m_{22}) $
@@ -1041,14 +1034,6 @@ a~stručne opíšeme jednotlivé symboly.
 - Určitý integrál vyzerá takto: $ integral_a^b f(x) upright(d) x $
 
   V~integráli spravidla vkladáme pred diferenciál úzku medzeru.
-
-// #[
-//   #set par(first-line-indent: 0pt)
-//   asdfasfd
-
-// ]
-
-// dalksdfi
 
 == Obrázky
 
