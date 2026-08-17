@@ -34,8 +34,8 @@
     glossary-title: "Zoznam značiek a skratiek",
     bibliography: "Literatúra",
     outline-code: "Zoznam výpisov kódov",
-    outline-table: "Zoznam výpisov tabuliek",
-    outline-image: "Zoznam výpisov obrázkov",
+    outline-table: "Zoznam tabuliek",
+    outline-figures-tables: "Zoznam obrázkov a tabuliek",
     code-caption: "Výpis kódu",
     conclusion: "Záver",
     ai-declaration: "Použitie nástrojov umelej inteligencie",
@@ -81,6 +81,7 @@
   set page(
     paper: "a4",
     margin: (top: 3cm, bottom: 3cm, left: 2.75cm, right: 2.75cm),
+    numbering: none,
   )
 
   set par(leading: 10.5pt, first-line-indent: (amount: first-line-indent, all: false), justify: true, spacing: 1em)
@@ -157,6 +158,7 @@
     margin: (top: 3.024cm, bottom: 2.775cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
   )
+  counter(page).update(1) 
 
   context {
     let vars = variables-state.get()
@@ -228,7 +230,6 @@
   set page(
     margin: (top: 2cm, bottom: 1.8cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
-
   )
 
   context {
@@ -343,21 +344,18 @@
   pagebreak()
 }
 
-#let fei-outline-tables() = {
+#let fei-outline-figures-tables() = {
   outline(
-    title: [#translate("outline-table")],
+    title: [#translate("outline-figures-tables")],
+    target: figure.where(kind: image),
+  )
+  outline(
+    title: none,
     target: figure.where(kind: table),
   )
   pagebreak()
 }
 
-#let fei-outline-image() = {
-  outline(
-    title: [#translate("outline-image")],
-    target: figure.where(kind: image),
-  )
-  pagebreak()
-}
 
 #let print-keywords-sk() = {
   set text(heading-2)

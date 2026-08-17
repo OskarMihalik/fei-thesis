@@ -41,14 +41,13 @@
   lang: "en",
 )
 
+#show: start-numbering.with()
 #fei-outline()
-#fei-outline-tables()
-#fei-outline-image()
+#fei-outline-figures-tables()
 #fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
 // #fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
 #fei-outline-code()
 
-#show: start-numbering.with()
 
 #introduction[#include "includes/introduction.typ"]
 
