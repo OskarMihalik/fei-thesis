@@ -1250,7 +1250,7 @@ Opisný text nekončí bodkou,
 ani iným interpunkčným znamienkom,
 pokiaľ ide iba o názov alebo jednu oznamovaciu vetu.
 Celý odsek s~označením, číslom a~opisom umiestňujeme
-nad tabuľku (pozri napríklad tabuľku~<@tab:template>).
+nad tabuľku (pozri napríklad tabuľku~@tab:template).
 
 #figure(
   table(
@@ -1258,7 +1258,7 @@ nad tabuľku (pozri napríklad tabuľku~<@tab:template>).
     align: (left, right, right, right, right),
     stroke: none,
     table.hline(),
-    table.header([*názov riadka*], [*stĺpec 1*], [*stĺpec 2*], [*stĺpec 3*], [*stĺpec 4*]),
+    [*názov riadka*], [*stĺpec 1*], [*stĺpec 2*], [*stĺpec 3*], [*stĺpec 4*],
     table.hline(),
     [prvý riadok], [hodnota 1], [hodnota 2], [hodnota 3], [hodnota 4],
     [druhý riadok], [hodnota 5], [hodnota 6], [hodnota 7], [hodnota 8],
@@ -1268,8 +1268,7 @@ nad tabuľku (pozri napríklad tabuľku~<@tab:template>).
   caption: [Vzorová tabuľka],
 ) <tab:template>
 
-Na tabuľky sa odvolávame pomocou ich čísla použitím dvojice makier
-`<tab:template>` a~`@tab:template` .
+Odkaz na tabuľky ako aj na všetko iné vytvoríme takýmto zápisom~`<tab:template>`.
 Spôsob odkazovania je podobný ako v prípade obrázkov,
 o~ktorom sme podrobne hovorili v časti @sec:figPlacement.
 
@@ -1358,17 +1357,31 @@ ktorý príslušne označíme.
 
 Ak je súčasť cieľov práce tvorba softvéru, prípadne analýza programátorských riešení,
 je žiaduce uvádzať časti kódov vo forme krátkych výpisov (angl. _listing_).
-Existuje niekoľko balíčkov, ktoré umožňujú zahrnúť časti kódov do textu práce.
-Šablóna FEIstyle používa balík na zobrazovanie kódu.
-Prostredie na vloženie kódu vytvorí blok kódu s~menovkou a~číslom výpisu.
-Makro na vytvorenie zoznamu všetkých výpisov na začiatku dokumentu,
-ktorý nie je povinnou súčasťou práce,
+Typst má sadzbu kódu zabudovanú priamo v~jazyku, takže na výpisy nepotrebujeme žiadny doplnkový balík.
+Krátky úsek kódu vložíme do riadka textu medzi spätné apostrofy (napríklad `printf()`),
+viacriadkový blok kódu ohraničíme trojicou spätných apostrofov.
+Ak hneď za úvodnú trojicu doplníme označenie jazyka (`c`, `python`, `matlab` a~pod.),
+Typst automaticky zvýrazní syntax daného jazyka.
+
+Blok kódu, ktorý má mať menovku a~číslo výpisu, vložíme do funkcie `figure()`.
+Šablóna `fei-thesis` takémuto obrázku typu `raw` nastaví menovku, priebežné číslovanie
+a~zarovnanie kódu doľava.
+Na výpis sa odvolávame návestím v~tvare `<lst:main-c>` a~odkazom `@lst:main-c`.
+Zoznam všetkých výpisov na začiatku dokumentu vytvorí funkcia `fei-outline-code()`
+v~súbore `main.typ`.
+Tento zoznam nie je povinnou súčasťou práce,
 býva však dobrým zvykom uvádzať ho najmä v~informatických študijných programoch.
+Ak ho nechceme, príslušný riadok vynecháme alebo označíme ako komentár a~zoznam sa nevytvorí.
 
 Ukážka kódu je vo výpise~@lst:main-c.
-// V dodatku @att:listings nájdeme príklad výpisu obsahu externého textového súboru.
-Ďalšie podrobnosti možno nájsť v~dokumentácii k~balíčkom#footnote[#link("https://ctan.org/pkg/listings")[ctan.org/pkg/listings]]
-alebo v~tutoriáli služby Overleaf#footnote[#link("https://www.overleaf.com/learn/latex/Code_listing")[www.overleaf.com/learn/latex/Code_listing]].
+Dlhší kód nemusíme prepisovať do textu práce — obsah externého súboru vypíšeme funkciou
+`raw(read("listings/subor.py"), lang: "python")`,
+ako je to v~dodatku s~výpisom dlhého kódu.
+Ďalšie podrobnosti možno nájsť v~dokumentácii
+Typstu#footnote[#link("https://typst.app/docs/reference/text/raw/")[typst.app/docs/reference/text/raw]],
+prípadne v~dokumentácii balíka `codly`#footnote[#link("https://typst.app/universe/package/codly/")[typst.app/universe/package/codly]],
+ktorý dopĺňa číslovanie riadkov, zvýrazňovanie vybraných častí a~rámovanie kódu.
+
 #figure(
   ```c
   /* Hello World program */
@@ -1388,19 +1401,14 @@ alebo v~tutoriáli služby Overleaf#footnote[#link("https://www.overleaf.com/lea
   caption: [Ukážka výpisu kódu programu],
 )<lst:main-c>
 
-=== Algoritmy
+==== Algoritmy
 
-Dvojica balíkov#footnote[#link("https://ctan.org/pkg/algorithms")[ctan.org/pkg/algorithms]]
-na zápis algoritmizácie pomocou pseudokódov
-uľahčuje formálny opis algoritmov.
+Formálny opis algoritmov pomocou pseudokódu uľahčujú balíky z~repozitára Typst
+Universe#footnote[#link("https://typst.app/universe/")[typst.app/universe]],
+napríklad `algorithmic`.
 Tieto nástroje sa uplatňujú najmä v prípade teoretických prác v~oblasti informatiky a~softvérového inžinierstva.
-Šablóna FEIstyle načítava balíky automaticky a~tiež umožňuje vytvorenie zoznamu všetkých algoritmov
-na začiatku záverečnej práce.
-Príkaz možno vynechať alebo označiť riadok ako poznámku, zoznam sa tak nevytvorí.
-// Príklad algoritmu je uvedený v dodatku @att:algorithms.
-
-Ďalšie podrobnosti získame z~tutoriálov#footnote[#link("https://www.overleaf.com/learn/latex/Algorithms")[www.overleaf.com/learn/latex/Algorithms]]
-alebo z~dokumentácie k~jednotlivým balíčkom.
+Šablóna `fei-thesis` ich nenačítava automaticky, do dokumentu ich pridáme importom
+v~tvare `#import "@preview/algorithmic:1.0.7"`. Ukážku môžme vidieť v dodatku @att:listings.
 
 = Citovanie externých zdrojov <sec:citation>
 

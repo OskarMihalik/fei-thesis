@@ -90,6 +90,8 @@
   set bibliography(style: bibliography-style, title: [#translate("bibliography")])
   set pagebreak(weak: true)
 
+  set table(inset: 0.7em)
+
   show figure.caption: it => block({
     set align(left)
       strong({

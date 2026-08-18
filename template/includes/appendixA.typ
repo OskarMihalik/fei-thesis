@@ -1,30 +1,38 @@
-#figure(
-  [```
-  \begin{algorithm}
-  \caption{Vypočítaj $y = x^n$}
-  \label{alg:calculation-1}
-  \begin{algorithmic}
-      \REQUIRE $n \geq 0 \vee x \neq 0$
-      \ENSURE $y = x^n$
-      \STATE $y \Leftarrow 1$
-      \IF{$n < 0$}
-          \STATE $X \Leftarrow 1 / x$
-          \STATE $N \Leftarrow -n$
-      \ELSE
-          \STATE $X \Leftarrow x$
-          \STATE $N \Leftarrow n$
-      \ENDIF
-      \WHILE{$N \neq 0$}
-          \IF{$N$ is even}
-              \STATE $X \Leftarrow X \times X$
-              \STATE $N \Leftarrow N / 2$
-          \ELSE[$N$ is odd]
-              \STATE $y \Leftarrow y \times X$
-              \STATE $N \Leftarrow N - 1$
-          \ENDIF
-      \ENDWHILE
-  \end{algorithmic}
-  \end{algorithm}
-
-  ```],
-) <att:listings>
+#import "@preview/algorithmic:1.0.7"
+#import algorithmic: style-algorithm, algorithm-figure
+#show: style-algorithm
+#algorithm-figure(
+  "Binary Search",
+  vstroke: .5pt + luma(200),
+  {
+    import algorithmic: *
+    Procedure(
+      "Binary-Search",
+      ("A", "n", "v"),
+      {
+        Comment[Initialize the search range]
+        Assign[$l$][$1$]
+        Assign[$r$][$n$]
+        LineBreak
+        While(
+          $l <= r$,
+          {
+            Assign([mid], FnInline[floor][$(l + r) / 2$])
+            IfElseChain(
+              $A ["mid"] < v$,
+              {
+                Assign[$l$][$"mid" + 1$]
+              },
+              [$A ["mid"] > v$],
+              {
+                Assign[$r$][$"mid" - 1$]
+              },
+              Return[mid],
+            )
+          },
+        )
+        Return[*null*]
+      },
+    )
+  }
+)<att:listings>
