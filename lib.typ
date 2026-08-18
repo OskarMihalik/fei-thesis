@@ -89,6 +89,20 @@
   set text(size: text-size, font: font, lang: language)
   set bibliography(style: bibliography-style, title: [#translate("bibliography")])
   set pagebreak(weak: true)
+
+  show figure.caption: it => block({
+    set align(left)
+      strong({
+        it.supplement
+        [ ]
+        context it.counter.display(it.numbering)
+        it.separator
+      })
+      [ ]
+    it.body
+})
+
+
   show heading: set block(below: 1em)
   
   show heading: it => [

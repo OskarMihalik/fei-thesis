@@ -47,7 +47,7 @@ premenných v~úvode hlavného súboru `main.typ`. @GSM
 
 Zadanie vložíme v~hlavnom súbore `main.typ` nasledovne:
 ```typst
-#fei-assignment("includes/assignment.pdf", pages: 2)
+#fei-assignment(read("includes/assignment.pdf", encoding: none), pages: 2)
 ```
 kde prvý parameter je cesta k PDF súboru so zadaním a~parameter `pages`
 špecifikuje počet strán, ktoré chceme vložiť.
@@ -114,16 +114,16 @@ spravidla 100 až 500 slov"_ @usmernenie562011.
 Text slovenského a~anglického abstraktu sa nachádzajú
 v~súboroch `abstractSK.typ` a~`abstractEN.typ` v~priečinku `includes`.
 
-Do dokumentu sa vložia pomocou funkcie `abstract()` v~hlavnom súbore `main.typ`:
+Do dokumentu sa vložia pomocou funkcie `fei-abstract()` v~hlavnom súbore `main.typ`:
 ```typst
-#abstract(
+#fei-abstract(
   [
     #include "includes/abstractSK.typ"
   ],
   lang: "sk",
 )
 
-#abstract(
+#fei-abstract(
   [
     #include "includes/abstractEN.typ"
   ],
@@ -265,9 +265,9 @@ necháme si jeho napísanie až na záver,
 keď už bude väčšina hlavného obsahu práce hotová.
 
 Text úvodu sa nachádza v~súbore `includes/introduction.typ`
-a~do hlavného dokumentu sa vloží pomocou funkcie `introduction`:
+a~do hlavného dokumentu sa vloží pomocou funkcie `fei-introduction`:
 ```typst
-#introduction[#include "includes/introduction.typ"]
+#fei-introduction[#include "includes/introduction.typ"]
 ```
 
 === Jadro
@@ -295,9 +295,9 @@ Odporúčaná štruktúra tejto časti je na
 strane~<@sec:StrukturaPrace>.
 
 Samotný obsah jadra sa nachádza v~súbore `includes/core.typ`.
-Do hlavného dokumentu `main.typ` sa načíta pomocou funkcie `main-matter`:
+Do hlavného dokumentu `main.typ` sa načíta pomocou funkcie `fei-core`:
 ```typst
-#main-matter[#include "includes/core.typ"]
+#fei-core[#include "includes/core.typ"]
 ```
 
 Ak je `core.typ` príliš obsiahly,
@@ -964,9 +964,9 @@ $ U = 5","07 thin upright("V") $ <eq:quantity>
 
 kde $U$ je elektrické napätie.
 Môžeme si všimnúť, že okolo znaku rovnosti sú medzery,
-desatinná čiarka sa píše bez medzier.
+desatinná čiarka sa píše bez medzier takto `$5","07$`.
 
-TeX v~matematickom móde automaticky sádže veličiny kurzívou.
+Typst math v~matematickom móde automaticky sádže veličiny kurzívou.
 Ak chceme, aby bola jednotka V vzpriamená, použijeme v~matematickom móde funkciu `upright()`.
 Medzery okolo znaku rovnosti sú taktiež automatické.
 
@@ -998,7 +998,7 @@ a~stručne opíšeme jednotlivé symboly.
 
 - Fyzikálne jednotky píšeme vzpriameným písmom: $a = 10 upright("cm")$.
 
-- Čísla píšeme vzpriameným písmom: $1$; $2$; $3$; $1024$; $3,14$ a podobne.
+- Čísla píšeme vzpriameným písmom: $1$; $2$; $3$; $1024$; $3","14$ a podobne.
 
 - Skratky matematických funkcií píšeme vzpriameným písmom: $sin(α + β)$, $cos ω t$, $log_a x = frac(ln x, ln a)$, $e^(i π) = -1$.
 
@@ -1134,7 +1134,7 @@ Tomu treba prispôsobiť všetky zásady pri tvorbe grafov.
 #figure(
   image("../assets/Graph1.pdf", width: 70%),
   caption: [Ukážka grafu vytvoreného v externom programe a vloženého ako PDF súbor.
-    Použité písmo je Arial s veľkosťou približne 10 pt. Plné krúžky sú body merania a~prerušovaná čiara je kvadratický fit závislosti $s = a t^2 / 2$, pričom $a = (2,00 plus.minus 0,01) upright("m") upright("s")^(-2)$.],
+    Použité písmo je Arial s veľkosťou približne 10 pt. Plné krúžky sú body merania a~prerušovaná čiara je kvadratický fit závislosti $s = a t^2 / 2$, pričom $a = (2","00 plus.minus 0","01) upright("m") upright("s")^(-2)$.],
 ) <fig:Graph1>
 
 === Formát súboru
