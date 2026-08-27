@@ -86,6 +86,13 @@
 
   set text(size: text-size, font: font, lang: language)
   set bibliography(style: bibliography-style, title: [#translate("bibliography")])
+  // https://github.com/typst/typst/issues/1975#issuecomment-5004304475
+  // Support for formatting within bibliography entries inside *.bib files
+  show bibliography: body => {
+    show "~": [~]
+    body
+  }
+
   set pagebreak(weak: true)
 
   set table(inset: 0.7em)
@@ -314,12 +321,6 @@
   )
 
   body
-}
-
-#let fei-bibliography() = {
-  [
-    #bibliography("@template/bibliography.bib", style: "iso-690-numeric", title: [#translate("bibliography")])
-  ]
 }
 
 #let fei-list-of-glossaries(content) = {
