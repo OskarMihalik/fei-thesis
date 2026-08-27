@@ -1,0 +1,5 @@
+{
+    "tinymist.exportPdf": "onSave",
+    "tinymist.outputPath": "$root/example",
+    "editor.formatOnSave": true
+}

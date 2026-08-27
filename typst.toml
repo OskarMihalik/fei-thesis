@@ -16,4 +16,4 @@ thumbnail = "thumbnail.png"
 [tool.tyler]
 srcdir = "."
 outdir = "dist"
-ignore = [".gitignore", "example.pdf"]
+ignore = [".gitignore", "example.pdf", ".vscode"]

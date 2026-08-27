@@ -171,10 +171,58 @@
   body
 }
 
-#let fei-title-page() = {
-  set text(font: "Liberation Serif")
+
+#let fei-cover-page() = {
+  set text(font: "Latin Modern Sans")
   set page(
-    margin: (top: 3.024cm, bottom: 2.775cm, left: 2.75cm, right: 2.75cm),
+    margin: (top: 2.1cm, bottom: 2.3cm, left: 2.75cm, right: 2.75cm),
+    numbering: none,
+  )
+
+  context {
+    let vars = variables-state.get()
+    let t = vars.at("title")
+    let a = vars.at("author")
+    let s = vars.at("school")
+    let f = vars.at("faculty")
+    let y = vars.at("year")
+    let tt = vars.at("thesis-type")
+    let rn = vars.at("reg-nr")
+
+    align(center)[
+      #text(size: 14.5pt, weight: "bold")[#upper(s)] \
+      #v(8pt)
+      #text(size: 13.5pt, weight: "bold")[#f]
+    ]
+
+    v(12.5mm)
+    par(first-line-indent: 0pt)[
+      #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
+    ]
+
+    v(51.5mm)
+
+    align(center)[
+      #box(width: 100%, text(size: 20.5pt, weight: "bold")[#t])
+      #v(20pt)
+      #text(size: 14.5pt, weight: "bold")[#tt]
+    ]
+
+    v(1fr)
+
+    grid(
+      columns: (1fr, 1fr),
+      text(size: 14.5pt, weight: "bold")[#y], align(right, text(size: 14.5pt, weight: "bold")[#a]),
+    )
+
+    pagebreak()
+  }
+}
+
+#let fei-title-page() = {
+  set text(font: "Latin Modern Sans")
+  set page(
+    margin: (top: 3.124cm, bottom: 3.3cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
   )
   counter(page).update(1)
@@ -195,32 +243,32 @@
     let tw = vars.at("training-workplace")
 
     align(center)[
-      #par(leading: 18.2pt)[
-        #text(size: 14pt, weight: "black")[#upper(s)]
-        #linebreak()
-        #text(size: 13.5pt, weight: "black")[#f]
-      ]
+      // #par(leading: 18.2pt)[
+      #text(size: 14pt, weight: "bold")[#upper(s)]
+      #v(4pt)
+      #text(size: 13.5pt, weight: "bold")[#f]
+      // ]
     ]
 
-    v(9mm)
+    v(13mm)
 
     par(first-line-indent: 0pt)[
       #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
     ]
 
-    v(40.9mm)
+    v(42.9mm)
 
     align(center)[
-      #par(leading: 18.1pt)[#text(size: 20pt, weight: "black")[#t]]
-      #v(22pt)
-      #text(size: 14pt, weight: "black")[#tt]
+      #par(leading: 9pt)[#text(size: 20pt, weight: "bold")[#t]]
+      #v(20pt)
+      #text(size: 14pt, weight: "bold")[#tt]
     ]
 
-    v(1fr)
+    v(4cm)
 
     grid(
       columns: (5cm, 1fr),
-      gutter: 0.5em,
+      gutter: 0.1em,
       row-gutter: 0.8em,
       [#translate("study-programme-label")], [#sp],
       [#translate("study-field-label")], [#sf],
@@ -229,59 +277,12 @@
       if c != none [#translate("consultant-label")], if c != none [#c],
     )
 
-    v(3.43cm)
-
-    grid(
-      columns: (1fr, 1fr),
-      align: (left, right),
-      text(size: 12pt, weight: "black")[#y], text(size: 12pt, weight: "black")[#a],
-    )
-
-    pagebreak()
-  }
-}
-
-#let fei-cover-page() = {
-  set text(font: "Liberation Serif")
-  set page(
-    margin: (top: 2cm, bottom: 1.8cm, left: 2.75cm, right: 2.75cm),
-    numbering: none,
-  )
-
-  context {
-    let vars = variables-state.get()
-    let t = vars.at("title")
-    let a = vars.at("author")
-    let s = vars.at("school")
-    let f = vars.at("faculty")
-    let y = vars.at("year")
-    let tt = vars.at("thesis-type")
-    let rn = vars.at("reg-nr")
-
-    align(center)[
-      #text(size: 14.0pt, weight: "black")[#upper(s)] \
-      #v(3.5mm)
-      #text(size: 13.5pt, weight: "black")[#f]
-    ]
-
-    v(9mm)
-    par(first-line-indent: 0pt)[
-      #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
-    ]
-
-    v(51.5mm)
-
-    align(center)[
-      #box(width: 100%, text(size: 20.5pt, weight: "black")[#t])
-      #v(29pt)
-      #text(size: 14.5pt, weight: "black")[#tt]
-    ]
-
     v(1fr)
 
     grid(
       columns: (1fr, 1fr),
-      text(size: 14.5pt, weight: "black")[#y], align(right, text(size: 14.5pt, weight: "black")[#a]),
+      align: (left, right),
+      text(size: 12pt, weight: "bold")[#y], text(size: 12pt, weight: "bold")[#a],
     )
 
     pagebreak()
