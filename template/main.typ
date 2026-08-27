@@ -9,8 +9,6 @@
   date: [31. decembra 2024],
   year: [2024],
   thesis-type: [Bakalárska práca],
-  keywords: [záverečná práca, šablóna, Typst, formátovanie textu, citácie],
-  keywords-en: [Final thesis, template, Typst, text formatting, citations],
   study-programme: [názov študijného programu],
   study-field: [názov študijného odboru],
   school: [Slovenská technická univerzita v Bratislave],
@@ -32,6 +30,7 @@
     #include "includes/abstractSK.typ"
   ],
   lang: "sk",
+  [záverečná práca, šablóna, Typst, formátovanie textu, citácie],
 )
 
 #fei-abstract(
@@ -39,6 +38,7 @@
     #include "includes/abstractEN.typ"
   ],
   lang: "en",
+  [Final thesis, template, Typst, text formatting, citations],
 )
 
 #show: start-numbering.with()

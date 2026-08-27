@@ -15,8 +15,6 @@
   date: "31. decembra 2024",
   year: "2024",
   thesis-type: "Bakalárska práca",
-  keywords: "záverečná práca, šablóna, Typst, formátovanie textu, citácie",
-  keywords-en: "Final thesis, template, Typst, text formatting, citations",
   study-programme: "názov študijného programu",
   study-field: "názov študijného odboru",
   school: "Slovenská technická univerzita v Bratislave",
@@ -45,6 +43,7 @@
     training-workplace-label: [Školiace pracovisko:],
     supervisor-label: [Školiteľ:],
     consultant-label: [Konzultant:],
+    keywords: [Kľúčové slová],
   ),
   en: (
     introduction: [Introduction],
@@ -64,6 +63,7 @@
     training-workplace-label: [Training Workplace:],
     supervisor-label: [Supervisor:],
     consultant-label: [Consultant:],
+    keywords: [Keywords],
   ),
 )
 
@@ -315,13 +315,11 @@
   set heading(outlined: false, numbering: none)
   content
   abbr.list(title: [#translate("glossary-title")], columns: 1)
-  pagebreak()
 }
 
 #let fei-list-of-manual-glossaries(content) = {
   heading(outlined: false, numbering: none)[#translate("glossary-title")]
   content
-  pagebreak()
 }
 
 
@@ -331,7 +329,6 @@
   )
   for page-num in range(1, pages + 1) {
     image(pdf-path, width: 100%, page: page-num)
-    pagebreak()
   }
 }
 
@@ -351,7 +348,6 @@
     )]
 
   outline()
-  pagebreak()
 }
 
 #let fei-outline-code() = {
@@ -359,7 +355,6 @@
     title: [#translate("outline-code")],
     target: figure.where(kind: raw),
   )
-  pagebreak()
 }
 
 #let fei-outline-figures-tables() = {
@@ -374,30 +369,6 @@
     title: none,
     target: figure.where(kind: table),
   )
-  pagebreak()
-}
-
-
-#let print-keywords-sk() = {
-  set text(heading-2)
-  align(left, text(font: font, strong([Kľúčové slová])))
-  set text(text-size)
-
-  [#context {
-    let vars = variables-state.get()
-    vars.at("keywords")
-  }]
-}
-
-#let print-keywords-en() = {
-  set text(heading-2)
-  align(left, text(font: font, strong([Keywords])))
-  set text(text-size)
-
-  [#context {
-    let vars = variables-state.get()
-    vars.at("keywords-en")
-  }]
 }
 
 /// This function constructs the abstract, which is supposed to come directly after the frontmatter.
@@ -405,46 +376,39 @@
   content,
   /// -> "en" | "sk"
   lang: "sk",
+  keywords,
 ) = {
-  set par(first-line-indent: 0pt)
-  set text(heading-1)
-  align(left, text(font: font, strong(translate("abstract", lang: lang))))
+  heading(numbering: none, outlined: false)[#translate("abstract", lang: lang)]
   v(20pt)
-  set text(text-size)
 
   content
 
-  v(20pt)
-  if lang == "sk" [
-    #print-keywords-sk()
-  ] else [
-    #print-keywords-en()
-  ]
+  v(1em)
 
-  pagebreak()
+  heading(numbering: none, outlined: false, level: 4)[#translate("keywords", lang: lang)]
+
+  v(0.7em)
+
+  keywords
 }
 
 #let fei-introduction(content) = {
   heading(numbering: none)[#translate("introduction")]
   content
-  pagebreak()
 }
 
 #let fei-core(content) = {
   content
-  pagebreak()
 }
 
 #let fei-conclusion(content) = {
   heading([#translate("conclusion")], numbering: none)
   content
-  pagebreak()
 }
 
 #let fei-ai-declaration(content) = {
   heading([#translate("ai-declaration")], numbering: none, level: 2)
   content
-  pagebreak()
 }
 
 #let fei-thanks(body) = {
@@ -452,8 +416,6 @@
     #v(1fr)
     #heading(level: 2, outlined: false, numbering: none)[#translate("thanks")]
     #body
-    #pagebreak()
-
   ]
 }
 
@@ -482,8 +444,6 @@
   }
 
   content
-
-  pagebreak()
 }
 
 
