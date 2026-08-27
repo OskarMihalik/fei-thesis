@@ -523,14 +523,19 @@ Jednotlivé kapitoly v~dodatkoch číslujeme veľkými písmenami,
 čísla podkapitol majú formu A.1, B.3.2, atď.
 Na tento účel vytvoríme pre každý dodatok samostatný súbor v~priečinku `includes/`,
 odporúčame názov súboru v~tvare `appendixA.typ` alebo podobne.
-Každý dodatok je potom potrebné načítať v~hlavnom súbore `main.typ` nasledujúcim spôsobom:
+Každý takýto súbor začína nadpisom prvej úrovne s~voliteľným návestím,
+napríklad `= Názov dodatku <moj-dodatok>`.
+Všetky dodatky potom načítame v~hlavnom súbore `main.typ` vo~funkcii `fei-appendix`:
 
 ```typst
-#appendix([#include "includes/appendixA.typ"], [Názov dodatku])
+#fei-appendix[
+  #include "includes/appendixA.typ"
+  #include "includes/appendixB.typ"
+]
 ```
 
-Prvý parameter funkcie je obsah dodatku, druhý parameter je názov dodatku,
-ktorý sa automaticky očísluje veľkým písmenom.
+Nadpisy dodatkov sa automaticky očíslujú veľkými písmenami
+a~v~texte sa na ne môžeme odkazovať pomocou návestia, napríklad `@moj-dodatok`.
 
 = Formát a jazyk <sec:formatLanguage>
 

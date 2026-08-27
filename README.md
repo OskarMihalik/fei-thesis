@@ -51,7 +51,8 @@ typst compile main.typ   # one-off PDF
 ## Project structure
 
 `main.typ` is the entry point you compile — it wires everything together and holds your
-metadata. Your actual writing goes into `includes/`.
+metadata. In short: `includes/` holds the important files — everything you write goes there,
+while `assets/` is for your own files, such as images and figures.
 
 | Path | What it is |
 | --- | --- |
