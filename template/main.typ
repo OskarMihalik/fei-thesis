@@ -58,6 +58,8 @@
 #bibliography("bibliography.bib")
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]
 
-#fei-appendix([#include "includes/appendixA.typ"], [Algoritmus], label-name: "alg:1")
-#fei-appendix([#include "includes/appendixB.typ"], [Výpis dlhého kódu], label-name: "code:1")
-#fei-appendix([#include "includes/appendixC.typ"], [Slovníček pojmov], label-name: "glossary:1")
+#fei-appendix[
+  #include "includes/appendixA.typ"
+  #include "includes/appendixB.typ"
+  #include "includes/appendixC.typ"
+]

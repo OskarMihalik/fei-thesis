@@ -1,3 +1,4 @@
+= Slovníček pojmov <glossary:1>
 *Abstrakt* -- Krátke zhrnutie hlavných bodov dokumentu, vrátane cieľov, metodológie a výsledkov.\
 *Bod (pt)* -- Jednotka merania veľkosti písma; 1 bod sa rovná približne 0,352 mm.\
 *Bold* -- Písmo, ktoré je tučné, používané na zvýraznenie dôležitých частей textu a v nadpisoch.\

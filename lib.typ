@@ -28,7 +28,7 @@
   sk: (
     introduction: [Úvod],
     abstract: [Abstrakt],
-    appendix-suffix: [Dodatok],
+    appendix-prefix: [Dodatok],
     glossary-title: [Zoznam značiek a skratiek],
     bibliography: [Literatúra],
     outline-code: [Zoznam výpisov kódov],
@@ -48,7 +48,7 @@
   en: (
     introduction: [Introduction],
     abstract: [Abstract],
-    appendix-suffix: [Appendix],
+    appendix-prefix: [Appendix],
     glossary-title: [List of Symbols and Abbreviations],
     bibliography: [Bibliography],
     outline-code: [List of listings],
@@ -435,26 +435,14 @@
   body
 }
 
-#let appendix-counter = counter("appendix")
-
-#let fei-appendix(content, title, label-name: none) = {
-  appendix-counter.step()
-  context {
-    let suffix = translate("appendix-suffix")
-    let letter = numbering("A", appendix-counter.get().first())
-    [
-      #heading(numbering: none)[#suffix #letter: #title]
-      #if label-name != none [
-        #show heading: none
-        #heading(outlined: false)[#title]
-
-        #label(label-name)
-
-      ]
-    ]
+#let fei-appendix(body) = {
+  counter(heading).update(0)
+  set heading(numbering: "A.1")
+  show heading.where(level: 1): it => {
+    pagebreak(weak: true)
+    block(context [#translate("appendix-prefix") #counter(heading).display("A"): #it.body])
   }
-
-  content
+  body
 }
 
 

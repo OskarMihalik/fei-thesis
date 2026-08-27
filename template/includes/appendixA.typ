@@ -1,3 +1,4 @@
+= Algoritmus <alg:1>
 #import "@preview/algorithmic:1.0.7"
 #import algorithmic: style-algorithm, algorithm-figure
 #show: style-algorithm
