@@ -1,7 +1,7 @@
-Príručka pre študentov Fakulty elektrotechniky a informatiky STU v Bratislave obsahuje
-rady a návody, ako z formálneho hľadiska pristupovať k vypracovaniu záverečnej práce
-vysokoškolského štúdia. Dokument zároveň môže slúžiť ako šablóna práce v systéme
-na sadzbu textu LATEX. Detailne sa zaoberá pravidlami sadzby matematických rovníc,
-číslovania plávajúcich objektov a odkazovaním na ne. Podrobne sa venuje aj spôsobu
-citovania externých literárnych zdrojov.
+This guide for students of the Faculty of Electrical Engineering and Information Technology
+at the Slovak University of Technology in Bratislava provides advice and instructions on how
+to approach the preparation of a final thesis from a formal perspective. The document can
+also serve as a template for writing in the Typst typesetting system. It covers in detail the
+rules for typesetting mathematical equations, numbering floating objects, and referencing
+them. It also explains how to cite external literature sources.
 
