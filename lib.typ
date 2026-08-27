@@ -92,26 +92,25 @@
 
   show figure.caption: it => block({
     set align(left)
-      strong({
-        it.supplement
-        [ ]
-        context it.counter.display(it.numbering)
-        it.separator
-      })
+    strong({
+      it.supplement
       [ ]
+      context it.counter.display(it.numbering)
+      it.separator
+    })
+    [ ]
     it.body
   })
 
-
   show heading: set block(below: 1em)
-  
+
   show heading: it => [
     #if it.level == 1 {
       pagebreak(weak: true)
     }
     #block(
-    if it.numbering != none { counter(heading).display(it.numbering) + h(1.2em) } + it.body,
-  )]
+      if it.numbering != none { counter(heading).display(it.numbering) + h(1.2em) } + it.body,
+    )]
 
   show heading.where(level: 2): set text(size: heading-2)
   show heading.where(level: 3): set text(size: heading-3)
@@ -163,7 +162,7 @@
   show figure.where(kind: raw): set figure(supplement: [#translate("code-caption")])
 
   show figure.where(kind: raw): it => {
-    align(left,  it.body)
+    align(left, it.body)
     align(center, it.caption)
   }
 
@@ -178,7 +177,7 @@
     margin: (top: 3.024cm, bottom: 2.775cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
   )
-  counter(page).update(1) 
+  counter(page).update(1)
 
   context {
     let vars = variables-state.get()
@@ -206,7 +205,7 @@
     v(9mm)
 
     par(first-line-indent: 0pt)[
-    #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
+      #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
     ]
 
     v(40.9mm)
@@ -227,9 +226,7 @@
       [#translate("study-field-label")], [#sf],
       [#translate("training-workplace-label")], [#tw],
       if sv != none [#translate("supervisor-label")], if sv != none [#sv],
-      if c != none 
-        [#translate("consultant-label")], if c != none [#c],
-      
+      if c != none [#translate("consultant-label")], if c != none [#c],
     )
 
     v(3.43cm)
@@ -237,8 +234,7 @@
     grid(
       columns: (1fr, 1fr),
       align: (left, right),
-      text(size: 12pt, weight: "black")[#y],
-      text(size: 12pt, weight: "black")[#a],
+      text(size: 12pt, weight: "black")[#y], text(size: 12pt, weight: "black")[#a],
     )
 
     pagebreak()
@@ -270,7 +266,7 @@
 
     v(9mm)
     par(first-line-indent: 0pt)[
-    #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
+      #text(size: 12.0pt)[#translate("reg-nr-label") #rn]
     ]
 
     v(51.5mm)
@@ -285,8 +281,7 @@
 
     grid(
       columns: (1fr, 1fr),
-      text(size: 14.5pt, weight: "black")[#y],
-      align(right, text(size: 14.5pt, weight: "black")[#a]),
+      text(size: 14.5pt, weight: "black")[#y], align(right, text(size: 14.5pt, weight: "black")[#a]),
     )
 
     pagebreak()
@@ -346,12 +341,14 @@
     level: 1,
   ): it => [
     #v(0.5em)
-     #set par(first-line-indent: (amount: 0em, all: true))
+    #set par(first-line-indent: (amount: 0em, all: true))
     #link(
-    it.element.location(),
-    [#strong([#it.prefix() #if it.prefix() != none { h(1em) } #it.body() #box(width: 1fr, repeat(gap: 0.15em)[ ]) #it.page() #v(0.1em) ])],
-  )]
-  
+      it.element.location(),
+      [#strong([#it.prefix() #if it.prefix() != none { h(1em) } #it.body() #box(width: 1fr, repeat(
+          gap: 0.15em,
+        )[ ]) #it.page() #v(0.1em) ])],
+    )]
+
   outline()
   pagebreak()
 }
@@ -388,8 +385,7 @@
   [#context {
     let vars = variables-state.get()
     vars.at("keywords")
-    }]
-
+  }]
 }
 
 #let print-keywords-en() = {
@@ -397,11 +393,10 @@
   align(left, text(font: font, strong([Keywords])))
   set text(text-size)
 
-    [#context {
+  [#context {
     let vars = variables-state.get()
     vars.at("keywords-en")
-    }]
-
+  }]
 }
 
 /// This function constructs the abstract, which is supposed to come directly after the frontmatter.
@@ -478,8 +473,8 @@
       #if label-name != none [
         #show heading: none
         #heading(outlined: false)[#title]
-      
-      #label(label-name)
+
+        #label(label-name)
 
       ]
     ]
