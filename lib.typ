@@ -9,19 +9,19 @@
 #let font = "New Computer Modern"
 #let doc-lang = state("doc-lang", "sk")
 #let default-variables = (
-  title: "Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst",
+  title: [Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst],
   author: "RNDr. Juraj Chlpík, PhD.",
-  reg-nr: "FEI-xxxx-xxxx",
-  date: "31. decembra 2024",
-  year: "2024",
-  thesis-type: "Bakalárska práca",
-  study-programme: "názov študijného programu",
-  study-field: "názov študijného odboru",
-  school: "Slovenská technická univerzita v Bratislave",
-  faculty: "Fakulta elektrotechniky a informatiky",
-  supervisor: "tituly Meno Priezvisko, tituly",
-  consultant: "tituly Meno Priezvisko, tituly",
-  training-workplace: "Názov školiaceho pracoviska",
+  reg-nr: [FEI-xxxx-xxxx],
+  date: [31. decembra 2024],
+  year: [2024],
+  thesis-type: [Bakalárska práca],
+  study-programme: [názov študijného programu],
+  study-field: [názov študijného odboru],
+  school: [Slovenská technická univerzita v Bratislave],
+  faculty: [Fakulta elektrotechniky a informatiky],
+  supervisor: [tituly Meno Priezvisko, tituly],
+  consultant: [tituly Meno Priezvisko, tituly],
+  training-workplace: [Názov školiaceho pracoviska],
 )
 #let variables-state = state("variables", default-variables)
 #let i18n = (
@@ -164,6 +164,17 @@
   show figure.where(kind: raw): it => {
     align(left, it.body)
     align(center, it.caption)
+  }
+
+  show raw.where(block: true): it => {
+    context {
+      let line-height = measure(text(font: font, size: text-size)[H]).height
+      set block(
+        above: 2 * line-height,
+        below: 2 * line-height,
+      )
+      it
+    }
   }
 
   show: abbr.show-rule
