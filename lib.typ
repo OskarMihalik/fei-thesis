@@ -28,42 +28,42 @@
 #let variables-state = state("variables", default-variables)
 #let i18n = (
   sk: (
-    introduction: "Úvod",
-    abstract: "Abstrakt",
-    appendix-suffix: "Dodatok",
-    glossary-title: "Zoznam značiek a skratiek",
-    bibliography: "Literatúra",
-    outline-code: "Zoznam výpisov kódov",
-    outline-figures-tables: "Zoznam obrázkov a tabuliek",
-    code-caption: "Výpis kódu",
-    conclusion: "Záver",
-    ai-declaration: "Použitie nástrojov umelej inteligencie",
-    thanks: "Poďakovanie",
-    reg-nr-label: "Evidenčné číslo:",
-    study-programme-label: "Študijný program:",
-    study-field-label: "Študijný odbor:",
-    training-workplace-label: "Školiace pracovisko:",
-    supervisor-label: "Školiteľ:",
-    consultant-label: "Konzultant:",
+    introduction: [Úvod],
+    abstract: [Abstrakt],
+    appendix-suffix: [Dodatok],
+    glossary-title: [Zoznam značiek a skratiek],
+    bibliography: [Literatúra],
+    outline-code: [Zoznam výpisov kódov],
+    outline-figures-tables: [Zoznam obrázkov a tabuliek],
+    code-caption: [Výpis kódu],
+    conclusion: [Záver],
+    ai-declaration: [Použitie nástrojov umelej inteligencie],
+    thanks: [Poďakovanie],
+    reg-nr-label: [Evidenčné číslo:],
+    study-programme-label: [Študijný program:],
+    study-field-label: [Študijný odbor:],
+    training-workplace-label: [Školiace pracovisko:],
+    supervisor-label: [Školiteľ:],
+    consultant-label: [Konzultant:],
   ),
   en: (
-    introduction: "Introduction",
-    abstract: "Abstract",
-    appendix-suffix: "Appendix",
-    glossary-title: "List of Symbols and Abbreviations",
-    bibliography: "Bibliography",
-    outline-code: "List of listings",
-    outline-figures-tables: "List of figures and tables",
-    code-caption: "Listing",
-    conclusion: "Conclusion",
-    ai-declaration: "Usage of artificial intelligence tools",
-    thanks: "Thanks",
-    reg-nr-label: "Registration number:",
-    study-programme-label: "Study Programme:",
-    study-field-label: "Study Field:",
-    training-workplace-label: "Training Workplace:",
-    supervisor-label: "Supervisor:",
-    consultant-label: "Consultant:",
+    introduction: [Introduction],
+    abstract: [Abstract],
+    appendix-suffix: [Appendix],
+    glossary-title: [List of Symbols and Abbreviations],
+    bibliography: [Bibliography],
+    outline-code: [List of listings],
+    outline-figures-tables: [List of figures and tables],
+    code-caption: [Listing],
+    conclusion: [Conclusion],
+    ai-declaration: [Usage of artificial intelligence tools],
+    thanks: [Thanks],
+    reg-nr-label: [Registration number:],
+    study-programme-label: [Study Programme:],
+    study-field-label: [Study Field:],
+    training-workplace-label: [Training Workplace:],
+    supervisor-label: [Supervisor:],
+    consultant-label: [Consultant:],
   ),
 )
 
@@ -100,7 +100,7 @@
       })
       [ ]
     it.body
-})
+  })
 
 
   show heading: set block(below: 1em)
@@ -369,6 +369,9 @@
     title: [#translate("outline-figures-tables")],
     target: figure.where(kind: image),
   )
+  [
+    #v(1em)
+  ]
   outline(
     title: none,
     target: figure.where(kind: table),
@@ -387,20 +390,18 @@
     vars.at("keywords")
     }]
 
-  pagebreak()
 }
 
 #let print-keywords-en() = {
-  set text(heading-3)
+  set text(heading-2)
   align(left, text(font: font, strong([Keywords])))
   set text(text-size)
 
     [#context {
     let vars = variables-state.get()
-    vars.at("keywords")
+    vars.at("keywords-en")
     }]
 
-  pagebreak()
 }
 
 /// This function constructs the abstract, which is supposed to come directly after the frontmatter.
@@ -423,6 +424,8 @@
   ] else [
     #print-keywords-en()
   ]
+
+  pagebreak()
 }
 
 #let fei-introduction(content) = {

@@ -1000,7 +1000,7 @@ a~stručne opíšeme jednotlivé symboly.
 
 - Čísla píšeme vzpriameným písmom: $1$; $2$; $3$; $1024$; $3","14$ a podobne.
 
-- Skratky matematických funkcií píšeme vzpriameným písmom: $sin(α + β)$, $cos ω t$, $log_a x = frac(ln x, ln a)$, $e^(i π) = -1$.
+- Skratky matematických funkcií píšeme vzpriameným písmom: $sin(alpha + β)$, $cos ω t$, $log_a x = frac(ln x, ln a)$, $e^(i π) = -1$.
 
 - Označenia nemenných konštánt sú tiež vzpriamené písmená: $π$, $i$, $e$ -- tri základné matematické konštanty -- Ludolfovo číslo, komplexná jednotka a~Eulerovo číslo. Niektoré konštanty sa zo zvyku môžu písať kurzívou, napríklad $π$ alebo dielektrická konštanta $ε_0$. Komplexná jednotka je však vždy vzpriamená: $i^2 = -1$.
 
