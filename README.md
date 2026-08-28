@@ -16,6 +16,7 @@ as its demo content, so a fresh project compiles straight into it.
 
 - Typst **0.14 or newer** (the assignment insert relies on embedding PDF pages as images).
 - No font installation needed — the template uses *New Computer Modern*, which ships with Typst.
+  A different font can be set with `#show: fei-thesis.with(font: "...")`.
 - The demo content is written in Slovak; the template is available in Slovak and English.
 
 ## Getting started
@@ -211,7 +212,7 @@ The full entry point, as shipped:
 
 | Function | Purpose |
 | --- | --- |
-| `fei-thesis(language: "sk", bibliography-style: "iso-690-numeric", body)` | Document-wide rules: page size, fonts, headings, figures. Apply as a `#show` rule first. |
+| `fei-thesis(language: "sk", font: "New Computer Modern", bibliography-style: "iso-690-numeric", body)` | Document-wide rules: page size, fonts, headings, figures. Apply as a `#show` rule first. |
 | `fei-setup(vars, body)` | Registers your metadata. Apply as a `#show` rule second. |
 | `fei-cover-page()` / `fei-title-page()` | The two mandated front pages. |
 | `fei-assignment(pdf, pages: 1)` | Inserts your assignment PDF, one full page each. |

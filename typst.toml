@@ -7,6 +7,7 @@ license = "MIT"
 description = "Official template for writing thesis on Slovak University of Technology in Bratislava Faculty of Electrical Engineering and Information Technology  (STU FEI)"
 keywords = ["thesis", "STU", "FEI", "STU FEI"]
 categories = ["thesis"]
+repository = "https://github.com/OskarMihalik/fei-thesis"
 
 [template]
 path = "template"

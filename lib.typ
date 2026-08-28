@@ -6,7 +6,7 @@
 #let heading-2 = 16pt
 #let heading-3 = 14pt
 #let first-line-indent = 1.5em
-#let font = "New Computer Modern"
+#let font-state = state("font", "New Computer Modern")
 #let doc-lang = state("doc-lang", "sk")
 #let default-variables = (
   title: [Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst],
@@ -71,10 +71,12 @@
 
 #let fei-thesis(
   language: "sk",
+  font: "New Computer Modern",
   bibliography-style: "iso-690-numeric",
   body,
 ) = {
   doc-lang.update(language)
+  font-state.update(font)
   // Page setup
   set page(
     paper: "a4",
@@ -175,7 +177,7 @@
 
   show raw.where(block: true): it => {
     context {
-      let line-height = measure(text(font: font, size: text-size)[H]).height
+      let line-height = measure(text(font: font-state.get(), size: text-size)[H]).height
       set block(
         above: 2 * line-height,
         below: 2 * line-height,
