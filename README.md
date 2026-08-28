@@ -9,7 +9,7 @@ the AI-usage declaration and lettered appendices — so you only write the text.
 
 ![Preview of the template](thumbnail.png)
 
-**[See the full example thesis (PDF)](https://github.com/OskarMihalik/fei-thesis/blob/main/example.pdf)** — the template ships with this document
+**[See the full example thesis (PDF)](https://github.com/OskarMihalik/fei-thesis/blob/release/example.pdf)** — the template ships with this document
 as its demo content, so a fresh project compiles straight into it.
 
 ## Requirements
