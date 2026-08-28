@@ -90,7 +90,6 @@ on your title page, so fill them all in.
 | `date` | Printed as given — write it out, e.g. `"31. decembra 2024"`. |
 | `year` | Year of submission. |
 | `thesis-type` | e.g. `"Bakalárska práca"`, `"Diplomová práca"`. |
-| `keywords` / `keywords-en` | Slovak and English keywords, printed under the abstracts. |
 | `study-programme`, `study-field` | From your study plan. |
 | `school`, `faculty` | Pre-filled with STU / FEI. |
 | `supervisor`, `consultant` | With degrees. Leave `consultant` out if you have none. |
@@ -119,6 +118,20 @@ list at the front of the thesis is generated for you. If you would rather write 
 (useful when you need symbols and units), delete `#fei-list-of-glossaries(...)` from `main.typ` and
 uncomment `#fei-list-of-manual-glossaries(...)` instead.
 
+### Appendices
+
+All appendices go into a single `#fei-appendix[...]` block. Every level-1 heading inside it
+becomes one lettered appendix — the heading text is printed as *Dodatok A: Algoritmus* and the
+lettering continues automatically. To reference an appendix, put a label on its heading:
+
+```typst
+// includes/appendixA.typ
+= Algoritmus <alg:1>
+```
+
+and cite it in the text with `@alg:1`. Add or remove appendices by adding or removing includes
+(or headings) inside the block.
+
 ### Language
 
 `fei-thesis` takes `language: "sk"` (default) or `language: "en"`, which switches all generated
@@ -139,21 +152,19 @@ The full entry point, as shipped:
 #show: fei-thesis.with(language: "sk")
 
 #show: fei-setup.with((
-  title: "Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst",
+  title: [Rozšírená šablóna záverečnej práce na FEI STU v~Bratislave v systéme Typst],
   author: "RNDr. Juraj Chlpík, PhD.",
-  reg-nr: "FEI-xxxx-xxxx",
-  date: "31. decembra 2024",
-  year: "2024",
-  thesis-type: "Bakalárska práca",
-  keywords: [záverečná práca, šablóna, Typst, formátovanie textu, citácie],
-  keywords-en: [Final thesis, template, Typst, text formatting, citations],
-  study-programme: "názov študijného programu",
-  study-field: "názov študijného odboru",
-  school: "Slovenská technická univerzita v Bratislave",
-  faculty: "Fakulta elektrotechniky a informatiky",
-  supervisor: "tituly Meno Priezvisko, tituly",
-  consultant: "tituly Meno Priezvisko, tituly",
-  training-workplace: "Názov školiaceho pracoviska",
+  reg-nr: [FEI-xxxx-xxxx],
+  date: [31. decembra 2024],
+  year: [2024],
+  thesis-type: [Bakalárska práca],
+  study-programme: [názov študijného programu],
+  study-field: [názov študijného odboru],
+  school: [Slovenská technická univerzita v Bratislave],
+  faculty: [Fakulta elektrotechniky a informatiky],
+  supervisor: [tituly Meno Priezvisko, tituly],
+  consultant: [tituly Meno Priezvisko, tituly],
+  training-workplace: [Názov školiaceho pracoviska],
 ))
 
 #fei-cover-page()
@@ -162,8 +173,17 @@ The full entry point, as shipped:
 
 #fei-thanks[#include "includes/thanks.typ"]
 
-#fei-abstract([#include "includes/abstractSK.typ"], lang: "sk")
-#fei-abstract([#include "includes/abstractEN.typ"], lang: "en")
+#fei-abstract(
+  [#include "includes/abstractSK.typ"],
+  lang: "sk",
+  [záverečná práca, šablóna, Typst, formátovanie textu, citácie],
+)
+
+#fei-abstract(
+  [#include "includes/abstractEN.typ"],
+  lang: "en",
+  [Final thesis, template, Typst, text formatting, citations],
+)
 
 #show: start-numbering.with()
 
@@ -180,9 +200,11 @@ The full entry point, as shipped:
 #bibliography("bibliography.bib")
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]
 
-#fei-appendix([#include "includes/appendixA.typ"], [Algoritmus], label-name: "alg:1")
-#fei-appendix([#include "includes/appendixB.typ"], [Výpis dlhého kódu], label-name: "code:1")
-#fei-appendix([#include "includes/appendixC.typ"], [Slovníček pojmov], label-name: "glossary:1")
+#fei-appendix[
+  #include "includes/appendixA.typ"
+  #include "includes/appendixB.typ"
+  #include "includes/appendixC.typ"
+]
 ```
 
 ## Function reference
@@ -194,7 +216,7 @@ The full entry point, as shipped:
 | `fei-cover-page()` / `fei-title-page()` | The two mandated front pages. |
 | `fei-assignment(pdf, pages: 1)` | Inserts your assignment PDF, one full page each. |
 | `fei-thanks(body)` | Acknowledgements page. |
-| `fei-abstract(body, lang: "sk")` | Abstract plus the matching keywords. Call once per language. |
+| `fei-abstract(body, lang: "sk", keywords)` | Abstract plus its keywords. Call once per language. |
 | `start-numbering(body)` | Starts page numbering here. Apply as a `#show` rule after the front matter. |
 | `fei-outline()` | Table of contents. |
 | `fei-list-of-glossaries(body)` | List of abbreviations, generated from `abbr.load(...)`. |
@@ -203,7 +225,7 @@ The full entry point, as shipped:
 | `fei-outline-figures-tables()` | List of figures and tables. |
 | `fei-introduction(body)`, `fei-core(body)`, `fei-conclusion(body)` | The three main parts, each with the right heading and page break. |
 | `fei-ai-declaration(body)` | Declaration of AI-tool usage. |
-| `fei-appendix(body, title, label-name: none)` | One appendix, lettered A, B, C… `label-name` gives you a reference target such as `@alg:1`. |
+| `fei-appendix(body)` | Wraps all appendices at once. Every level-1 heading inside becomes a lettered appendix — *Dodatok A*, *B*, *C*… |
 | `noindent(body)` / `indent(body)` | Suppress or force the first-line indent for a block of text. |
 
 ## Packages
