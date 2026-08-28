@@ -41,7 +41,7 @@ Pick whichever of the three you are most comfortable with. All of them create th
 
 ```sh
 # install Typst first: https://typst.app/open-source/#download
-typst init @preview/fei-thesis:0.0.4 my-thesis
+typst init @preview/fei-thesis:0.0.7 my-thesis
 cd my-thesis
 
 typst watch main.typ     # live rebuild while you write
@@ -147,7 +147,7 @@ translate the demo text, which is Slovak.
 The full entry point, as shipped:
 
 ```typst
-#import "@preview/fei-thesis:0.0.4": *
+#import "@preview/fei-thesis:0.0.7": *
 
 #show: fei-thesis.with(language: "sk")
 
