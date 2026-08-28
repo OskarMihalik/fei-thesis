@@ -284,7 +284,7 @@
       #text(size: 14pt, weight: "bold")[#tt]
     ]
 
-    v(4cm)
+    v(4.1cm)
 
     grid(
       columns: (5cm, 1fr),
