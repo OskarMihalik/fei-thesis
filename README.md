@@ -245,9 +245,12 @@ first build needs an internet connection.
 
 ## Development
 
-The published package is built into `dist/` with [tyler](https://github.com/typst-community/tyler),
+The published package is built into `dist/` with [tyler](https://github.com/mkpoli/tyler),
 which rewrites the template's relative `../lib.typ` imports to `@preview/fei-thesis:<version>`.
 Work on the sources in the repository root, then rebuild `dist/` before publishing.
+
+Run the following command in your typst package will check the package and build it, then install the built package to Typst local package group (-i) as well as prepare the package for publish and display instructions to create a PR (-p):
+`tyler build -i -p`
 
 ## License
 
