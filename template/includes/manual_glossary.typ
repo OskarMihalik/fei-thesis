@@ -1,3 +1,5 @@
+#set par(leading: 1.7em)
+
 $arrow(a), bold(a)$ -- zrýchlenie $(upright(m)/upright(s))^2$ \
 $a$ -- veľkosť zrýchlenia $(upright(m)/upright(s))^2$, mriežková konštanta (nm) \
 AC -- striedavý prúd, z angl. _Accelerating Current_\

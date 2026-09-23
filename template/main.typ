@@ -45,10 +45,11 @@
 #show: start-numbering.with()
 
 #fei-outline()
-#fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
+// #fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
+#fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
+#fei-outline-algorithms()
 #fei-outline-code()
 #fei-outline-figures-tables()
-// #fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
 
 
 #fei-introduction[#include "includes/introduction.typ"]

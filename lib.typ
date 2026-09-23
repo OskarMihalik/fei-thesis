@@ -46,6 +46,7 @@
     consultant-label: [Konzultant:],
     keywords: [Kľúčové slová],
     resume: [Rezumé],
+    outline-algorithms: [Zoznam algoritmov],
   ),
   en: (
     introduction: [Introduction],
@@ -67,6 +68,7 @@
     consultant-label: [Consultant:],
     keywords: [Keywords],
     resume: [Résumé],
+    outline-algorithms: [List of Algorithms],
   ),
 )
 
@@ -404,6 +406,13 @@
   outline(
     title: [#translate("outline-code")],
     target: figure.where(kind: raw),
+  )
+}
+
+#let fei-outline-algorithms() = {
+  outline(
+    title: [#translate("outline-algorithms")],
+    target: figure.where(kind: "algorithm"),
   )
 }
 
