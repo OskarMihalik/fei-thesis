@@ -55,6 +55,8 @@
 
 #fei-core[#include "includes/core.typ"]
 #fei-conclusion[#include "includes/conclusion.typ"]
+// Uncomment only if the document is written in english
+// #fei-resume[#include "includes/resume.typ"]
 
 #bibliography("bibliography.bib")
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]

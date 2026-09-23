@@ -45,6 +45,7 @@
     supervisor-label: [Školiteľ:],
     consultant-label: [Konzultant:],
     keywords: [Kľúčové slová],
+    resume: [Rezumé],
   ),
   en: (
     introduction: [Introduction],
@@ -65,6 +66,7 @@
     supervisor-label: [Supervisor:],
     consultant-label: [Consultant:],
     keywords: [Keywords],
+    resume: [Résumé],
   ),
 )
 
@@ -438,6 +440,16 @@
   v(0.7em)
 
   keywords
+}
+
+#let fei-resume(
+  content,
+  /// -> "en" | "sk"
+  lang: "sk",
+) = {
+  heading(numbering: none, outlined: false)[#translate("resume", lang: lang)]
+
+  content
 }
 
 #let fei-introduction(content) = {
