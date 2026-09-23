@@ -1,5 +1,6 @@
 #import "../lib.typ": *
 
+
 #show: fei-thesis.with(language: "sk")
 
 #show: fei-setup.with((
