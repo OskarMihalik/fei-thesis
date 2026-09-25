@@ -7,7 +7,7 @@
 #let heading-3 = 14pt
 #let first-line-indent = 1.5em
 #let font-state = state("font", "Libertinus Serif")
-#let font-cover-title = "Latin Modern Sans"
+#let font-cover-title = "Libertinus Serif"
 #let doc-lang = state("doc-lang", "sk")
 #let default-variables = (
   title: [Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst],
@@ -184,6 +184,7 @@
     it
   }
 
+  show math.equation: set text(font: "Libertinus Math")
   set math.equation(supplement: none, numbering: "1")
   set ref(supplement: none)
 
