@@ -77,6 +77,7 @@
 #let fei-thesis(
   language: "sk",
   font: "Libertinus Serif",
+  font-math: "Libertinus Math",
   bibliography-style: "iso-690-numeric",
   body,
 ) = {
@@ -184,7 +185,7 @@
     it
   }
 
-  show math.equation: set text(font: "Libertinus Math")
+  show math.equation: set text(font: font-math)
   set math.equation(supplement: none, numbering: "1")
   set ref(supplement: none)
 
