@@ -17,7 +17,10 @@ as its demo content, so a fresh project compiles straight into it.
 - Typst **0.14 or newer** (the assignment insert relies on embedding PDF pages as images).
 - The template uses _Libertinus Serif_ for text and _Libertinus Math_ for math. Libertinus Serif
   ships with Typst, but when compiling locally (command line or VS Code) you need to install
-  [Libertinus Math](https://github.com/alerque/libertinus) yourself.
+  Libertinus Math yourself: download the latest
+  [Libertinus release](https://github.com/alerque/libertinus/releases) and install
+  `static/OTF/LibertinusMath-Regular.otf`. Use the OTF file — the TTF and web builds have no
+  math table, and Typst then warns *"current font is not designed for math"*.
   Different fonts can be set with `#show: fei-thesis.with(font: "...", font-math: "...")`.
 - The demo content is written in Slovak; the template is available in Slovak and English.
 
@@ -271,9 +274,11 @@ The published package is built into `dist/` with [tyler](https://github.com/mkpo
 which rewrites the template's relative `../lib.typ` imports to `@preview/fei-thesis:<version>`.
 Work on the sources in the repository root, then rebuild `dist/` before publishing.
 
-For local development you need the [Libertinus Math](https://github.com/alerque/libertinus) font
-installed on your system — math is set in it, and unlike Libertinus Serif it does not ship with
-Typst. Check that Typst sees it with `typst fonts | grep "Libertinus Math"`.
+For local development you need the Libertinus Math font installed on your system — math is set in
+it, and unlike Libertinus Serif it does not ship with Typst. Install the OTF file from the
+[Libertinus releases](https://github.com/alerque/libertinus/releases) (see
+[Requirements](#requirements)), then check that Typst sees it with `typst fonts --variants | grep -A2
+"Libertinus Math"` — the path it prints should end in `.otf`.
 
 Run the following command in your typst package will check the package and build it, then install the built package to Typst local package group (-i) as well as prepare the package for publish and display instructions to create a PR (-p):
 `tyler build -i -p`
