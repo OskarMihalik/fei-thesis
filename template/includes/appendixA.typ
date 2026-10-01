@@ -1,9 +1,10 @@
 = Algoritmus <alg:1>
 #import "@preview/algorithmic:1.0.7"
-#import algorithmic: style-algorithm, algorithm-figure
+#import algorithmic: algorithm-figure, style-algorithm
 #show: style-algorithm
 #algorithm-figure(
   "Binary Search",
+  supplement: "Algoritmus",
   vstroke: .5pt + luma(200),
   {
     import algorithmic: *
@@ -35,5 +36,5 @@
         Return[*null*]
       },
     )
-  }
+  },
 )<att:listings>

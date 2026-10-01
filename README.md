@@ -15,8 +15,13 @@ as its demo content, so a fresh project compiles straight into it.
 ## Requirements
 
 - Typst **0.14 or newer** (the assignment insert relies on embedding PDF pages as images).
-- No font installation needed — the template uses *New Computer Modern*, which ships with Typst.
-  A different font can be set with `#show: fei-thesis.with(font: "...")`.
+- The template uses _Libertinus Serif_ for text and _Libertinus Math_ for math. Libertinus Serif
+  ships with Typst, but when compiling locally (command line or VS Code) you need to install
+  Libertinus Math yourself: download the latest
+  [Libertinus release](https://github.com/alerque/libertinus/releases) and install
+  `static/OTF/LibertinusMath-Regular.otf`. Use the OTF file — the TTF and web builds have no
+  math table, and Typst then warns *"current font is not designed for math"*.
+  Different fonts can be set with `#show: fei-thesis.with(font: "...", font-math: "...")`.
 - The demo content is written in Slovak; the template is available in Slovak and English.
 
 ## Getting started
@@ -55,22 +60,23 @@ typst compile main.typ   # one-off PDF
 metadata. In short: `includes/` holds the important files — everything you write goes there,
 while `assets/` is for your own files, such as images and figures.
 
-| Path | What it is |
-| --- | --- |
-| `main.typ` | Entry point: metadata and document assembly. Edit the metadata, rarely the rest. |
-| `includes/core.typ` | **The body of your thesis.** This is where you spend your time. |
-| `includes/introduction.typ` | Introduction (Úvod). |
-| `includes/conclusion.typ` | Conclusion (Záver). |
-| `includes/abstractSK.typ` / `abstractEN.typ` | Slovak and English abstracts. |
-| `includes/thanks.typ` | Acknowledgements. |
-| `includes/ai_declaration.typ` | Declaration of AI-tool usage. |
-| `includes/appendixA.typ`, `appendixB.typ`, `appendixC.typ` | Appendices. Add or remove freely. |
-| `includes/glossary.csv` | Abbreviations, expanded automatically in the text. |
-| `includes/manual_glossary.typ` | Hand-written list of symbols, if you prefer it over the CSV. |
-| `includes/assignment.pdf` | **Replace this** with your assignment exported from AIS. |
-| `includes/listings/` | Source files you want to print as code listings. |
-| `assets/` | Images and figures. |
-| `bibliography.bib` | Your sources, in BibTeX format. |
+| Path                                                       | What it is                                                                       |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `main.typ`                                                 | Entry point: metadata and document assembly. Edit the metadata, rarely the rest. |
+| `includes/core.typ`                                        | **The body of your thesis.** This is where you spend your time.                  |
+| `includes/introduction.typ`                                | Introduction (Úvod).                                                             |
+| `includes/conclusion.typ`                                  | Conclusion (Záver).                                                              |
+| `includes/abstractSK.typ` / `abstractEN.typ`               | Slovak and English abstracts.                                                    |
+| `includes/thanks.typ`                                      | Acknowledgements.                                                                |
+| `includes/resume.typ`                                      | Slovak résumé — only needed when the thesis is written in English.               |
+| `includes/ai_declaration.typ`                              | Declaration of AI-tool usage.                                                    |
+| `includes/appendixA.typ`, `appendixB.typ`, `appendixC.typ` | Appendices. Add or remove freely.                                                |
+| `includes/glossary.csv`                                    | Abbreviations, expanded automatically in the text.                               |
+| `includes/manual_glossary.typ`                             | Hand-written list of symbols, if you prefer it over the CSV.                     |
+| `includes/assignment.pdf`                                  | **Replace this** with your assignment exported from AIS.                         |
+| `includes/listings/`                                       | Source files you want to print as code listings.                                 |
+| `assets/`                                                  | Images and figures.                                                              |
+| `bibliography.bib`                                         | Your sources, in BibTeX format.                                                  |
 
 The demo files are filled with the example thesis — overwrite their contents, keep the file names,
 and everything stays wired up.
@@ -83,18 +89,18 @@ All fields go into `fei-setup`. Every one of them has a default, so nothing will
 one — but the default is placeholder text (`"tituly Meno Priezvisko, tituly"`) that will be printed
 on your title page, so fill them all in.
 
-| Field | Notes |
-| --- | --- |
-| `title` | Thesis title. |
-| `author` | Your full name with degrees. |
-| `reg-nr` | Registration number, e.g. `FEI-xxxx-xxxx`. |
-| `date` | Printed as given — write it out, e.g. `"31. decembra 2024"`. |
-| `year` | Year of submission. |
-| `thesis-type` | e.g. `"Bakalárska práca"`, `"Diplomová práca"`. |
-| `study-programme`, `study-field` | From your study plan. |
-| `school`, `faculty` | Pre-filled with STU / FEI. |
-| `supervisor`, `consultant` | With degrees. Leave `consultant` out if you have none. |
-| `training-workplace` | Your supervising department. |
+| Field                            | Notes                                                        |
+| -------------------------------- | ------------------------------------------------------------ |
+| `title`                          | Thesis title.                                                |
+| `author`                         | Your full name with degrees.                                 |
+| `reg-nr`                         | Registration number, e.g. `FEI-xxxx-xxxx`.                   |
+| `date`                           | Printed as given — write it out, e.g. `"31. decembra 2024"`. |
+| `year`                           | Year of submission.                                          |
+| `thesis-type`                    | e.g. `"Bakalárska práca"`, `"Diplomová práca"`.              |
+| `study-programme`, `study-field` | From your study plan.                                        |
+| `school`, `faculty`              | Pre-filled with STU / FEI.                                   |
+| `supervisor`, `consultant`       | With degrees. Leave `consultant` out if you have none.       |
+| `training-workplace`             | Your supervising department.                                 |
 
 ### The assignment
 
@@ -115,14 +121,15 @@ GSM,Global System for Mobile communication
 ```
 
 Use them in the text with the `abbr` package; the first occurrence is expanded automatically and the
-list at the front of the thesis is generated for you. If you would rather write the list by hand
-(useful when you need symbols and units), delete `#fei-list-of-glossaries(...)` from `main.typ` and
-uncomment `#fei-list-of-manual-glossaries(...)` instead.
+list at the front of the thesis is generated for you. To use it, uncomment
+`#fei-list-of-glossaries(...)` in `main.typ` and delete `#fei-list-of-manual-glossaries(...)`.
+The shipped `main.typ` uses the hand-written list in `includes/manual_glossary.typ` instead, which
+is useful when you need symbols and units.
 
 ### Appendices
 
 All appendices go into a single `#fei-appendix[...]` block. Every level-1 heading inside it
-becomes one lettered appendix — the heading text is printed as *Dodatok A: Algoritmus* and the
+becomes one lettered appendix — the heading text is printed as _Dodatok A: Algoritmus_ and the
 lettering continues automatically. To reference an appendix, put a label on its heading:
 
 ```typst
@@ -133,10 +140,22 @@ lettering continues automatically. To reference an appendix, put a label on its 
 and cite it in the text with `@alg:1`. Add or remove appendices by adding or removing includes
 (or headings) inside the block.
 
+### Résumé
+
+A thesis written in English must also contain a résumé in Slovak. Write it in
+`includes/resume.typ` and uncomment the line after the conclusion in `main.typ`:
+
+```typst
+#fei-resume[#include "includes/resume.typ"]
+```
+
+The heading is _Rezumé_ by default; pass `lang: "en"` to get _Résumé_. It is not listed in the
+table of contents.
+
 ### Language
 
 `fei-thesis` takes `language: "sk"` (default) or `language: "en"`, which switches all generated
-headings and labels — *Literatúra* / *Bibliography*, *Dodatok* / *Appendix*, and so on. It does not
+headings and labels — _Literatúra_ / _Bibliography_, _Dodatok_ / _Appendix_, and so on. It does not
 translate the demo text, which is Slovak.
 
 ```typst
@@ -189,14 +208,17 @@ The full entry point, as shipped:
 #show: start-numbering.with()
 
 #fei-outline()
-#fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
+// #fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
+#fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
+#fei-outline-algorithms()
 #fei-outline-code()
 #fei-outline-figures-tables()
-// #fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
 
 #fei-introduction[#include "includes/introduction.typ"]
 #fei-core[#include "includes/core.typ"]
 #fei-conclusion[#include "includes/conclusion.typ"]
+// Uncomment only if the document is written in english
+// #fei-resume[#include "includes/resume.typ"]
 
 #bibliography("bibliography.bib")
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]
@@ -210,24 +232,26 @@ The full entry point, as shipped:
 
 ## Function reference
 
-| Function | Purpose |
-| --- | --- |
-| `fei-thesis(language: "sk", font: "New Computer Modern", bibliography-style: "iso-690-numeric", body)` | Document-wide rules: page size, fonts, headings, figures. Apply as a `#show` rule first. |
-| `fei-setup(vars, body)` | Registers your metadata. Apply as a `#show` rule second. |
-| `fei-cover-page()` / `fei-title-page()` | The two mandated front pages. |
-| `fei-assignment(pdf, pages: 1)` | Inserts your assignment PDF, one full page each. |
-| `fei-thanks(body)` | Acknowledgements page. |
-| `fei-abstract(body, lang: "sk", keywords)` | Abstract plus its keywords. Call once per language. |
-| `start-numbering(body)` | Starts page numbering here. Apply as a `#show` rule after the front matter. |
-| `fei-outline()` | Table of contents. |
-| `fei-list-of-glossaries(body)` | List of abbreviations, generated from `abbr.load(...)`. |
-| `fei-list-of-manual-glossaries(body)` | Same heading, but with a hand-written list. |
-| `fei-outline-code()` | List of code listings. |
-| `fei-outline-figures-tables()` | List of figures and tables. |
-| `fei-introduction(body)`, `fei-core(body)`, `fei-conclusion(body)` | The three main parts, each with the right heading and page break. |
-| `fei-ai-declaration(body)` | Declaration of AI-tool usage. |
-| `fei-appendix(body)` | Wraps all appendices at once. Every level-1 heading inside becomes a lettered appendix — *Dodatok A*, *B*, *C*… |
-| `noindent(body)` / `indent(body)` | Suppress or force the first-line indent for a block of text. |
+| Function                                                                                                                          | Purpose                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `fei-thesis(language: "sk", font: "Libertinus Serif", font-math: "Libertinus Math", bibliography-style: "iso-690-numeric", body)` | Document-wide rules: page size, fonts, headings, figures. Apply as a `#show` rule first.                        |
+| `fei-setup(vars, body)`                                                                                                           | Registers your metadata. Apply as a `#show` rule second.                                                        |
+| `fei-cover-page()` / `fei-title-page()`                                                                                           | The two mandated front pages.                                                                                   |
+| `fei-assignment(pdf, pages: 1)`                                                                                                   | Inserts your assignment PDF, one full page each.                                                                |
+| `fei-thanks(body)`                                                                                                                | Acknowledgements page.                                                                                          |
+| `fei-abstract(body, lang: "sk", keywords)`                                                                                        | Abstract plus its keywords. Call once per language.                                                             |
+| `start-numbering(body)`                                                                                                           | Starts page numbering here. Apply as a `#show` rule after the front matter.                                     |
+| `fei-outline()`                                                                                                                   | Table of contents.                                                                                              |
+| `fei-list-of-glossaries(body)`                                                                                                    | List of abbreviations, generated from `abbr.load(...)`.                                                         |
+| `fei-list-of-manual-glossaries(body)`                                                                                             | Same heading, but with a hand-written list.                                                                     |
+| `fei-outline-algorithms()`                                                                                                        | List of algorithms.                                                                                             |
+| `fei-outline-code()`                                                                                                              | List of code listings.                                                                                          |
+| `fei-outline-figures-tables()`                                                                                                    | List of figures and tables.                                                                                     |
+| `fei-introduction(body)`, `fei-core(body)`, `fei-conclusion(body)`                                                                | The three main parts, each with the right heading and page break.                                               |
+| `fei-resume(body, lang: "sk")`                                                                                                    | Slovak résumé, required when the thesis is in English. Not listed in the outline.                               |
+| `fei-ai-declaration(body)`                                                                                                        | Declaration of AI-tool usage.                                                                                   |
+| `fei-appendix(body)`                                                                                                              | Wraps all appendices at once. Every level-1 heading inside becomes a lettered appendix — _Dodatok A_, _B_, _C_… |
+| `noindent(body)` / `indent(body)`                                                                                                 | Suppress or force the first-line indent for a block of text.                                                    |
 
 ## Packages
 
@@ -249,6 +273,12 @@ first build needs an internet connection.
 The published package is built into `dist/` with [tyler](https://github.com/mkpoli/tyler),
 which rewrites the template's relative `../lib.typ` imports to `@preview/fei-thesis:<version>`.
 Work on the sources in the repository root, then rebuild `dist/` before publishing.
+
+For local development you need the Libertinus Math font installed on your system — math is set in
+it, and unlike Libertinus Serif it does not ship with Typst. Install the OTF file from the
+[Libertinus releases](https://github.com/alerque/libertinus/releases) (see
+[Requirements](#requirements)), then check that Typst sees it with `typst fonts --variants | grep -A2
+"Libertinus Math"` — the path it prints should end in `.otf`.
 
 Run the following command in your typst package will check the package and build it, then install the built package to Typst local package group (-i) as well as prepare the package for publish and display instructions to create a PR (-p):
 `tyler build -i -p`

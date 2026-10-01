@@ -1,5 +1,6 @@
 #import "../lib.typ": *
 
+
 #show: fei-thesis.with(language: "sk")
 
 #show: fei-setup.with((
@@ -44,16 +45,19 @@
 #show: start-numbering.with()
 
 #fei-outline()
-#fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
+// #fei-list-of-glossaries[#abbr.load("includes/glossary.csv")]
+#fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
+#fei-outline-algorithms()
 #fei-outline-code()
 #fei-outline-figures-tables()
-// #fei-list-of-manual-glossaries[#include "includes/manual_glossary.typ"]
 
 
 #fei-introduction[#include "includes/introduction.typ"]
 
 #fei-core[#include "includes/core.typ"]
 #fei-conclusion[#include "includes/conclusion.typ"]
+// Uncomment only if the document is written in english
+// #fei-resume[#include "includes/resume.typ"]
 
 #bibliography("bibliography.bib")
 #fei-ai-declaration[#include "includes/ai_declaration.typ"]

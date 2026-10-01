@@ -4,4 +4,3 @@ to approach the preparation of a final thesis from a formal perspective. The doc
 also serve as a template for writing in the Typst typesetting system. It covers in detail the
 rules for typesetting mathematical equations, numbering floating objects, and referencing
 them. It also explains how to cite external literature sources.
-

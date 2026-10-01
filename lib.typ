@@ -6,7 +6,8 @@
 #let heading-2 = 16pt
 #let heading-3 = 14pt
 #let first-line-indent = 1.5em
-#let font-state = state("font", "New Computer Modern")
+#let font-state = state("font", "Libertinus Serif")
+#let font-cover-title = "Libertinus Serif"
 #let doc-lang = state("doc-lang", "sk")
 #let default-variables = (
   title: [Rozšírená šablóna záverečnej práce na FEI STU v Bratislave v systéme Typst],
@@ -44,6 +45,8 @@
     supervisor-label: [Školiteľ:],
     consultant-label: [Konzultant:],
     keywords: [Kľúčové slová],
+    resume: [Rezumé],
+    outline-algorithms: [Zoznam algoritmov],
   ),
   en: (
     introduction: [Introduction],
@@ -64,6 +67,8 @@
     supervisor-label: [Supervisor:],
     consultant-label: [Consultant:],
     keywords: [Keywords],
+    resume: [Résumé],
+    outline-algorithms: [List of Algorithms],
   ),
 )
 
@@ -71,7 +76,8 @@
 
 #let fei-thesis(
   language: "sk",
-  font: "New Computer Modern",
+  font: "Libertinus Serif",
+  font-math: "Libertinus Math",
   bibliography-style: "iso-690-numeric",
   body,
 ) = {
@@ -90,14 +96,14 @@
   set bibliography(style: bibliography-style, title: [#translate("bibliography")])
   // https://github.com/typst/typst/issues/1975#issuecomment-5004304475
   // Support for formatting within bibliography entries inside *.bib files
-  show bibliography: body => {
-    show "~": [~]
-    body
-  }
+  // show bibliography: body => {
+  //   show "~": [~]
+  //   body
+  // }
 
   set pagebreak(weak: true)
 
-  set table(inset: 0.7em)
+  set table(inset: (x: 0.5em, y: 0.5em))
 
   show figure.caption: it => block({
     set align(left)
@@ -115,6 +121,8 @@
 
   show heading: it => [
     #if it.level == 1 {
+      //Zabezpečí vytlačenie čakajúcich plávajúcich objektov na konci kapitoly
+      place.flush()
       pagebreak(weak: true)
     }
     #block(
@@ -132,6 +140,21 @@
 
   set quote(block: true)
 
+  //quote sú defaultne nerovnako odsadené zhora a zdola
+  show quote.where(block: true): set block(
+    above: 1.5em,
+    below: 1.5em,
+  )
+
+  //odsadenie citátu sprava a zľava podobne ako v LaTeXu
+  show quote.where(block: true): set pad(
+    x: 1.75 * first-line-indent,
+  )
+
+  //Zabráni ďalšiemu odsadeniu zoznamov v citátoch
+  show quote.where(block: true): set enum(indent: 0pt)
+  show quote.where(block: true): set list(indent: 0pt)
+
   set enum(
     full: true,
     numbering: numbly("{1:1}.", "{2:a)}", "{3:i})", "({4})"),
@@ -144,15 +167,27 @@
     indent: 1em,
   )
 
+  //Správanie číslovaných zoznamov v položkách s viacerými odsekmi
+  show enum: it => context {
+    set par(
+      first-line-indent: 0pt,
+      spacing: par.spacing + 0.25em,
+    )
+    it
+  }
+
+  //Správanie nečíslovaných zoznamov v položkách s viacerými odsekmi
+  show list: it => context {
+    set par(
+      first-line-indent: 0pt,
+      spacing: par.spacing + 0.25em,
+    )
+    it
+  }
+
+  show math.equation: set text(font: font-math)
   set math.equation(supplement: none, numbering: "1")
   set ref(supplement: none)
-  show ref: it => {
-    if it.element != none and it.element.func() == math.equation {
-      [(#it)]
-    } else {
-      it
-    }
-  }
 
   set cite(style: "springer-lecture-notes-in-computer-science")
 
@@ -162,19 +197,13 @@
     kind: table,
   ): set figure.caption(position: top)
 
-  set figure(gap: 15pt)
-  show figure: it => {
-    set par(first-line-indent: (amount: first-line-indent, all: true))
-    block(it, spacing: 2em)
-  }
+  set figure(gap: 1.5em)
+  show figure: set block(spacing: 2em)
+  show figure: set place(clearance: 2em)
 
   show figure.where(kind: raw): set figure(supplement: [#translate("code-caption")])
 
-  show figure.where(kind: raw): it => {
-    align(left, it.body)
-    align(center, it.caption)
-  }
-
+  //Väčšie medzery pred a po výpise kódu
   show raw.where(block: true): it => {
     context {
       let line-height = measure(text(font: font-state.get(), size: text-size)[H]).height
@@ -186,6 +215,14 @@
     }
   }
 
+  show figure.where(kind: raw): set block(breakable: true)
+  show figure.where(kind: raw): set block(width: 100%)
+  show figure.where(kind: raw): set align(start)
+
+  show figure.caption.where(kind: raw): set block(width: auto)
+  show figure.caption.where(kind: raw): set align(center)
+  //------------------------------
+
   show: abbr.show-rule
 
   body
@@ -193,7 +230,7 @@
 
 
 #let fei-cover-page() = {
-  set text(font: "Latin Modern Sans")
+  set text(font: font-cover-title)
   set page(
     margin: (top: 2.1cm, bottom: 2.3cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
@@ -240,7 +277,7 @@
 }
 
 #let fei-title-page() = {
-  set text(font: "Latin Modern Sans")
+  set text(font: font-cover-title)
   set page(
     margin: (top: 3.124cm, bottom: 3.3cm, left: 2.75cm, right: 2.75cm),
     numbering: none,
@@ -361,6 +398,9 @@
         )[ ]) #it.page() #v(0.1em) ])],
     )]
 
+  // this prevents the place.flush()
+  show heading.where(level: 2): set text(size: heading-1)
+  show outline: set heading(level: 2)
   outline()
 }
 
@@ -368,6 +408,13 @@
   outline(
     title: [#translate("outline-code")],
     target: figure.where(kind: raw),
+  )
+}
+
+#let fei-outline-algorithms() = {
+  outline(
+    title: [#translate("outline-algorithms")],
+    target: figure.where(kind: "algorithm"),
   )
 }
 
@@ -404,6 +451,16 @@
   v(0.7em)
 
   keywords
+}
+
+#let fei-resume(
+  content,
+  /// -> "en" | "sk"
+  lang: "sk",
+) = {
+  heading(numbering: none, outlined: false)[#translate("resume", lang: lang)]
+
+  content
 }
 
 #let fei-introduction(content) = {
@@ -443,7 +500,8 @@
   set heading(numbering: "A.1")
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
-    block(context [#translate("appendix-prefix") #counter(heading).display("A"): #it.body])
+    block(context [#translate("appendix-prefix")
+      #counter(heading).display("A"): #it.body])
   }
   body
 }
