@@ -96,10 +96,10 @@
   set bibliography(style: bibliography-style, title: [#translate("bibliography")])
   // https://github.com/typst/typst/issues/1975#issuecomment-5004304475
   // Support for formatting within bibliography entries inside *.bib files
-  show bibliography: body => {
-    show "~": [~]
-    body
-  }
+  // show bibliography: body => {
+  //   show "~": [~]
+  //   body
+  // }
 
   set pagebreak(weak: true)
 
