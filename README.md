@@ -9,7 +9,7 @@ the AI-usage declaration and lettered appendices — so you only write the text.
 
 ![Preview of the template](thumbnail.png)
 
-**[See the full example thesis (PDF)](https://github.com/OskarMihalik/fei-thesis/blob/0.8/example.pdf)** — the template ships with this document
+**[See the full example thesis (PDF)](https://github.com/OskarMihalik/fei-thesis/blob/1.0.0/example.pdf)** — the template ships with this document
 as its demo content, so a fresh project compiles straight into it.
 
 ## Requirements
@@ -47,7 +47,7 @@ Pick whichever of the three you are most comfortable with. All of them create th
 
 ```sh
 # install Typst first: https://typst.app/open-source/#download
-typst init @preview/fei-thesis:0.0.8 my-thesis
+typst init @preview/fei-thesis:1.0.0 my-thesis
 cd my-thesis
 
 typst watch main.typ     # live rebuild while you write
@@ -167,7 +167,7 @@ translate the demo text, which is Slovak.
 The full entry point, as shipped:
 
 ```typst
-#import "@preview/fei-thesis:0.0.8": *
+#import "@preview/fei-thesis:1.0.0": *
 
 #show: fei-thesis.with(language: "sk")
 
